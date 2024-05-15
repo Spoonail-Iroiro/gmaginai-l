@@ -23,7 +23,7 @@ class Ui_ProfileForm(object):
     def setupUi(self, ProfileForm):
         if not ProfileForm.objectName():
             ProfileForm.setObjectName(u"ProfileForm")
-        ProfileForm.resize(400, 300)
+        ProfileForm.resize(551, 362)
         self.horizontalLayout = QHBoxLayout(ProfileForm)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.lstMain = QListWidget(ProfileForm)
@@ -52,6 +52,30 @@ class Ui_ProfileForm(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
+
+        self.btn_add = QPushButton(ProfileForm)
+        self.btn_add.setObjectName(u"btn_add")
+
+        self.horizontalLayout_3.addWidget(self.btn_add)
+
+        self.btn_edit = QPushButton(ProfileForm)
+        self.btn_edit.setObjectName(u"btn_edit")
+
+        self.horizontalLayout_3.addWidget(self.btn_edit)
+
+        self.btn_delete = QPushButton(ProfileForm)
+        self.btn_delete.setObjectName(u"btn_delete")
+
+        self.horizontalLayout_3.addWidget(self.btn_delete)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
+
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer)
@@ -61,14 +85,16 @@ class Ui_ProfileForm(object):
 
 
         self.retranslateUi(ProfileForm)
-        self.btnSelect.clicked.connect(ProfileForm.btnSelect_clicked)
 
         QMetaObject.connectSlotsByName(ProfileForm)
     # setupUi
 
     def retranslateUi(self, ProfileForm):
         ProfileForm.setWindowTitle(QCoreApplication.translate("ProfileForm", u"Dialog", None))
-        self.label.setText(QCoreApplication.translate("ProfileForm", u"\u30d7\u30ed\u30d5\u30a1\u30a4\u30eb\u3092\u9078\u629e\u3057\u3066\u4e0b\u3055\u3044", None))
-        self.btnSelect.setText(QCoreApplication.translate("ProfileForm", u"\u9078\u629e", None))
+        self.label.setText(QCoreApplication.translate("ProfileForm", u"Select profile", None))
+        self.btnSelect.setText(QCoreApplication.translate("ProfileForm", u"Go", None))
+        self.btn_add.setText(QCoreApplication.translate("ProfileForm", u"Add", None))
+        self.btn_edit.setText(QCoreApplication.translate("ProfileForm", u"Edit", None))
+        self.btn_delete.setText(QCoreApplication.translate("ProfileForm", u"Delete", None))
     # retranslateUi
 

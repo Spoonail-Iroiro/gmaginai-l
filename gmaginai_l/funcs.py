@@ -5,8 +5,41 @@ from send2trash import send2trash
 import re
 from typing import Optional, List, Tuple, Dict, Callable
 import logging
+from PySide6.QtWidgets import QMessageBox, QWidget
 
 logger = logging.getLogger(__name__)
+
+
+def showConfirm(
+    parent: QWidget,
+    title: str,
+    message: str,
+):
+    box = QMessageBox()
+    box.setIcon(QMessageBox.Icon.Question)
+    box.setWindowTitle(title)
+    box.setText(message)
+    ok_button = box.addButton("OK", QMessageBox.ButtonRole.AcceptRole)
+    box.addButton("Cancel", QMessageBox.ButtonRole.RejectRole)
+    box.exec()
+    if box.clickedButton() == ok_button:
+        return True
+    else:
+        return False
+
+
+def showMessageOk(
+    parent: QWidget,
+    title: str,
+    message: str,
+    icon: QMessageBox.Icon = QMessageBox.Icon.NoIcon,
+):
+    box = QMessageBox()
+    box.setIcon(icon)
+    box.setWindowTitle(title)
+    box.setText(message)
+    box.addButton("OK", QMessageBox.ButtonRole.AcceptRole)
+    box.exec()
 
 
 def cyclic_mkdir(root, dir_name, gen_limit):
