@@ -19,5 +19,11 @@ shiboken6==6.6.0
     #   pyside6
     #   pyside6-addons
     #   pyside6-essentials
+tinydb==4.8.0
+    # via
+    #   -r requirements.in
+    #   tinydb-serialization
+tinydb-serialization==2.1.1
+    # via -r requirements.in
 tomli==2.0.1
     # via -r requirements.in
