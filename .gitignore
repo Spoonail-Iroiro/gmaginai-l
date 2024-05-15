@@ -1,0 +1,32 @@
+# python一時ファイル
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.egg-info/
+
+# Flask関連
+instance/
+.webassets-cache
+
+# テスト・カバレッジ
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+coverage.xml
+
+/build/
+/dist/
+/reports/
+.venv/
+
+.vimsession
+.envrc
+.direnv/
+config.toml
+/test/test_data/bak/default/*
+!/test/test_data/bak/default/save__0000
+/test/test_data/restore/*
+!/test/test_data/restore/0__save/
+/data/db.json
