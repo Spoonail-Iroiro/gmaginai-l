@@ -8,7 +8,7 @@ test:
 
 # launch Qt designer
 designer:
-    pyside6-designer
+    pyside6-designer &
 
 # convert from .ui to _ui.py
 uic:

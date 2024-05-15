@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'game_edit_form.ui'
+## Form generated from reading UI file 'profile_edit_form.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.6.0
 ##
@@ -19,41 +19,41 @@ from PySide6.QtWidgets import (QApplication, QDialog, QFormLayout, QHBoxLayout,
     QLabel, QLineEdit, QPushButton, QSizePolicy,
     QSpacerItem, QVBoxLayout, QWidget)
 
-class Ui_GameEditForm(object):
-    def setupUi(self, GameEditForm):
-        if not GameEditForm.objectName():
-            GameEditForm.setObjectName(u"GameEditForm")
-        GameEditForm.resize(594, 117)
-        self.verticalLayout = QVBoxLayout(GameEditForm)
+class Ui_ProfileEditForm(object):
+    def setupUi(self, ProfileEditForm):
+        if not ProfileEditForm.objectName():
+            ProfileEditForm.setObjectName(u"ProfileEditForm")
+        ProfileEditForm.resize(594, 117)
+        self.verticalLayout = QVBoxLayout(ProfileEditForm)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
-        self.label_4 = QLabel(GameEditForm)
+        self.label_4 = QLabel(ProfileEditForm)
         self.label_4.setObjectName(u"label_4")
 
         self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_4)
 
-        self.txt_name = QLineEdit(GameEditForm)
+        self.txt_name = QLineEdit(ProfileEditForm)
         self.txt_name.setObjectName(u"txt_name")
 
         self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.txt_name)
 
-        self.label = QLabel(GameEditForm)
+        self.label = QLabel(ProfileEditForm)
         self.label.setObjectName(u"label")
 
         self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.label)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.txt_bak = QLineEdit(GameEditForm)
-        self.txt_bak.setObjectName(u"txt_bak")
+        self.txt_game_dir = QLineEdit(ProfileEditForm)
+        self.txt_game_dir.setObjectName(u"txt_game_dir")
 
-        self.horizontalLayout.addWidget(self.txt_bak)
+        self.horizontalLayout.addWidget(self.txt_game_dir)
 
-        self.btn_bak = QPushButton(GameEditForm)
-        self.btn_bak.setObjectName(u"btn_bak")
+        self.btn_open = QPushButton(ProfileEditForm)
+        self.btn_open.setObjectName(u"btn_open")
 
-        self.horizontalLayout.addWidget(self.btn_bak)
+        self.horizontalLayout.addWidget(self.btn_open)
 
 
         self.formLayout_2.setLayout(1, QFormLayout.FieldRole, self.horizontalLayout)
@@ -71,31 +71,31 @@ class Ui_GameEditForm(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
-        self.pushButton = QPushButton(GameEditForm)
-        self.pushButton.setObjectName(u"pushButton")
+        self.btn_ok = QPushButton(ProfileEditForm)
+        self.btn_ok.setObjectName(u"btn_ok")
 
-        self.horizontalLayout_2.addWidget(self.pushButton)
+        self.horizontalLayout_2.addWidget(self.btn_ok)
 
-        self.pushButton_2 = QPushButton(GameEditForm)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.btn_cancel = QPushButton(ProfileEditForm)
+        self.btn_cancel.setObjectName(u"btn_cancel")
 
-        self.horizontalLayout_2.addWidget(self.pushButton_2)
+        self.horizontalLayout_2.addWidget(self.btn_cancel)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
 
-        self.retranslateUi(GameEditForm)
+        self.retranslateUi(ProfileEditForm)
 
-        QMetaObject.connectSlotsByName(GameEditForm)
+        QMetaObject.connectSlotsByName(ProfileEditForm)
     # setupUi
 
-    def retranslateUi(self, GameEditForm):
-        GameEditForm.setWindowTitle(QCoreApplication.translate("GameEditForm", u"\u30b2\u30fc\u30e0\u767b\u9332", None))
-        self.label_4.setText(QCoreApplication.translate("GameEditForm", u"name", None))
-        self.label.setText(QCoreApplication.translate("GameEditForm", u"Game.exe path", None))
-        self.btn_bak.setText(QCoreApplication.translate("GameEditForm", u"Open...", None))
-        self.pushButton.setText(QCoreApplication.translate("GameEditForm", u"OK", None))
-        self.pushButton_2.setText(QCoreApplication.translate("GameEditForm", u"Cancel", None))
+    def retranslateUi(self, ProfileEditForm):
+        ProfileEditForm.setWindowTitle(QCoreApplication.translate("ProfileEditForm", u"Profile", None))
+        self.label_4.setText(QCoreApplication.translate("ProfileEditForm", u"Name", None))
+        self.label.setText(QCoreApplication.translate("ProfileEditForm", u"Game directory", None))
+        self.btn_open.setText(QCoreApplication.translate("ProfileEditForm", u"Select Game.exe", None))
+        self.btn_ok.setText(QCoreApplication.translate("ProfileEditForm", u"OK", None))
+        self.btn_cancel.setText(QCoreApplication.translate("ProfileEditForm", u"Cancel", None))
     # retranslateUi
 

@@ -2,7 +2,7 @@ from pathlib import Path
 import subprocess
 import os
 
-forms_dir = Path(__file__).parent.parent / "save_backup" / "forms"
+forms_dir = Path(__file__).parent.parent / "gmaginai_l" / "forms"
 if not forms_dir.exists():
     raise ValueError(forms_dir)
 
