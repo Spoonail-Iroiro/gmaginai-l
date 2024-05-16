@@ -26,7 +26,8 @@
 	background: #191919;
 	color: #DDDDDD;
 	border: 1px solid #5A5A5A;
-        font-family: "Meiryo UI";
+    font-family: "Meiryo UI";
+    font-size: 16px;
 }
 
 QWidget::item:selected {
