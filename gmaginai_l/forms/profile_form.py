@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QDialog, QWidget, QListWidgetItem, QMessageBox
 from PySide6.QtCore import Qt
 from .profile_form_ui import Ui_ProfileForm
 from .profile_edit_form import ProfileEditForm
+from .manager_form import ManagerForm
 from ..core.profile_service import ProfileService
 from .. import funcs
 import logging
@@ -60,7 +61,8 @@ class ProfileForm(QDialog):
         items = self.ui.lstMain.selectedItems()
         if len(items) != 0:
             profile = items[0].data(Qt.ItemDataRole.UserRole)
-            logger.info(profile_name)
+            form = ManagerForm(profile, self)
+            form.exec()
 
             # self.controller.set_profile(profile_name)
             # form = BackupForm(

@@ -23,7 +23,7 @@ class Ui_ProfileForm(object):
     def setupUi(self, ProfileForm):
         if not ProfileForm.objectName():
             ProfileForm.setObjectName(u"ProfileForm")
-        ProfileForm.resize(551, 362)
+        ProfileForm.resize(471, 371)
         self.horizontalLayout = QHBoxLayout(ProfileForm)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.lstMain = QListWidget(ProfileForm)
