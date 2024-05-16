@@ -21,7 +21,7 @@ try:
     db_path = application_dir / "data" / "db.json"
     db = get_db(db_path)
 
-    qss_path = application_dir / "data" / "QSS" / "QtDark.qss"
+    qss_path = application_dir / "QSS" / "QtDark.qss"
 
     app_setting_manager = AppSettingManager(db_path)
     app_setting_manager.init_on_start()

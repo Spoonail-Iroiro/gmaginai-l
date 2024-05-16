@@ -29,6 +29,7 @@ def place_assets():
     shutil.copy(proj_dir / "config_default.toml", dist_dir / "config.toml")
     shutil.copy(proj_dir / "assets" / "run.bat", dist_dir / "run.bat")
     shutil.copytree(proj_dir / "data", dist_dir / "data")
+    shutil.copytree(proj_dir / "QSS", dist_dir / "QSS")
 
 
 if dist_dir.exists():
