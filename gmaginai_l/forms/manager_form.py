@@ -17,7 +17,7 @@ class ManagerForm(QDialog):
 
         self.profile = profile
 
-        self.maginai_widget = MaginaiWidget(self)
+        self.maginai_widget = MaginaiWidget(profile["game_dir"], self)
         self.mods_widget = ModsWidget(self)
 
         self.ui.stwMain.addWidget(self.maginai_widget)

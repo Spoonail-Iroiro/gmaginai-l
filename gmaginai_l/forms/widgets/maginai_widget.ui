@@ -28,14 +28,14 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="btn_install">
        <property name="text">
         <string>Install maginai</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="btn_update">
        <property name="text">
         <string>Update maginai</string>
        </property>

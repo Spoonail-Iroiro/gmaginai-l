@@ -4,6 +4,12 @@
 #
 #    pip-compile --no-emit-index-url requirements.in
 #
+certifi==2024.2.2
+    # via requests
+charset-normalizer==3.3.2
+    # via requests
+idna==3.7
+    # via requests
 pyside6==6.6.0
     # via -r requirements.in
 pyside6-addons==6.6.0
@@ -12,6 +18,8 @@ pyside6-essentials==6.6.0
     # via
     #   pyside6
     #   pyside6-addons
+requests==2.31.0
+    # via -r requirements.in
 send2trash==1.8.2
     # via -r requirements.in
 shiboken6==6.6.0
@@ -27,3 +35,5 @@ tinydb-serialization==2.1.1
     # via -r requirements.in
 tomli==2.0.1
     # via -r requirements.in
+urllib3==2.2.1
+    # via requests

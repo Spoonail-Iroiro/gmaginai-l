@@ -37,15 +37,15 @@ class Ui_MaginaiWidget(object):
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.pushButton = QPushButton(MaginaiWidget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.btn_install = QPushButton(MaginaiWidget)
+        self.btn_install.setObjectName(u"btn_install")
 
-        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.horizontalLayout_5.addWidget(self.btn_install)
 
-        self.pushButton_2 = QPushButton(MaginaiWidget)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.btn_update = QPushButton(MaginaiWidget)
+        self.btn_update.setObjectName(u"btn_update")
 
-        self.horizontalLayout_5.addWidget(self.pushButton_2)
+        self.horizontalLayout_5.addWidget(self.btn_update)
 
         self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -67,7 +67,7 @@ class Ui_MaginaiWidget(object):
     def retranslateUi(self, MaginaiWidget):
         MaginaiWidget.setWindowTitle(QCoreApplication.translate("MaginaiWidget", u"Form", None))
         self.label_5.setText(QCoreApplication.translate("MaginaiWidget", u"maginai Status", None))
-        self.pushButton.setText(QCoreApplication.translate("MaginaiWidget", u"Install maginai", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MaginaiWidget", u"Update maginai", None))
+        self.btn_install.setText(QCoreApplication.translate("MaginaiWidget", u"Install maginai", None))
+        self.btn_update.setText(QCoreApplication.translate("MaginaiWidget", u"Update maginai", None))
     # retranslateUi
 

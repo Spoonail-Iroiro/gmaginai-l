@@ -25,8 +25,6 @@ coverage.xml
 .envrc
 .direnv/
 config.toml
-/test/test_data/bak/default/*
-!/test/test_data/bak/default/save__0000
-/test/test_data/restore/*
-!/test/test_data/restore/0__save/
+/tests/sandbox
 /data/db.json
+
