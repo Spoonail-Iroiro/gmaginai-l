@@ -37,8 +37,6 @@ try:
     translator = QTranslator(app)
     translator.load(translation_file_path.name, str(translation_file_path.parent))
     app.installTranslator(translator)
-    # logger.info(QLibraryInfo.location(QLibraryInfo.LibraryPath.TranslationsPath))
-    logger.info(QLocale.system())
 
     profile_service = ProfileService(db)
     form = ProfileForm(profile_service)

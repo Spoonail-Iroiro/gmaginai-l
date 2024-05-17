@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QLabel, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QFormLayout, QLabel, QSizePolicy, QSpacerItem,
     QWidget)
 
 class Ui_MessageForm(object):
@@ -24,26 +24,27 @@ class Ui_MessageForm(object):
         if not MessageForm.objectName():
             MessageForm.setObjectName(u"MessageForm")
         MessageForm.resize(410, 142)
-        self.verticalLayout = QVBoxLayout(MessageForm)
-        self.verticalLayout.setObjectName(u"verticalLayout")
+        MessageForm.setModal(False)
+        self.formLayout = QFormLayout(MessageForm)
+        self.formLayout.setObjectName(u"formLayout")
         self.txt_main = QLabel(MessageForm)
         self.txt_main.setObjectName(u"txt_main")
         self.txt_main.setScaledContents(False)
         self.txt_main.setWordWrap(True)
         self.txt_main.setOpenExternalLinks(True)
 
-        self.verticalLayout.addWidget(self.txt_main)
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.txt_main)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout.addItem(self.verticalSpacer)
+        self.formLayout.setItem(1, QFormLayout.LabelRole, self.verticalSpacer)
 
         self.bbx_main = QDialogButtonBox(MessageForm)
         self.bbx_main.setObjectName(u"bbx_main")
         self.bbx_main.setOrientation(Qt.Horizontal)
         self.bbx_main.setStandardButtons(QDialogButtonBox.NoButton)
 
-        self.verticalLayout.addWidget(self.bbx_main)
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.bbx_main)
 
 
         self.retranslateUi(MessageForm)

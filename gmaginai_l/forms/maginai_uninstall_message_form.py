@@ -5,6 +5,7 @@ from enum import Enum, auto
 from PySide6.QtWidgets import QDialog, QWidget, QDialogButtonBox
 from PySide6.QtCore import QThreadPool, Signal, QObject, Slot
 from .message_form_ui import Ui_MessageForm
+from .message_form import MessageFormBase
 from ..core.maginai_installer import MaginaiInstaller
 from .. import funcs
 
@@ -16,23 +17,25 @@ class FormState(Enum):
     FINISHED = auto()
 
 
-class MaginaiUninstallMessageForm(QDialog):
+class MaginaiUninstallMessageForm(MessageFormBase):
     def __init__(self, installer: MaginaiInstaller, is_all: bool, parent=None):
-        super().__init__(parent)
-        self.ui = Ui_MessageForm()
-        self.ui.setupUi(self)
         uninstall_type = "(all)" if is_all else "(only tags)"
-        self.setWindowTitle(f"Uninstall {uninstall_type}")
+        title = f"Uninstall {uninstall_type}"
+        super().__init__(self.tr(title), parent)
 
         self.is_all = is_all
-
         self.installer = installer
 
-        Buttons = QDialogButtonBox.ButtonRole
-        self.btn_ok = self.ui.bbx_main.addButton("OK", Buttons.AcceptRole)
+        self.btn_ok, self.btn_cancel = tuple(
+            self.set_buttons(
+                [
+                    (self.tr("OK"), self.Buttons.AcceptRole),
+                    (self.tr("Cancel"), self.Buttons.RejectRole),
+                ]
+            )
+        )
         self.btn_ok.clicked.connect(self.btn_ok_clicked)
-        self.btn_cancel = self.ui.bbx_main.addButton("Cancel", Buttons.RejectRole)
-        self.btn_cancel.clicked.connect(self.reject)
+        self.btn_cancel.clicked.connect(self.rejectDialog)
 
         if self.is_all:
             mod_dir_message = "'mod' folder will be removed. This can't be reverted."
@@ -48,7 +51,7 @@ class MaginaiUninstallMessageForm(QDialog):
             self.state = FormState.FINISHED
             self.btn_cancel.setEnabled(False)
         elif self.state == FormState.FINISHED:
-            self.accept()
+            self.acceptDialog()
 
     def _uninstall(self):
         try:

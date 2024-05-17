@@ -1,4 +1,3 @@
-from pathlib import Path
 import tempfile
 from typing import Optional, List, Tuple, Dict
 import logging
@@ -9,6 +8,7 @@ from PySide6.QtCore import QThreadPool, Signal, QObject, Slot
 from enum import Enum, auto
 from ..core.maginai_installer import MaginaiInstaller
 from .message_form_ui import Ui_MessageForm
+from .message_form import MessageFormBase
 from .maginai_install_worker import MaginaiInstallWorker
 
 
@@ -21,21 +21,23 @@ class FormState(Enum):
     FINISHED = auto()
 
 
-class MaginaiInstallerMessageForm(QDialog):
+class MaginaiInstallerMessageForm(MessageFormBase):
     cancelWorker = Signal()
 
     def __init__(self, installer, tag_name_to_install: str, parent=None):
-        super().__init__(parent)
-        self.ui = Ui_MessageForm()
-        self.ui.setupUi(self)
-
+        super().__init__(self.tr("Install"), parent)
         self.installer = installer
         self.tag_name_to_install = tag_name_to_install
 
-        Buttons = QDialogButtonBox.ButtonRole
-        self.btn_ok = self.ui.bbx_main.addButton("OK", Buttons.AcceptRole)
+        self.btn_ok, self.btn_cancel = tuple(
+            self.set_buttons(
+                [
+                    (self.tr("OK"), self.Buttons.AcceptRole),
+                    (self.tr("Cancel"), self.Buttons.RejectRole),
+                ]
+            )
+        )
         self.btn_ok.clicked.connect(self.btn_ok_clicked)
-        self.btn_cancel = self.ui.bbx_main.addButton("Cancel", Buttons.RejectRole)
         self.btn_cancel.clicked.connect(self.btn_cancel_clicked)
 
         self.ui.txt_main.setText(f"Install mod loader 'maginai' {tag_name_to_install}?")
@@ -49,11 +51,11 @@ class MaginaiInstallerMessageForm(QDialog):
             self.btn_ok.setEnabled(False)
             self._start_install(self.tag_name_to_install)
         elif self.state == FormState.FINISHED:
-            self.accept()
+            self.acceptDialog()
 
     def btn_cancel_clicked(self):
         if self.state == FormState.CONFIRM:
-            self.reject()
+            self.rejectDialog()
         elif self.state == FormState.INSTALLING:
             self._cancel_install()
 
@@ -77,4 +79,4 @@ class MaginaiInstallerMessageForm(QDialog):
         if self.state == FormState.INSTALLING:
             self.cancelWorker.emit()
         else:
-            self.reject()
+            self.rejectDialog()
