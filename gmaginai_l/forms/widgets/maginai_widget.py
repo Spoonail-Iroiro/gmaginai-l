@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QDialog, QWidget
 from .maginai_widget_ui import Ui_MaginaiWidget
 from ..maginai_installer_message_form import MaginaiInstallerMessageForm
 from ...core.maginai_installer import MaginaiInstaller
+from ..maginai_uninstall_message_form import MaginaiUninstallMessageForm
 from ... import config
 from ... import funcs
 
@@ -19,6 +20,10 @@ class MaginaiWidget(QWidget):
         self.installer = installer
 
         self.ui.btn_install.clicked.connect(self.btn_install_clicked)
+        self.ui.btn_uninstall_only_tags.clicked.connect(
+            self.btn_uninstall_only_tags_clicked
+        )
+        self.ui.btn_uninstall_all.clicked.connect(self.btn_uninstall_all_clicked)
 
         self.refresh_install_state()
         # self.ui.btn_install
@@ -41,6 +46,16 @@ class MaginaiWidget(QWidget):
             )
             form.exec()
             self.refresh_install_state()
+
+    def btn_uninstall_only_tags_clicked(self):
+        form = MaginaiUninstallMessageForm(self.installer, False)
+        form.exec()
+        self.refresh_install_state()
+
+    def btn_uninstall_all_clicked(self):
+        form = MaginaiUninstallMessageForm(self.installer, True)
+        form.exec()
+        self.refresh_install_state()
 
     def refresh_install_state(self):
         try:

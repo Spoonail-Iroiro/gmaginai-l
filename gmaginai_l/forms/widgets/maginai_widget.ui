@@ -105,7 +105,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
-      <widget class="QPushButton" name="btn_install_2">
+      <widget class="QPushButton" name="btn_uninstall_only_tags">
        <property name="text">
         <string>Uninstall (only tags)</string>
        </property>
@@ -129,7 +129,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <widget class="QPushButton" name="btn_install_3">
+      <widget class="QPushButton" name="btn_uninstall_all">
        <property name="text">
         <string>Uninstall (all)</string>
        </property>

@@ -25,6 +25,15 @@ class MaginaiInstaller:
         self.maginai_tag_service = MaginaiTagService()
         pass
 
+    def get_mod_dir(self):
+        return self.game_dir / "game" / "js" / "mod"
+
+    def get_backup_dir(self):
+        return self.get_mod_dir().parent / "__mod"
+
+    def get_index_html_path(self):
+        return self.game_dir / "game" / "index.html"
+
     def set_work_dir(self, work_dir: Path):
         self._work_dir = work_dir
 
@@ -166,14 +175,18 @@ class MaginaiInstaller:
 
         shutil.copytree(bak_dir, mod_dir)
 
-    def get_mod_dir(self):
-        return self.game_dir / "game" / "js" / "mod"
+    def uninstall_only_tags(self):
+        index_html_path = self.get_index_html_path()
+        html = index_html_path.read_text(encoding="utf-8")
+        new_html = self.maginai_tag_service.remove_tags(html)
+        index_html_path.write_text(new_html, encoding="utf-8")
 
-    def get_backup_dir(self):
-        return self.get_mod_dir().parent / "__mod"
+    def uninstall_all(self):
+        mod_dir = self.get_mod_dir()
+        if mod_dir.exists():
+            shutil.rmtree(mod_dir)
 
-    def get_index_html_path(self):
-        return self.game_dir / "game" / "index.html"
+        self.uninstall_only_tags()
 
 
 class MaginaiTagService:

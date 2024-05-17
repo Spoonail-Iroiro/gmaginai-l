@@ -68,10 +68,10 @@ class Ui_MaginaiWidget(object):
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.btn_install_2 = QPushButton(MaginaiWidget)
-        self.btn_install_2.setObjectName(u"btn_install_2")
+        self.btn_uninstall_only_tags = QPushButton(MaginaiWidget)
+        self.btn_uninstall_only_tags.setObjectName(u"btn_uninstall_only_tags")
 
-        self.horizontalLayout_6.addWidget(self.btn_install_2)
+        self.horizontalLayout_6.addWidget(self.btn_uninstall_only_tags)
 
         self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -82,10 +82,10 @@ class Ui_MaginaiWidget(object):
 
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.btn_install_3 = QPushButton(MaginaiWidget)
-        self.btn_install_3.setObjectName(u"btn_install_3")
+        self.btn_uninstall_all = QPushButton(MaginaiWidget)
+        self.btn_uninstall_all.setObjectName(u"btn_uninstall_all")
 
-        self.horizontalLayout_7.addWidget(self.btn_install_3)
+        self.horizontalLayout_7.addWidget(self.btn_uninstall_all)
 
         self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -109,7 +109,7 @@ class Ui_MaginaiWidget(object):
         self.txt_main.setText(QCoreApplication.translate("MaginaiWidget", u"...Loading", None))
         self.txt_error.setText("")
         self.btn_install.setText(QCoreApplication.translate("MaginaiWidget", u"Install/Update maginai (latest)", None))
-        self.btn_install_2.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (only tags)", None))
-        self.btn_install_3.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (all)", None))
+        self.btn_uninstall_only_tags.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (only tags)", None))
+        self.btn_uninstall_all.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (all)", None))
     # retranslateUi
 
