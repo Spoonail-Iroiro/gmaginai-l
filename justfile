@@ -22,7 +22,7 @@ build:
     python ./tools/build.py
 
 run-dist:
-    ./dist/SaveBackup/save_backup
+    ./dist/gmaginai-l/gmaginai-l
 
 update-requirements:
     pip-compile requirements.in --no-emit-index-url --no-upgrade
@@ -31,5 +31,12 @@ update-requirements:
 
 sync-python-environment:
     pip-sync requirements.txt requirements_dev.txt
+
+update-translation-files:
+    python ./tools/list_translation_targets.py
+    pyside6-lupdate @.trlist -ts ./src/translation/gmaginai-l_ja.ts
+
+
+update-project:
 
 

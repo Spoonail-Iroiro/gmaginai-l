@@ -1,9 +1,8 @@
 import PyInstaller.__main__
 from pathlib import Path
-import send2trash
 
 proj_dir = Path(__file__).parent.parent
-dist_dir = proj_dir / "dist" / "SaveBackup"
+dist_dir = proj_dir / "dist" / "gmaginai-l"
 
 
 def pyinstaller_build():
@@ -36,7 +35,8 @@ if dist_dir.exists():
     print(f"Delete {dist_dir}?(y/n)")
     if input() != "y":
         raise ValueError(f"Cancelled Build")
-    send2trash.send2trash(dist_dir)
+    os.rename(dist_dir, dist_dir.parent / ("_" + dist_dir.name))
+    # send2trash.send2trash(dist_dir)
 dist_dir.mkdir(parents=True, exist_ok=True)
 
 pyinstaller_build()
