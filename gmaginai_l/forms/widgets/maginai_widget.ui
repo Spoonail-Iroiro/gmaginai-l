@@ -65,7 +65,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_9">
      <item>
-      <widget class="QPushButton" name="btn_install_3">
+      <widget class="QPushButton" name="btn_start_game">
        <property name="text">
         <string>Start game</string>
        </property>
@@ -89,7 +89,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
-      <widget class="QPushButton" name="btn_install_2">
+      <widget class="QPushButton" name="btn_start_game_with_console">
        <property name="text">
         <string>Start game with console</string>
        </property>

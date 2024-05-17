@@ -48,6 +48,38 @@ class Ui_MaginaiWidget(object):
 
         self.verticalLayout.addWidget(self.txt_error)
 
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.btn_start_game = QPushButton(MaginaiWidget)
+        self.btn_start_game.setObjectName(u"btn_start_game")
+
+        self.horizontalLayout_9.addWidget(self.btn_start_game)
+
+        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_8)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_9)
+
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.btn_start_game_with_console = QPushButton(MaginaiWidget)
+        self.btn_start_game_with_console.setObjectName(u"btn_start_game_with_console")
+
+        self.horizontalLayout_8.addWidget(self.btn_start_game_with_console)
+
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_7)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_8)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Minimum)
+
+        self.verticalLayout.addItem(self.verticalSpacer_3)
+
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.btn_install = QPushButton(MaginaiWidget)
@@ -108,6 +140,8 @@ class Ui_MaginaiWidget(object):
         MaginaiWidget.setWindowTitle(QCoreApplication.translate("MaginaiWidget", u"Form", None))
         self.txt_main.setText(QCoreApplication.translate("MaginaiWidget", u"...Loading", None))
         self.txt_error.setText("")
+        self.btn_start_game.setText(QCoreApplication.translate("MaginaiWidget", u"Start game", None))
+        self.btn_start_game_with_console.setText(QCoreApplication.translate("MaginaiWidget", u"Start game with console", None))
         self.btn_install.setText(QCoreApplication.translate("MaginaiWidget", u"Install/Update maginai (latest)", None))
         self.btn_uninstall_only_tags.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (only tags)", None))
         self.btn_uninstall_all.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (all)", None))
