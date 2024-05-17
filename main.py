@@ -1,5 +1,6 @@
 import logging
 from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QTranslator, QLibraryInfo, QLocale
 
 # from save_backup.forms.game_select_form import GameSelectForm
 from gmaginai_l.forms.profile_form import ProfileForm
@@ -29,6 +30,15 @@ try:
         app.setStyleSheet(qss_path.read_text(encoding="utf-8"))
     else:
         raise ValueError()
+
+    translation_file_path = (
+        application_dir / "_internal" / "content_translation" / "gmaginai-l_ja.qm"
+    )
+    translator = QTranslator(app)
+    translator.load(translation_file_path.name, str(translation_file_path.parent))
+    app.installTranslator(translator)
+    # logger.info(QLibraryInfo.location(QLibraryInfo.LibraryPath.TranslationsPath))
+    logger.info(QLocale.system())
 
     profile_service = ProfileService(db)
     form = ProfileForm(profile_service)

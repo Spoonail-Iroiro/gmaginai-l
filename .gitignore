@@ -28,3 +28,6 @@ config.toml
 /tests/sandbox
 /data/db.json
 
+_internal/content_translation/*
+!_internal/content_translation/.gitkeep
+

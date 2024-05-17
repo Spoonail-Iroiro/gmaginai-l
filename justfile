@@ -16,9 +16,11 @@ uic:
 
 # run app
 run:
+    just compile-translation
     python main.py
 
 build:
+    just compile-translation
     python ./tools/build.py
 
 run-dist:
@@ -36,7 +38,6 @@ update-translation-files:
     python ./tools/list_translation_targets.py
     pyside6-lupdate @.trlist -ts ./src/translation/gmaginai-l_ja.ts
 
-
-update-project:
-
+compile-translation:
+    pyside6-lrelease ./src/translation/gmaginai-l_ja.ts -qm ./_internal/content_translation/gmaginai-l_ja.qm
 

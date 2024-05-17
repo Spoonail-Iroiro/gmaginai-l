@@ -1,5 +1,10 @@
 import PyInstaller.__main__
 from pathlib import Path
+import logging
+
+logging.basicConfig(level="INFO")
+
+logger = logging.getLogger(__name__)
 
 proj_dir = Path(__file__).parent.parent
 dist_dir = proj_dir / "dist" / "gmaginai-l"
@@ -24,9 +29,17 @@ import shutil
 import os
 
 
+# TODO: fix
+def overwritetree_no_gitkeep(src_dir, dst_dir):
+    for path in src_dir.glob("*"):
+        shutil.copytree(path, dst_dir / path.name)
+
+
 def place_assets():
     shutil.copy(proj_dir / "config_default.toml", dist_dir / "config.toml")
     shutil.copy(proj_dir / "assets" / "run.bat", dist_dir / "run.bat")
+    overwritetree_no_gitkeep(proj_dir / "_internal", dist_dir / "_internal")
+    os.remove(dist_dir / "_internal" / "content_translation" / ".gitkeep")
     shutil.copytree(proj_dir / "data", dist_dir / "data")
     shutil.copytree(proj_dir / "QSS", dist_dir / "QSS")
 
@@ -35,7 +48,7 @@ if dist_dir.exists():
     print(f"Delete {dist_dir}?(y/n)")
     if input() != "y":
         raise ValueError(f"Cancelled Build")
-    os.rename(dist_dir, dist_dir.parent / ("_" + dist_dir.name))
+    shutil.rmtree(dist_dir)
     # send2trash.send2trash(dist_dir)
 dist_dir.mkdir(parents=True, exist_ok=True)
 
