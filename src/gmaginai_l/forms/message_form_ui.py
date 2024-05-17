@@ -27,14 +27,6 @@ class Ui_MessageForm(object):
         MessageForm.setModal(False)
         self.formLayout = QFormLayout(MessageForm)
         self.formLayout.setObjectName(u"formLayout")
-        self.txt_main = QLabel(MessageForm)
-        self.txt_main.setObjectName(u"txt_main")
-        self.txt_main.setScaledContents(False)
-        self.txt_main.setWordWrap(True)
-        self.txt_main.setOpenExternalLinks(True)
-
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.txt_main)
-
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.formLayout.setItem(1, QFormLayout.LabelRole, self.verticalSpacer)
@@ -45,6 +37,19 @@ class Ui_MessageForm(object):
         self.bbx_main.setStandardButtons(QDialogButtonBox.NoButton)
 
         self.formLayout.setWidget(2, QFormLayout.LabelRole, self.bbx_main)
+
+        self.txt_main = QLabel(MessageForm)
+        self.txt_main.setObjectName(u"txt_main")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txt_main.sizePolicy().hasHeightForWidth())
+        self.txt_main.setSizePolicy(sizePolicy)
+        self.txt_main.setScaledContents(False)
+        self.txt_main.setWordWrap(True)
+        self.txt_main.setOpenExternalLinks(True)
+
+        self.formLayout.setWidget(0, QFormLayout.SpanningRole, self.txt_main)
 
 
         self.retranslateUi(MessageForm)
