@@ -294,3 +294,8 @@ QPushButton {
     padding: 3px 10px;
 
 }
+
+QPushButton:disabled {
+  color: #666666
+
+}
