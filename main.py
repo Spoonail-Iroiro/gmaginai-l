@@ -7,6 +7,7 @@ from gmaginai_l.core.app_setting_manager import AppSettingManager
 from gmaginai_l.dirs import application_dir
 from gmaginai_l.core.profile_service import ProfileService
 from gmaginai_l.core.db import get_db
+from gmaginai_l import config
 import sys
 import tomli
 
@@ -15,16 +16,12 @@ logger = logging.getLogger(__name__)
 
 logging.basicConfig(level="INFO")
 try:
-    config_path = application_dir / "config.toml"
-    config_dict = tomli.loads(config_path.read_text(encoding="utf-8"))
+    config.load_from_file(application_dir / "config.toml")
 
     db_path = application_dir / "data" / "db.json"
     db = get_db(db_path)
 
     qss_path = application_dir / "QSS" / "QtDark.qss"
-
-    app_setting_manager = AppSettingManager(db_path)
-    app_setting_manager.init_on_start()
 
     app = QApplication(sys.argv)
 

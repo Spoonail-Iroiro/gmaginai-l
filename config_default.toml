@@ -1,1 +1,2 @@
-[default]
+[system]
+    list_release_end_point='https://api.github.com/repos/Spoonail-Iroiro/maginai/releases'

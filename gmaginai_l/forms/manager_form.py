@@ -5,6 +5,8 @@ from PySide6.QtWidgets import QDialog, QWidget
 from .manager_form_ui import Ui_ManagerForm
 from .widgets.mods_widget import ModsWidget
 from .widgets.maginai_widget import MaginaiWidget
+from ..core.maginai_installer import MaginaiInstaller
+from .. import config
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +19,7 @@ class ManagerForm(QDialog):
 
         self.profile = profile
 
-        self.maginai_widget = MaginaiWidget(profile["game_dir"], self)
+        self.maginai_widget = MaginaiWidget(self._get_installer(), parent=self)
         self.mods_widget = ModsWidget(self)
 
         self.ui.stwMain.addWidget(self.maginai_widget)
@@ -32,3 +34,11 @@ class ManagerForm(QDialog):
         self.ui.lstMain.setFixedWidth(
             self.ui.lstMain.sizeHintForColumn(0) + self.ui.lstMain.frameWidth() * 2
         )
+
+    def _get_installer(self):
+        config_obj = config.get_config()
+        installer = MaginaiInstaller(
+            Path(self.profile["game_dir"]), config_obj.list_release_endpoint
+        )
+
+        return installer

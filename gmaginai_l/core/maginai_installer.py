@@ -15,12 +15,28 @@ RELEASE_ZIP_PATTERN = r"maginai-\d+\.\d+\.\d.*\.zip"
 
 
 class MaginaiInstaller:
-    def __init__(self, work_dir: Path, game_dir: Path, list_release_endpoint: str):
-        self.work_dir = work_dir
+    def __init__(
+        self, game_dir: Path, list_release_endpoint: str, work_dir: Path | None = None
+    ):
         self.game_dir = game_dir
         self.list_release_endpoint = list_release_endpoint
+        self._work_dir = work_dir
+
         self.maginai_tag_service = MaginaiTagService()
         pass
+
+    def set_work_dir(self, work_dir: Path):
+        self._work_dir = work_dir
+
+    @property
+    def work_dir(self):
+        if self._work_dir is None:
+            raise ValueError(f"work_dir required")
+        return self._work_dir
+
+    def _check_work_dir(self):
+        if self.work_dir is None:
+            raise ValueError(f"work_dir required")
 
     def get_release_tag_names(self) -> List[str]:
         res = requests.get(self.list_release_endpoint)
@@ -136,6 +152,19 @@ class MaginaiInstaller:
             shutil.rmtree(bak_dir)
 
         os.rename(mod_dir, bak_dir)
+
+    def recover_from_backup(self):
+        """Recover `mod` from backup directory
+
+        !! This rmeoves current `mod` directory silently.
+
+        """
+        mod_dir = self.get_mod_dir()
+        bak_dir = self.get_backup_dir()
+        if mod_dir.exists():
+            shutil.rmtree(mod_dir)
+
+        shutil.copytree(bak_dir, mod_dir)
 
     def get_mod_dir(self):
         return self.game_dir / "game" / "js" / "mod"

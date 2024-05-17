@@ -40,7 +40,7 @@ def installer(tmp_path):
     (game_dir / "game" / "index.html").write_text(
         INDEX_HTML_TEMPLATE.format(game_tag), encoding="utf-8"
     )
-    installer = MaginaiInstaller(work_dir, game_dir, LIST_RELEASE_ENDPOINT)
+    installer = MaginaiInstaller(game_dir, LIST_RELEASE_ENDPOINT, work_dir)
 
     return installer
 

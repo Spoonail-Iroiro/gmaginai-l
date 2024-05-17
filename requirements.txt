@@ -20,8 +20,6 @@ pyside6-essentials==6.6.0
     #   pyside6-addons
 requests==2.31.0
     # via -r requirements.in
-send2trash==1.8.2
-    # via -r requirements.in
 shiboken6==6.6.0
     # via
     #   pyside6
