@@ -43,10 +43,6 @@ class MaginaiInstaller:
             raise ValueError(f"work_dir required")
         return self._work_dir
 
-    def _check_work_dir(self):
-        if self.work_dir is None:
-            raise ValueError(f"work_dir required")
-
     def get_release_tag_names(self) -> List[str]:
         res = requests.get(self.list_release_endpoint)
         res.raise_for_status()
