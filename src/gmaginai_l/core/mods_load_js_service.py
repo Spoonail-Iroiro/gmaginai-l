@@ -25,6 +25,16 @@ class ModsLoadJsService:
 
         return result
 
+    def from_dict(self, mods_load_dict):
+        mods_list = "\n".join([f"  '{mod}'," for mod in mods_load_dict["mods"]])
+
+        template = """
+LOADDATA = {{
+{}
+}}
+        """.strip()
+        return template.format(mods_list)
+
     def _get_mods_property(self, expression: dict):
         for prop in expression["properties"]:
             if prop["key"]["name"] == "mods":
@@ -35,7 +45,7 @@ class ModsLoadJsService:
     def _object_expression_to_dict(self, object_expression):
         prop = self._get_mods_property(object_expression)
         if prop is None:
-            raise ValueError()
+            raise InvalidStructureError(f"'mods' property not found")
 
         arrayexp_elements = prop["value"]["elements"]
 

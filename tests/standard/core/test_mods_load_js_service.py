@@ -38,3 +38,15 @@ def test_to_dict(service):
 
     """
     assert service.to_dict(script) == {"mods": ["sample", "atrack"]}
+
+
+def test_from_dict(service):
+    js = service.from_dict({"mods": ["atrack", "sample"]})
+    expected = """
+LOADDATA = {
+  'atrack',
+  'sample',
+}
+    """.strip()
+
+    assert js == expected
