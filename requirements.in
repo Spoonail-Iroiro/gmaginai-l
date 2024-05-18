@@ -3,3 +3,4 @@ tomli
 tinydb
 tinydb_serialization
 requests
+pyjsparser

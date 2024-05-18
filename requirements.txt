@@ -10,6 +10,8 @@ charset-normalizer==3.3.2
     # via requests
 idna==3.7
     # via requests
+pyjsparser==2.7.1
+    # via -r requirements.in
 pyside6==6.6.0
     # via -r requirements.in
 pyside6-addons==6.6.0
