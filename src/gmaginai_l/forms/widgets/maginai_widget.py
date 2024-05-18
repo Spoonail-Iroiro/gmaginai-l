@@ -61,21 +61,30 @@ class MaginaiWidget(QWidget):
         try:
             tags_exist = self.installer.maginai_tags_exist()
             mod_exists = self.installer.get_mod_dir().exists()
+            self._set_all_maginai_buttons_enabled()
 
             if tags_exist and mod_exists:
                 message = "'maginai' installed."
             elif mod_exists:
                 message = "'maginai' is not installed. ('mod' folder remains)"
+                self.ui.btn_uninstall_only_tags.setEnabled(False)
             elif tags_exist:
                 message = "Invalid 'maginai' installation. ('mod' folder is missing)"
             else:
                 message = "'maginai' is not installed."
+                self.ui.btn_uninstall_only_tags.setEnabled(False)
+                self.ui.btn_uninstall_all.setEnabled(False)
         except Exception as ex:
             logger.exception("")
             self._display_error(funcs.formatError(ex))
             message = "Unknown installation state. Try install to clean up."
 
         self._set_install_state(message)
+
+    def _set_all_maginai_buttons_enabled(self):
+        self.ui.btn_install.setEnabled(True)
+        self.ui.btn_uninstall_only_tags.setEnabled(True)
+        self.ui.btn_uninstall_all.setEnabled(True)
 
     def _set_install_state(self, message):
         self.ui.txt_main.setText(message)
