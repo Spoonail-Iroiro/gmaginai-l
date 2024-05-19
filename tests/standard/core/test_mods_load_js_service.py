@@ -44,8 +44,10 @@ def test_from_dict(service):
     js = service.from_dict({"mods": ["atrack", "sample"]})
     expected = """
 LOADDATA = {
-  'atrack',
-  'sample',
+  mods: [
+    'atrack',
+    'sample',
+  ]
 }
     """.strip()
 

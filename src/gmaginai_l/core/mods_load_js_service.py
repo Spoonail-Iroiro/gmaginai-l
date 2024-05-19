@@ -26,12 +26,15 @@ class ModsLoadJsService:
         return result
 
     def from_dict(self, mods_load_dict):
-        mods_list = "\n".join([f"  '{mod}'," for mod in mods_load_dict["mods"]])
+        mods_list = "\n".join([f"    '{mod}'," for mod in mods_load_dict["mods"]])
 
         template = """
 LOADDATA = {{
+  mods: [
+    // enabled mods
 {}
-}}
+  ]
+}};
         """.strip()
         return template.format(mods_list)
 
