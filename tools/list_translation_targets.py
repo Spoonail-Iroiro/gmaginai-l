@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 proj_file_path = application_dir / ".trlist"
 
-module_dir = application_dir / "gmaginai_l"
+module_dir = application_dir / "src" / "gmaginai_l"
 
 # Get *.py/*.ui paths under module dir except for generated files (*_ui.py)
 paths = list(module_dir.glob("**/*.py"))
