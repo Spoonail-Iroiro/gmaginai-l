@@ -44,7 +44,6 @@ def showMessageOk(
     box.addButton("OK", QMessageBox.ButtonRole.AcceptRole)
     box.exec()
 
+
 def open_directory(dir_: Path):
     raise NotImplementedError()
-
-    

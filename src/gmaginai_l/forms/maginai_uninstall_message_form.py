@@ -19,8 +19,8 @@ class FormState(Enum):
 
 class MaginaiUninstallMessageForm(MessageFormBase):
     def __init__(self, installer: MaginaiInstaller, is_all: bool, parent=None):
-        uninstall_type = "(all)" if is_all else "(only tags)"
-        title = f"Uninstall {uninstall_type}"
+        uninstall_type = self.tr("(all)") if is_all else self.tr("(only tags)")
+        title = self.tr("Uninstall {0}").format(uninstall_type)
         super().__init__(self.tr(title), parent)
 
         self.is_all = is_all
@@ -38,11 +38,15 @@ class MaginaiUninstallMessageForm(MessageFormBase):
         self.btn_cancel.clicked.connect(self.rejectDialog)
 
         if self.is_all:
-            mod_dir_message = "'mod' folder will be removed. This can't be reverted."
+            mod_dir_message = self.tr(
+                "'mod' folder will be removed. This can't be reverted."
+            )
         else:
-            mod_dir_message = "'mod' folder will remain."
+            mod_dir_message = self.tr("'mod' folder will remain.")
 
-        self.ui.txt_main.setText(f"Uninstall 'maginai'? {mod_dir_message}")
+        self.ui.txt_main.setText(
+            self.tr("Uninstall 'maginai'? {0}").format(mod_dir_message)
+        )
         self.state = FormState.CONFIRM
 
     def btn_ok_clicked(self):
@@ -56,9 +60,11 @@ class MaginaiUninstallMessageForm(MessageFormBase):
     def _uninstall(self):
         try:
             self.installer.uninstall_all() if self.is_all else self.installer.uninstall_only_tags()
-            self.ui.txt_main.setText("Uninstalled 'maginai' successfully.")
+            self.ui.txt_main.setText(self.tr("Uninstalled 'maginai' successfully."))
         except Exception as ex:
             self.ui.txt_main.setText(
-                f"An error occured during uninstall.\n{funcs.formatError(ex)}"
+                self.tr("An error occured during uninstall.\n{0}").format(
+                    funcs.formatError(ex)
+                )
             )
             logger.exception("")

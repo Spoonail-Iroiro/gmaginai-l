@@ -40,7 +40,9 @@ class MaginaiInstallerMessageForm(MessageFormBase):
         self.btn_ok.clicked.connect(self.btn_ok_clicked)
         self.btn_cancel.clicked.connect(self.btn_cancel_clicked)
 
-        self.ui.txt_main.setText(f"Install mod loader 'maginai' {tag_name_to_install}?")
+        self.ui.txt_main.setText(
+            self.tr("Install mod loader 'maginai' {0}?").format(tag_name_to_install)
+        )
         self.state = FormState.CONFIRM
 
         self.install_worker: None | MaginaiInstallWorker = None

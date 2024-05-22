@@ -35,7 +35,7 @@ class MaginaiInstallWorker(QObject):
     def run(self):
         additional_error_info = ""
         try:
-            self._set_message("Starting...")
+            self._set_message(self.tr("Starting..."))
 
             with tempfile.TemporaryDirectory(
                 ignore_cleanup_errors=True
@@ -46,26 +46,28 @@ class MaginaiInstallWorker(QObject):
                 backup_dir = self.installer.get_backup_dir()
                 mod_dir_exists = mod_dir.exists()
                 if mod_dir_exists:
-                    self._set_message("Making backup of existing mod folder...")
+                    self._set_message(
+                        self.tr("Making backup of existing mod folder...")
+                    )
                     self.installer.backup_existing_install_by_move()
 
                 try:
                     self._check_cancel()
-                    self._set_message("Downloading...")
+                    self._set_message(self.tr("Downloading..."))
                     self.installer.set_work_dir(temp_dir)
                     zip_path = self.installer.download_by_tag_name(
                         self.tag_name_to_install
                     )
                     self._check_cancel()
-                    self._set_message("Extracting...")
+                    self._set_message(self.tr("Extracting..."))
                     extracted = self.installer.unzip_to_work_temp(zip_path)
 
                     self._check_cancel()
-                    self._set_message("Installing...")
+                    self._set_message(self.tr("Installing..."))
                     self.installer.install_to_game(extracted)
 
                     self._check_cancel()
-                    self._set_message("Migrating mods from old...")
+                    self._set_message(self.tr("Migrating mods from old..."))
                     if mod_dir_exists:
                         self.installer.migrate_mods(self.installer.get_backup_dir())
                 except Exception:
@@ -73,23 +75,25 @@ class MaginaiInstallWorker(QObject):
                         if mod_dir_exists:
                             self.installer.recover_from_backup()
                     except Exception:
-                        logger.exception(f"Failed to recovery from {backup_dir.name}")
-                        additional_error_info += (
-                            f"Failed to recovery old mod folder from {backup_dir}."
-                            " Please recover it manually\n"
-                        )
+                        logger.exception(f"Failed to recovery from {backup_dir}")
+                        additional_error_info += self.tr(
+                            "Failed to recovery old mod folder from {0}. "
+                            "Please recover it manually.\n"
+                        ).format(backup_dir)
 
                     raise
 
-                self._set_message("Mod loader 'maginai' successfully installed.")
+                self._set_message(
+                    self.tr("Mod loader 'maginai' successfully installed.")
+                )
 
         except CancelError as ce:
-            self._set_message("Installation is cancelled by user.")
+            self._set_message(self.tr("Installation is cancelled by user."))
         except Exception as ex:
             error_message = "\n".join(traceback.format_exception_only(ex))
-            message = (
-                f"An error occured during install. Please try again.\n{error_message}"
-            )
+            message = self.tr(
+                "An error occured during install. Please try again.\n{0}{1}"
+            ).format(additional_error_info, error_message)
             logger.exception(message)
             self.notify.emit(message)
         finally:

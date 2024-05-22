@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import Optional, List, Tuple, Dict
+import shutil
 import logging
 from enum import Enum, auto
 import tempfile
@@ -50,8 +51,8 @@ class InterruptInstallError(Exception):
 
 class ModInstallMessageForm(MessageFormBase):
     def __init__(self, installer: ModInstaller, parent=None):
-        title = f"Install Mod"
-        super().__init__(self.tr(title), parent)
+        title = self.tr("Install Mod")
+        super().__init__(title, parent)
 
         self.installer = installer
 
@@ -160,11 +161,11 @@ class FormStateSelectMod(FormStateBase):
                 error_message = QCoreApplication.translate(
                     "ModInstallMessageForm",
                     (
-                        "Unabled to extract mod from the distribution zip. "
+                        "Unabled to extract a mod from the distribution zip. "
                         "Please unzip it manually and specify init.js.\n"
-                        f"{funcs.formatError(ex)}"
+                        "{0}"
                     ),
-                )
+                ).format(funcs.formatError(ex))
                 logger.exception(error_message)
                 body.set_state(FormStateFinish(error_message))
                 return
@@ -172,8 +173,15 @@ class FormStateSelectMod(FormStateBase):
             if path.name != "init.js":
                 isOk = funcs.showConfirm(
                     body,
-                    body.tr("Confirm"),
-                    "The selected file is not init.js, so you might selected wrong mod's main folder. Proceed anyway?",
+                    QCoreApplication.translate(
+                        "ModInstallMessageForm",
+                        "Confirm",
+                    ),
+                    QCoreApplication.translate(
+                        "ModInstallMessageForm",
+                        "The selected file is not init.js, so you might selected wrong mod's main folder. "
+                        "Proceed anyway?",
+                    ),
                 )
                 if not isOk:
                     body.rejectDialog()
@@ -203,13 +211,13 @@ class FormStateConfirmMod(FormStateBase):
         text_install_update = (
             QCoreApplication.translate(
                 "ModInstallMessageForm",
-                f"Mod '{mod_name}' will be installed.",
-            )
+                "Mod '{0}' will be installed.",
+            ).format(mod_name)
             if not self.is_update
             else QCoreApplication.translate(
                 "ModInstallMessageForm",
-                f"Mod '{mod_name}' will be updated.",
-            )
+                "Mod '{0}' will be updated.",
+            ).format(mod_name)
         )
         body.ui.txt_main.setText(text_install_update)
 
@@ -315,14 +323,15 @@ class FormStateCompleted(FormStateBase):
         text_install_update = (
             QCoreApplication.translate(
                 "ModInstallMessageForm",
-                f"Installed '{mod_name}' successfully.",
+                "Installed '{0}' successfully.",
             )
             if not self.is_update
             else QCoreApplication.translate(
                 "ModInstallMessageForm",
-                f"Updated '{mod_name}' successfully.",
+                "Updated '{0}' successfully.",
             )
         )
+        text_install_update = text_install_update.format(mod_name)
         body.ui.txt_main.setText(text_install_update)
 
         body.btn_ok.setVisible(True)
@@ -339,7 +348,7 @@ def on_error(exc: Exception, body: ModInstallMessageForm):
     logger.error("", exc_info=exc)
     result_message = QCoreApplication.translate(
         "ModInstallMessageForm",
-        f"An error occured during install.\n{error_message}",
-    )
+        "An error occured during install.\n{0}",
+    ).format(error_message)
 
     body.set_state(FormStateFinish(result_message))

@@ -31,7 +31,7 @@ test:
 # update translation file (.ts) and open pyside6-linguist
 linguist:
     just update-translation-files
-    pyside6-linguist
+    pyside6-linguist ./src/translation/gmaginai-l_ja.ts
 
 # generate/update translation file (.ts)
 update-translation-files:

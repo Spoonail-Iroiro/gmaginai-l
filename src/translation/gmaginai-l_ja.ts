@@ -89,28 +89,70 @@
 <context>
     <name>ModInstallMessageForm</name>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="83"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="55"/>
+        <source>Install Mod</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="72"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="84"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="73"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="86"/>
-        <source>Yes, I want to see what&apos;s inside the zip</source>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="123"/>
+        <source>Select init.js in mod&apos;s main folder or distribution zip.
+(If the selected mod is already installed, it will be updated)</source>
+        <translation>インストールしたいmodの本体フォルダ内のinit.jsかmodを含む配布zipファイルを選択してください。
+（選択したmodがすでにインストール済の場合アップデートが行われます）</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="184"/>
+        <source>The selected file is not init.js, so you might selected wrong mod&apos;s main folder. Proceed anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="89"/>
-        <source>No, just discard it</source>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="215"/>
+        <source>Mod &apos;{0}&apos; will be installed.</source>
+        <translation>mod &apos;{0}&apos;がインストールされます。よろしいですか？</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="220"/>
+        <source>Mod &apos;{0}&apos; will be updated.</source>
+        <translation>mod &apos;{0}&apos;がアップデートされます。よろしいですか？</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="267"/>
+        <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="144"/>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="158"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="276"/>
+        <source>Usually distribution zip file includes helpful readme, other docs or utilities.It&apos;s recommended to see what&apos;s inside the extracted folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="328"/>
+        <source>Installed &apos;{mod_name}&apos; successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="333"/>
+        <source>Updated &apos;{mod_name}&apos; successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="353"/>
+        <source>An error occured during install.
+{error_message}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="179"/>
         <source>Confirm</source>
         <translation type="unfinished"></translation>
     </message>
