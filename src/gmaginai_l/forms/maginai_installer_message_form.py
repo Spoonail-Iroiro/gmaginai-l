@@ -63,7 +63,6 @@ class MaginaiInstallerMessageForm(MessageFormBase):
         self.install_worker = MaginaiInstallWorker(self.installer, tag_name_to_install)
         self.install_worker.notify.connect(self._install_state_notified)
         self.install_worker.finished.connect(self._on_install_finished)
-        # self.cancelWorker.disconnect()
         self.cancelWorker.connect(self.install_worker.cancel)
         QThreadPool.globalInstance().start(self.install_worker.run)
 

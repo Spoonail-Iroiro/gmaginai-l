@@ -70,51 +70,24 @@ class ModInstallMessageForm(MessageFormBase):
                 [
                     (self.tr("OK"), self.Buttons.AcceptRole),
                     (self.tr("Cancel"), self.Buttons.RejectRole),
-                    # (
-                    #     self.tr("Yes, I want to see what's inside the zip"),
-                    #     self.Buttons.AcceptRole,
-                    # ),
-                    # (self.tr("No, just discard it"), self.Buttons.RejectRole),
                 ]
             )
         )
         self.btn_ok.clicked.connect(self.btn_ok_clicked)
         self.btn_cancel.clicked.connect(self.rejectDialog)
-        # self.btn_yes_show_extracted.setVisible(True)
-        # self.btn_no_show_extracted.setVisible(False)
 
     def btn_ok_clicked(self):
         self.state.btn_ok_clicked(self)
-        # if self.state == FormState.SELECT_MOD:
-        #     selected_path = self._select_file()
-        #     if selected_path is None:
-        #         return
-        #     self._install_new(selected_path)
-        #     self.state = FormState.FINISHED
-        #     self.btn_cancel.setEnabled(False)
-        # elif self.state == FormState.FINISHED:
-        #     self.acceptDialog()
 
     def btn_cancel_clicked(self):
         self.state.btn_cancel_clicked(self)
 
     def dispose(self):
         if self.temp_dir is not None and self.temp_dir.exists():
-            logger.info(f"rmtree: {self.temp_dir}")
-            # shutil.rmtree(self.work_dir)
-
-    def _install_new(self, path: Path):
-        mod_name = mod_dir.name
-        isOk = funcs.showConfirm(
-            self, self.tr("Confirm"), f"Mod '{mod_name}' will be installed. OK?"
-        )
-        if not isOk:
-            self.rejectDialog()
-            return
-
-        self.installer.install_mod(mod_dir)
-
-        self.move_to_successfully_installed(mod_name)
+            try:
+                shutil.rmtree(self.work_dir)
+            except Exception:
+                logger.exception("")
 
     def set_state(self, state: FormStateBase):
         if self.state is not None:
@@ -128,10 +101,6 @@ class ModInstallMessageForm(MessageFormBase):
         self.btn_ok.setEnabled(True)
         self.btn_cancel.setVisible(True)
         self.btn_cancel.setEnabled(False)
-
-    def move_to_successfully_installed(self, mod_name):
-        self.ui.txt_main.setText(f"Installed '{mod_name}' successfully.")
-        self.move_to_finish()
 
     def acceptDialog(self):
         self.dispose()
@@ -199,9 +168,6 @@ class FormStateSelectMod(FormStateBase):
                 logger.exception(error_message)
                 body.set_state(FormStateFinish(error_message))
                 return
-                # body.ui.txt_main.setText(error_message)
-                # logger.exception(error_message)
-                # body.move_to_finish()
         else:
             if path.name != "init.js":
                 isOk = funcs.showConfirm(
