@@ -24,6 +24,7 @@ class ModInstaller:
     ):
         self.maginai_installer = maginai_installer
         self.mods_load_js_service = ModsLoadJsService()
+        self._work_dir = work_dir
 
     def set_work_dir(self, work_dir: Path):
         self._work_dir = work_dir
