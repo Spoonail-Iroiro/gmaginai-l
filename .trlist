@@ -19,6 +19,7 @@ src/gmaginai_l/forms/manager_form.py
 src/gmaginai_l/forms/manager_form.ui
 src/gmaginai_l/forms/message_form.py
 src/gmaginai_l/forms/message_form.ui
+src/gmaginai_l/forms/mod_install_message_form.py
 src/gmaginai_l/forms/profile_edit_form.py
 src/gmaginai_l/forms/profile_edit_form.ui
 src/gmaginai_l/forms/profile_form.py
@@ -27,4 +28,5 @@ src/gmaginai_l/forms/widgets/maginai_widget.py
 src/gmaginai_l/forms/widgets/maginai_widget.ui
 src/gmaginai_l/forms/widgets/mods_widget.py
 src/gmaginai_l/forms/widgets/mods_widget.ui
+src/gmaginai_l/forms/widgets/shown_event_widget.py
 src/gmaginai_l/funcs.py

@@ -87,18 +87,49 @@
     </message>
 </context>
 <context>
-    <name>ModsWidget</name>
+    <name>ModInstallMessageForm</name>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="14"/>
-        <source>Form</source>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="83"/>
+        <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="84"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="86"/>
+        <source>Yes, I want to see what&apos;s inside the zip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="89"/>
+        <source>No, just discard it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="144"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="158"/>
+        <source>Confirm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ModsWidget</name>
+    <message>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="14"/>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="20"/>
         <source>Mods</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="62"/>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="66"/>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="34"/>
         <source>Enable</source>
         <translation type="unfinished"></translation>
@@ -125,7 +156,7 @@
     </message>
     <message>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="69"/>
-        <source>Open mods directory</source>
+        <source>Open mod&apos;s folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
