@@ -168,3 +168,12 @@ class ModInstaller:
         if mod_name not in enabled_mods:
             enabled_mods.append(mod_name)
         self.set_enabled_mods(enabled_mods)
+
+    def has_mod_own_folder(self, mod_name):
+        """Returns if specified mod has mod's own folder
+
+        It's used for detect mods which are enabled (= in mods_load.js) but don't have actual install
+
+        """
+        mod_own_dir = self.get_mod_own_dir(mod_name)
+        return mod_own_dir.exists()

@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Optional, List, Tuple, Dict
 import logging
 from PySide6.QtWidgets import QDialog, QWidget
+from .shown_event_widget import ShownEventWidget
 from .maginai_widget_ui import Ui_MaginaiWidget
 from ..maginai_installer_message_form import MaginaiInstallerMessageForm
 from ...core.maginai_installer import MaginaiInstaller
@@ -12,7 +13,7 @@ from ... import funcs
 logger = logging.getLogger(__name__)
 
 
-class MaginaiWidget(QWidget):
+class MaginaiWidget(ShownEventWidget):
     def __init__(self, installer: MaginaiInstaller, parent=None):
         super().__init__(parent)
         self.ui = Ui_MaginaiWidget()
@@ -91,3 +92,6 @@ class MaginaiWidget(QWidget):
 
     def _display_error(self, message):
         self.ui.txt_error.setText(message)
+
+    def shownEvent(self):
+        pass

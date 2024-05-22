@@ -6,6 +6,8 @@ from .manager_form_ui import Ui_ManagerForm
 from .widgets.mods_widget import ModsWidget
 from .widgets.maginai_widget import MaginaiWidget
 from ..core.maginai_installer import MaginaiInstaller
+from ..core.mod_installer import ModInstaller
+from .widgets.shown_event_widget import ShownEventWidget
 from .. import config
 
 logger = logging.getLogger(__name__)
@@ -19,8 +21,14 @@ class ManagerForm(QDialog):
 
         self.profile = profile
 
-        self.maginai_widget = MaginaiWidget(self._get_installer(), parent=self)
-        self.mods_widget = ModsWidget(self)
+        maginai_installer = self._get_installer()
+
+        self.maginai_widget = MaginaiWidget(maginai_installer, parent=self)
+        mod_installer = ModInstaller(maginai_installer)
+
+        self.mods_widget = ModsWidget(mod_installer, parent=self)
+
+        self.widgets: List[ShownEventWidget] = [self.maginai_widget, self.mods_widget]
 
         self.ui.stwMain.addWidget(self.maginai_widget)
         self.ui.stwMain.addWidget(self.mods_widget)
@@ -30,6 +38,7 @@ class ManagerForm(QDialog):
         self.ui.lstMain.addItem("Mods")
         self.ui.lstMain.setCurrentRow(0)
         self.ui.lstMain.currentRowChanged.connect(self.ui.stwMain.setCurrentIndex)
+        self.ui.stwMain.currentChanged.connect(self.stwMain_currentChanged)
 
         self.ui.lstMain.setFixedWidth(
             self.ui.lstMain.sizeHintForColumn(0) + self.ui.lstMain.frameWidth() * 2
@@ -42,3 +51,7 @@ class ManagerForm(QDialog):
         )
 
         return installer
+
+    def stwMain_currentChanged(self, index):
+        if index >= 0:
+            self.widgets[index].shownEvent()

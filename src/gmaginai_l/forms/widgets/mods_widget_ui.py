@@ -40,20 +40,20 @@ class Ui_ModsWidget(object):
 
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.btnSelect = QPushButton(ModsWidget)
-        self.btnSelect.setObjectName(u"btnSelect")
+        self.btn_enable = QPushButton(ModsWidget)
+        self.btn_enable.setObjectName(u"btn_enable")
 
-        self.verticalLayout.addWidget(self.btnSelect)
+        self.verticalLayout.addWidget(self.btn_enable)
 
-        self.btn_edit_2 = QPushButton(ModsWidget)
-        self.btn_edit_2.setObjectName(u"btn_edit_2")
+        self.btn_up = QPushButton(ModsWidget)
+        self.btn_up.setObjectName(u"btn_up")
 
-        self.verticalLayout.addWidget(self.btn_edit_2)
+        self.verticalLayout.addWidget(self.btn_up)
 
-        self.btn_edit = QPushButton(ModsWidget)
-        self.btn_edit.setObjectName(u"btn_edit")
+        self.btn_down = QPushButton(ModsWidget)
+        self.btn_down.setObjectName(u"btn_down")
 
-        self.verticalLayout.addWidget(self.btn_edit)
+        self.verticalLayout.addWidget(self.btn_down)
 
         self.btn_add = QPushButton(ModsWidget)
         self.btn_add.setObjectName(u"btn_add")
@@ -65,10 +65,10 @@ class Ui_ModsWidget(object):
 
         self.verticalLayout.addWidget(self.btn_delete)
 
-        self.btn_delete_2 = QPushButton(ModsWidget)
-        self.btn_delete_2.setObjectName(u"btn_delete_2")
+        self.btn_open_mod_own_dir = QPushButton(ModsWidget)
+        self.btn_open_mod_own_dir.setObjectName(u"btn_open_mod_own_dir")
 
-        self.verticalLayout.addWidget(self.btn_delete_2)
+        self.verticalLayout.addWidget(self.btn_open_mod_own_dir)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -89,11 +89,11 @@ class Ui_ModsWidget(object):
     def retranslateUi(self, ModsWidget):
         ModsWidget.setWindowTitle(QCoreApplication.translate("ModsWidget", u"Form", None))
         self.label.setText(QCoreApplication.translate("ModsWidget", u"Mods", None))
-        self.btnSelect.setText(QCoreApplication.translate("ModsWidget", u"Enable", None))
-        self.btn_edit_2.setText(QCoreApplication.translate("ModsWidget", u"\u2191", None))
-        self.btn_edit.setText(QCoreApplication.translate("ModsWidget", u"\u2193", None))
+        self.btn_enable.setText(QCoreApplication.translate("ModsWidget", u"Enable", None))
+        self.btn_up.setText(QCoreApplication.translate("ModsWidget", u"\u2191", None))
+        self.btn_down.setText(QCoreApplication.translate("ModsWidget", u"\u2193", None))
         self.btn_add.setText(QCoreApplication.translate("ModsWidget", u"Add", None))
         self.btn_delete.setText(QCoreApplication.translate("ModsWidget", u"Delete", None))
-        self.btn_delete_2.setText(QCoreApplication.translate("ModsWidget", u"Open mods directory", None))
+        self.btn_open_mod_own_dir.setText(QCoreApplication.translate("ModsWidget", u"Open mod's folder", None))
     # retranslateUi
 
