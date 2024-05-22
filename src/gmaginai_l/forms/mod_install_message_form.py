@@ -159,7 +159,7 @@ class FormStateSelectMod(FormStateBase):
                 return
             self._determin_mod_dir_to_install(body, selected_path)
         except Exception as ex:
-            on_error(ex)
+            on_error(ex, body)
 
     def _select_file(self, body: ModInstallMessageForm) -> Path | None:
         fdialog = QFileDialog(body)
@@ -226,13 +226,26 @@ class FormStateSelectMod(FormStateBase):
 
 
 class FormStateConfirmMod(FormStateBase):
+    def __init__(self):
+        self.is_update = False
+
     def enter(self, body: ModInstallMessageForm):
-        body.ui.txt_main.setText(
+        mod_dir = body.mod_dir_to_install
+        mod_name = mod_dir.name
+        if body.installer.has_mod_own_folder(mod_name):
+            self.is_update = True
+        text_install_update = (
             QCoreApplication.translate(
                 "ModInstallMessageForm",
-                f"Mod '{body.mod_dir_to_install.name}' will be installed. OK?",
+                f"Mod '{mod_name}' will be installed.",
+            )
+            if not self.is_update
+            else QCoreApplication.translate(
+                "ModInstallMessageForm",
+                f"Mod '{mod_name}' will be updated.",
             )
         )
+        body.ui.txt_main.setText(text_install_update)
 
         body.btn_ok.setVisible(True)
         body.btn_ok.setEnabled(True)
@@ -243,13 +256,71 @@ class FormStateConfirmMod(FormStateBase):
         try:
             mod_dir = body.mod_dir_to_install
             mod_name = mod_dir.name
+            if self.is_update:
+                body.installer.backup_existing_install_by_move(mod_name)
             body.installer.install_mod(mod_dir)
-            body.set_state(FormStateCompleted(False))
+            complete_state = FormStateCompleted(self.is_update)
+            if body.extracted_dir is not None:
+                next_state = FormStateConfirmZip(complete_state, body.extracted_dir)
+            else:
+                next_state = complete_state
+
+            body.set_state(next_state)
         except Exception as ex:
             on_error(ex, body)
 
     def btn_cancel_clicked(self, body: ModInstallMessageForm):
         body.rejectDialog()
+
+
+class FormStateConfirmZip(FormStateBase):
+    def __init__(self, next_state: FormStateBase, extracted_dir: Path):
+        self.next_state = next_state
+        self.extracted_dir = extracted_dir
+
+        self.btn_open_extracted_dir: PushButton | None = None
+        self._original_ok_text: str | None = None
+
+    def enter(self, body: ModInstallMessageForm):
+        body.btn_ok.setVisible(True)
+        body.btn_ok.setEnabled(True)
+        self._original_ok_text = body.btn_ok.text()
+        body.btn_ok.setText(
+            QCoreApplication.translate(
+                "ModInstallMessageForm",
+                "Next",
+            )
+        )
+        body.btn_cancel.setVisible(False)
+        body.btn_cancel.setEnabled(False)
+        body.ui.txt_main.setText(
+            QCoreApplication.translate(
+                "ModInstallMessageForm",
+                "Usually distribution zip file includes helpful readme, other docs or utilities."
+                "It's recommended to see what's inside the extracted folder.",
+            )
+        )
+        (self.btn_open_extracted_dir,) = body.set_buttons(
+            [("Open extracted folder", body.Buttons.ActionRole)]
+        )
+        self.btn_open_extracted_dir.clicked.connect(self.btn_open_extracted_dir_clicked)
+
+    def btn_open_extracted_dir_clicked(self):
+        try:
+            funcs.open_directory(self.extracted_dir)
+        except Exception as ex:
+            logger.exception("")
+
+    def btn_ok_clicked(self, body):
+        try:
+            body.set_state(self.next_state)
+        except Exception as ex:
+            on_error(ex, body)
+
+    def exit(self, body: ModInstallMessageForm):
+        body.btn_ok.setText(self._original_ok_text)
+        body.btn_cancel.setVisible(True)
+        body.ui.bbx_main.removeButton(self.btn_open_extracted_dir)
 
 
 class FormStateFinish(FormStateBase):
@@ -275,12 +346,18 @@ class FormStateCompleted(FormStateBase):
     def enter(self, body: ModInstallMessageForm):
         mod_name = body.mod_dir_to_install.name
         # TODO: update case
-        body.ui.txt_main.setText(
+        text_install_update = (
             QCoreApplication.translate(
                 "ModInstallMessageForm",
                 f"Installed '{mod_name}' successfully.",
             )
+            if not self.is_update
+            else QCoreApplication.translate(
+                "ModInstallMessageForm",
+                f"Updated '{mod_name}' successfully.",
+            )
         )
+        body.ui.txt_main.setText(text_install_update)
 
         body.btn_ok.setVisible(True)
         body.btn_ok.setEnabled(True)
