@@ -153,10 +153,13 @@ class FormStateSelectMod(FormStateBase):
         )
 
     def btn_ok_clicked(self, body: ModInstallMessageForm):
-        selected_path = self._select_file(body)
-        if selected_path is None:
-            return
-        self._determin_mod_dir_to_install(body, selected_path)
+        try:
+            selected_path = self._select_file(body)
+            if selected_path is None:
+                return
+            self._determin_mod_dir_to_install(body, selected_path)
+        except Exception as ex:
+            on_error(ex)
 
     def _select_file(self, body: ModInstallMessageForm) -> Path | None:
         fdialog = QFileDialog(body)
@@ -231,6 +234,23 @@ class FormStateConfirmMod(FormStateBase):
             )
         )
 
+        body.btn_ok.setVisible(True)
+        body.btn_ok.setEnabled(True)
+        body.btn_cancel.setVisible(True)
+        body.btn_cancel.setEnabled(True)
+
+    def btn_ok_clicked(self, body: ModInstallMessageForm):
+        try:
+            mod_dir = body.mod_dir_to_install
+            mod_name = mod_dir.name
+            body.installer.install_mod(mod_dir)
+            body.set_state(FormStateCompleted(False))
+        except Exception as ex:
+            on_error(ex, body)
+
+    def btn_cancel_clicked(self, body: ModInstallMessageForm):
+        body.rejectDialog()
+
 
 class FormStateFinish(FormStateBase):
     def __init__(self, message):
@@ -246,3 +266,37 @@ class FormStateFinish(FormStateBase):
 
     def btn_ok_clicked(self, body: ModInstallMessageForm):
         body.rejectDialog()
+
+
+class FormStateCompleted(FormStateBase):
+    def __init__(self, is_update):
+        self.is_update = is_update
+
+    def enter(self, body: ModInstallMessageForm):
+        mod_name = body.mod_dir_to_install.name
+        # TODO: update case
+        body.ui.txt_main.setText(
+            QCoreApplication.translate(
+                "ModInstallMessageForm",
+                f"Installed '{mod_name}' successfully.",
+            )
+        )
+
+        body.btn_ok.setVisible(True)
+        body.btn_ok.setEnabled(True)
+        body.btn_cancel.setVisible(True)
+        body.btn_cancel.setEnabled(False)
+
+    def btn_ok_clicked(self, body: ModInstallMessageForm):
+        body.acceptDialog()
+
+
+def on_error(exc: Exception, body: ModInstallMessageForm):
+    error_message = funcs.formatError(exc)
+    logger.error("", exc_info=exc)
+    result_message = QCoreApplication.translate(
+        "ModInstallMessageForm",
+        f"An error occured during install.\n{error_message}",
+    )
+
+    body.set_state(FormStateFinish(result_message))
