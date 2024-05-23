@@ -51,3 +51,6 @@ update-requirements:
 # sync python environment with requests*.in
 sync-python-environment:
     pip-sync requirements.txt requirements_dev.txt
+
+mypy-test:
+    mypy --no-color-output --no-error-summary --show-column-numbers --follow-imports=normal --check-untyped-defs ./src/gmaginai_l/forms/maginai_uninstall_message_form.py
