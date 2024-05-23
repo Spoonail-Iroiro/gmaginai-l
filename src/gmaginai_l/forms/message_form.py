@@ -2,8 +2,9 @@ from pathlib import Path
 from typing import Optional, List, Tuple, Dict
 import logging
 from PySide6.QtWidgets import QDialog, QWidget, QDialogButtonBox, QPushButton
-from PySide6.QtCore import Qt, Slot
+from PySide6.QtCore import Qt, Slot, QTimer
 from .message_form_ui import Ui_MessageForm
+
 
 logger = logging.getLogger(__name__)
 
@@ -69,3 +70,7 @@ class MessageFormBase(QDialog):
             ev.accept()
 
         ev.ignore()
+
+    def set_message(self, message: str):
+        self.ui.txt_main.setText(message)
+        QTimer.singleShot(0, lambda: self.adjustSize())

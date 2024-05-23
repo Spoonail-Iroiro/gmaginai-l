@@ -114,7 +114,7 @@ class ModInstallMessageForm(MessageFormBase):
 
 class FormStateSelectMod(FormStateBase):
     def enter(self, body: ModInstallMessageForm):
-        body.ui.txt_main.setText(
+        body.set_message(
             QCoreApplication.translate(
                 "ModInstallMessageForm",
                 f"Select init.js in mod's main folder or distribution zip.\n"
@@ -219,7 +219,7 @@ class FormStateConfirmMod(FormStateBase):
                 "Mod '{0}' will be updated.",
             ).format(mod_name)
         )
-        body.ui.txt_main.setText(text_install_update)
+        body.set_message(text_install_update)
 
         body.btn_ok.setVisible(True)
         body.btn_ok.setEnabled(True)
@@ -267,7 +267,7 @@ class FormStateConfirmZip(FormStateBase):
         )
         body.btn_cancel.setVisible(False)
         body.btn_cancel.setEnabled(False)
-        body.ui.txt_main.setText(
+        body.set_message(
             QCoreApplication.translate(
                 "ModInstallMessageForm",
                 "Usually distribution zip file includes helpful readme, other docs or utilities."
@@ -310,7 +310,7 @@ class FormStateFinish(FormStateBase):
         self.message = message
 
     def enter(self, body: ModInstallMessageForm):
-        body.ui.txt_main.setText(self.message)
+        body.set_message(self.message)
 
         body.btn_ok.setVisible(True)
         body.btn_ok.setEnabled(True)
@@ -340,7 +340,7 @@ class FormStateCompleted(FormStateBase):
             )
         )
         text_install_update = text_install_update.format(mod_name)
-        body.ui.txt_main.setText(text_install_update)
+        body.set_message(text_install_update)
 
         body.btn_ok.setVisible(True)
         body.btn_ok.setEnabled(True)
