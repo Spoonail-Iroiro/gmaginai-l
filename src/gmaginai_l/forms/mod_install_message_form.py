@@ -359,7 +359,11 @@ class FormStateCompleted(FormStateBase):
         body.set_message(text_install_update)
 
         body.set_next_actions_buttons()
-        self._init_action_button(body)
+        if self.is_update:
+            self._init_action_button(body)
+        else:
+            body.btn_action1.setVisible(False)
+            body.btn_action2.setVisible(False)
 
         body.btn_next.setText(
             QCoreApplication.translate("ModInstallMessageForm", "Finish")
@@ -370,17 +374,16 @@ class FormStateCompleted(FormStateBase):
             QCoreApplication.translate("ModInstallMessageForm", "Open old folder")
         )
 
-        body.btn_action1.adjustSize()
         body.btn_action1.clicked.connect(lambda: self.open_mod_dir(body, True))
         body.btn_action2.setText(
             QCoreApplication.translate("ModInstallMessageForm", "Open current folder")
         )
-        body.btn_action2.adjustSize()
         body.btn_action2.clicked.connect(lambda: self.open_mod_dir(body, False))
 
     def _dispose_action_button(self, body):
-        body.btn_action1.clicked.disconnect()
-        body.btn_action2.clicked.disconnect()
+        if self.is_update:
+            body.btn_action1.clicked.disconnect()
+            body.btn_action2.clicked.disconnect()
 
     def open_mod_dir(self, body: ModInstallMessageForm, is_old: bool):
         mod_name = body.mod_dir_to_install.name  # type: ignore [union-attr]
