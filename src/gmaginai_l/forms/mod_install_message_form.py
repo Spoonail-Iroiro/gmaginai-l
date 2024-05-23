@@ -115,6 +115,8 @@ class ModInstallMessageForm(MessageFormBase):
         self.btn_next.setVisible(False)
 
     def set_next_actions_buttons(self):
+        # hide all actionbuttons because setVisible changes the order of action buttons
+        self.set_ok_cancel_buttons()
         self.btn_ok.setVisible(False)
         self.btn_cancel.setVisible(False)
         self.btn_action1.setVisible(True)
@@ -348,19 +350,49 @@ class FormStateCompleted(FormStateBase):
             if not self.is_update
             else QCoreApplication.translate(
                 "ModInstallMessageForm",
-                "Updated '{0}' successfully.",
+                "Updated '{0}' successfully.\n"
+                "Note: If the mod contains user-editable files, such as setting file, "
+                "you should manually migrate it from old to current.",
             )
         )
         text_install_update = text_install_update.format(mod_name)
         body.set_message(text_install_update)
 
         body.set_next_actions_buttons()
-        body.btn_action1.setVisible(False)
-        body.btn_action2.setVisible(False)
+        self._init_action_button(body)
 
         body.btn_next.setText(
             QCoreApplication.translate("ModInstallMessageForm", "Finish")
         )
+
+    def _init_action_button(self, body: ModInstallMessageForm):
+        body.btn_action1.setText(
+            QCoreApplication.translate("ModInstallMessageForm", "Open old folder")
+        )
+
+        body.btn_action1.adjustSize()
+        body.btn_action1.clicked.connect(lambda: self.open_mod_dir(body, True))
+        body.btn_action2.setText(
+            QCoreApplication.translate("ModInstallMessageForm", "Open current folder")
+        )
+        body.btn_action2.adjustSize()
+        body.btn_action2.clicked.connect(lambda: self.open_mod_dir(body, False))
+
+    def _dispose_action_button(self, body):
+        body.btn_action1.clicked.disconnect()
+        body.btn_action2.clicked.disconnect()
+
+    def open_mod_dir(self, body: ModInstallMessageForm, is_old: bool):
+        mod_name = body.mod_dir_to_install.name  # type: ignore [union-attr]
+        if is_old:
+            mod_dir = body.installer.get_mod_backup_dir(mod_name)
+        else:
+            mod_dir = body.installer.get_mod_own_dir(mod_name)
+
+        funcs.open_directory(mod_dir)
+
+    def exit(self, body: ModInstallMessageForm):
+        self._dispose_action_button(body)
 
     def btn_next_clicked(self, body: ModInstallMessageForm):
         body.acceptDialog()

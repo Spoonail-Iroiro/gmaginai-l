@@ -30,7 +30,7 @@ class Ui_MessageForm(object):
         sizePolicy.setHeightForWidth(MessageForm.sizePolicy().hasHeightForWidth())
         MessageForm.setSizePolicy(sizePolicy)
         MessageForm.setMinimumSize(QSize(480, 150))
-        MessageForm.setMaximumSize(QSize(480, 16777215))
+        MessageForm.setMaximumSize(QSize(16777215, 16777215))
         MessageForm.setModal(False)
         self.verticalLayout = QVBoxLayout(MessageForm)
         self.verticalLayout.setObjectName(u"verticalLayout")
