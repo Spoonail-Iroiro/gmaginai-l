@@ -44,11 +44,6 @@ class CancelError(Exception):
     pass
 
 
-class InterruptInstallError(Exception):
-    def __init__(result_message: str):
-        super().__init__(result_message)
-
-
 class ModInstallMessageForm(MessageFormBase):
     def __init__(self, installer: ModInstaller, parent=None):
         title = self.tr("Install/Update Mod")
@@ -60,7 +55,7 @@ class ModInstallMessageForm(MessageFormBase):
         self.temp_dir: Path | None = None
         self.extracted_dir: Path | None = None
 
-        self.state: FormStateBase | None = None
+        self.state: FormStateBase = FormStateBase()
         self.set_state(FormStateSelectMod())
 
         (
@@ -95,13 +90,6 @@ class ModInstallMessageForm(MessageFormBase):
             self.state.exit(self)
         self.state = state
         self.state.enter(self)
-
-    def move_to_finish(self):
-        self.state = FormState.FINISHED
-        self.btn_ok.setVisible(True)
-        self.btn_ok.setEnabled(True)
-        self.btn_cancel.setVisible(True)
-        self.btn_cancel.setEnabled(False)
 
     def acceptDialog(self):
         self.dispose()
@@ -142,7 +130,7 @@ class FormStateSelectMod(FormStateBase):
         if rtn == QDialog.DialogCode.Accepted and len(filepaths) > 0:
             return Path(filepaths[0])
 
-        pass
+        return None
 
     def _determin_mod_dir_to_install(self, body: ModInstallMessageForm, path: Path):
         # TODO: more suitable file classification
@@ -205,7 +193,7 @@ class FormStateConfirmMod(FormStateBase):
 
     def enter(self, body: ModInstallMessageForm):
         mod_dir = body.mod_dir_to_install
-        mod_name = mod_dir.name
+        mod_name = mod_dir.name  # type: ignore [union-attr]
         if body.installer.has_mod_own_folder(mod_name):
             self.is_update = True
         text_install_update = (
@@ -229,13 +217,15 @@ class FormStateConfirmMod(FormStateBase):
     def btn_ok_clicked(self, body: ModInstallMessageForm):
         try:
             mod_dir = body.mod_dir_to_install
-            mod_name = mod_dir.name
+            mod_name = mod_dir.name  # type: ignore [union-attr]
             if self.is_update:
                 body.installer.backup_existing_install_by_move(mod_name)
-            body.installer.install_mod(mod_dir)
+            body.installer.install_mod(mod_dir)  # type: ignore [arg-type]
             complete_state = FormStateCompleted(self.is_update)
             if body.extracted_dir is not None:
-                next_state = FormStateConfirmZip(complete_state, body.extracted_dir)
+                next_state: FormStateBase = FormStateConfirmZip(
+                    complete_state, body.extracted_dir
+                )
             else:
                 next_state = complete_state
 
@@ -252,7 +242,7 @@ class FormStateConfirmZip(FormStateBase):
         self.next_state = next_state
         self.extracted_dir = extracted_dir
 
-        self.btn_open_extracted_dir: PushButton | None = None
+        self.btn_open_extracted_dir: QPushButton | None = None
         self._original_ok_text: str | None = None
 
     def enter(self, body: ModInstallMessageForm):
@@ -326,7 +316,7 @@ class FormStateCompleted(FormStateBase):
         self.is_update = is_update
 
     def enter(self, body: ModInstallMessageForm):
-        mod_name = body.mod_dir_to_install.name
+        mod_name = body.mod_dir_to_install.name  # type: ignore [union-attr]
         # TODO: update case
         text_install_update = (
             QCoreApplication.translate(
