@@ -190,7 +190,7 @@ class ModsWidget(ShownEventWidget):
             self.refresh_mod_list()
 
     def _show_message(self, message: str):
-        self.ui.txt_main.setVisible(message == "")
+        self.ui.txt_main.setVisible(message != "")
         self.ui.txt_main.setText(message)
 
     def shownEvent(self):

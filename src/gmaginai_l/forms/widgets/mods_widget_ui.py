@@ -33,6 +33,11 @@ class Ui_ModsWidget(object):
 
         self.txt_main = QLabel(ModsWidget)
         self.txt_main.setObjectName(u"txt_main")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.txt_main.sizePolicy().hasHeightForWidth())
+        self.txt_main.setSizePolicy(sizePolicy)
         self.txt_main.setTextFormat(Qt.TextFormat.PlainText)
         self.txt_main.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
         self.txt_main.setWordWrap(True)
