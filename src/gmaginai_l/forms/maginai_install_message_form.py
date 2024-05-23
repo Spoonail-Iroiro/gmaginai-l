@@ -21,7 +21,7 @@ class FormState(Enum):
     FINISHED = auto()
 
 
-class MaginaiInstallerMessageForm(MessageFormBase):
+class MaginaiInstallMessageForm(MessageFormBase):
     cancelWorker = Signal()
 
     def __init__(self, installer, tag_name_to_install: str, parent=None):

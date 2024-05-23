@@ -2,6 +2,29 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ja_JP">
 <context>
+    <name>MaginaiInstallMessageForm</name>
+    <message>
+        <location filename="../gmaginai_l/forms/maginai_install_message_form.py" line="28"/>
+        <source>Install</source>
+        <translation type="unfinished">インストール</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/maginai_install_message_form.py" line="35"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/maginai_install_message_form.py" line="36"/>
+        <source>Cancel</source>
+        <translation type="unfinished">キャンセル</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/maginai_install_message_form.py" line="44"/>
+        <source>Install mod loader &apos;maginai&apos; {0}?</source>
+        <translation type="unfinished">Modローダー&apos;maginai&apos; {0}をインストールしますか？</translation>
+    </message>
+</context>
+<context>
     <name>MaginaiInstallWorker</name>
     <message>
         <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="38"/>
@@ -61,24 +84,16 @@
 <context>
     <name>MaginaiInstallerMessageForm</name>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_installer_message_form.py" line="28"/>
         <source>Install</source>
-        <translation>インストール</translation>
+        <translation type="vanished">インストール</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_installer_message_form.py" line="35"/>
-        <source>OK</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../gmaginai_l/forms/maginai_installer_message_form.py" line="36"/>
         <source>Cancel</source>
-        <translation>キャンセル</translation>
+        <translation type="vanished">キャンセル</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_installer_message_form.py" line="44"/>
         <source>Install mod loader &apos;maginai&apos; {0}?</source>
-        <translation>Modローダー&apos;maginai&apos; {0}をインストールしますか？</translation>
+        <translation type="vanished">Modローダー&apos;maginai&apos; {0}をインストールしますか？</translation>
     </message>
 </context>
 <context>
@@ -119,17 +134,17 @@
         <translation>’mod’フォルダーは残ります。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_uninstall_message_form.py" line="49"/>
+        <location filename="../gmaginai_l/forms/maginai_uninstall_message_form.py" line="48"/>
         <source>Uninstall &apos;maginai&apos;? {0}</source>
         <translation>’maginai’をアンインストールしますか？{0}</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_uninstall_message_form.py" line="64"/>
+        <location filename="../gmaginai_l/forms/maginai_uninstall_message_form.py" line="62"/>
         <source>Uninstalled &apos;maginai&apos; successfully.</source>
         <translation>&apos;maginai&apos;を正常にアンインストールしました。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_uninstall_message_form.py" line="67"/>
+        <location filename="../gmaginai_l/forms/maginai_uninstall_message_form.py" line="65"/>
         <source>An error occured during uninstall.
 {0}</source>
         <translation>アンインストール中にエラーが発生しました。
@@ -225,7 +240,7 @@
 <context>
     <name>MessageForm</name>
     <message>
-        <location filename="../gmaginai_l/forms/message_form.ui" line="14"/>
+        <location filename="../gmaginai_l/forms/message_form.ui" line="32"/>
         <source>Message</source>
         <translation></translation>
     </message>

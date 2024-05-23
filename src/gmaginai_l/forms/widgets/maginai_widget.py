@@ -4,7 +4,7 @@ import logging
 from PySide6.QtWidgets import QDialog, QWidget
 from .shown_event_widget import ShownEventWidget
 from .maginai_widget_ui import Ui_MaginaiWidget
-from ..maginai_installer_message_form import MaginaiInstallerMessageForm
+from ..maginai_install_message_form import MaginaiInstallMessageForm
 from ...core.maginai_installer import MaginaiInstaller
 from ..maginai_uninstall_message_form import MaginaiUninstallMessageForm
 from ... import config
@@ -42,7 +42,7 @@ class MaginaiWidget(ShownEventWidget):
             raise
         else:
             # Install latest
-            form = MaginaiInstallerMessageForm(
+            form = MaginaiInstallMessageForm(
                 self.installer,
                 tag_names[0],
                 parent=self,

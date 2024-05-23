@@ -12,8 +12,8 @@ src/gmaginai_l/core/profile_service.py
 src/gmaginai_l/core/qt_threading.py
 src/gmaginai_l/dirs.py
 src/gmaginai_l/forms/__init__.py
+src/gmaginai_l/forms/maginai_install_message_form.py
 src/gmaginai_l/forms/maginai_install_worker.py
-src/gmaginai_l/forms/maginai_installer_message_form.py
 src/gmaginai_l/forms/maginai_uninstall_message_form.py
 src/gmaginai_l/forms/manager_form.py
 src/gmaginai_l/forms/manager_form.ui
