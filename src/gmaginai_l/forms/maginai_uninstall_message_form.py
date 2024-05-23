@@ -45,9 +45,7 @@ class MaginaiUninstallMessageForm(MessageFormBase):
         else:
             mod_dir_message = self.tr("'mod' folder will remain.")
 
-        self.ui.txt_main.setText(
-            self.tr("Uninstall 'maginai'? {0}").format(mod_dir_message)
-        )
+        self.set_message(self.tr("Uninstall 'maginai'? {0}").format(mod_dir_message))
         self.state = FormState.CONFIRM
 
     def btn_ok_clicked(self):
@@ -61,9 +59,9 @@ class MaginaiUninstallMessageForm(MessageFormBase):
     def _uninstall(self):
         try:
             self.installer.uninstall_all() if self.is_all else self.installer.uninstall_only_tags()
-            self.ui.txt_main.setText(self.tr("Uninstalled 'maginai' successfully."))
+            self.set_message(self.tr("Uninstalled 'maginai' successfully."))
         except Exception as ex:
-            self.ui.txt_main.setText(
+            self.set_message(
                 self.tr("An error occured during uninstall.\n{0}").format(
                     funcs.formatError(ex)
                 )

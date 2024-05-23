@@ -40,7 +40,7 @@ class MaginaiInstallerMessageForm(MessageFormBase):
         self.btn_ok.clicked.connect(self.btn_ok_clicked)
         self.btn_cancel.clicked.connect(self.btn_cancel_clicked)
 
-        self.ui.txt_main.setText(
+        self.set_message(
             self.tr("Install mod loader 'maginai' {0}?").format(tag_name_to_install)
         )
         self.state = FormState.CONFIRM
@@ -69,7 +69,7 @@ class MaginaiInstallerMessageForm(MessageFormBase):
         QThreadPool.globalInstance().start(self.install_worker.run)
 
     def _install_state_notified(self, text: str):
-        self.ui.txt_main.setText(text)
+        self.set_message(text)
 
     def _on_install_finished(self):
         self.state = FormState.FINISHED
