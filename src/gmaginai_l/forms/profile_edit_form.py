@@ -33,16 +33,18 @@ class ProfileEditForm(QDialog):
 
         if self.ui.txt_name.text().strip() == "":
             funcs.showMessageOk(
-                self, "", "Name must not be empty", QMessageBox.Icon.Warning
+                self, "", self.tr("Name must not be empty"), QMessageBox.Icon.Warning
             )
             return
 
         if not (game_dir / "Game.exe").exists():
             isOk = funcs.showConfirm(
                 self,
-                "Confirm",
-                f"Game.exe doesn't exists in {game_dir}. "
-                "You might have specified wrong directory. Do you proceed even that?",
+                self.tr("Confirm"),
+                self.tr(
+                    "Game.exe doesn't exists in {0}. "
+                    "You might have specified wrong directory. Proceed anyway?"
+                ).format(game_dir),
             )
             if not isOk:
                 return

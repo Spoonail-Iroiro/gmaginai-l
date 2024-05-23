@@ -275,7 +275,14 @@ class FormStateConfirmZip(FormStateBase):
             )
         )
         (self.btn_open_extracted_dir,) = body.set_buttons(
-            [("Open extracted folder", body.Buttons.ActionRole)]
+            [
+                (
+                    QCoreApplication.translate(
+                        "ModInstallMessageForm", "Open extracted folder"
+                    ),
+                    body.Buttons.ActionRole,
+                )
+            ]
         )
         self.btn_open_extracted_dir.clicked.connect(self.btn_open_extracted_dir_clicked)
 
@@ -292,9 +299,10 @@ class FormStateConfirmZip(FormStateBase):
             on_error(ex, body)
 
     def exit(self, body: ModInstallMessageForm):
-        body.btn_ok.setText(self._original_ok_text)
+        body.btn_ok.setText(str(self._original_ok_text))
         body.btn_cancel.setVisible(True)
-        body.ui.bbx_main.removeButton(self.btn_open_extracted_dir)
+        if self.btn_open_extracted_dir is not None:
+            body.ui.bbx_main.removeButton(self.btn_open_extracted_dir)
 
 
 class FormStateFinish(FormStateBase):

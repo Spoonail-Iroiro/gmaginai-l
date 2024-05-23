@@ -4,6 +4,7 @@ import logging
 from enum import Enum, auto
 from PySide6.QtWidgets import QDialog, QWidget, QDialogButtonBox
 from PySide6.QtCore import QThreadPool, Signal, QObject, Slot
+from PySide6 import QtGui
 from .message_form_ui import Ui_MessageForm
 from .message_form import MessageFormBase
 from ..core.maginai_installer import MaginaiInstaller

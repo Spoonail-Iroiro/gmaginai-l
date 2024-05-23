@@ -95,8 +95,10 @@ class ProfileForm(QDialog):
             profile_name = profile["name"]
             isOk = funcs.showConfirm(
                 self,
-                "Confirm",
-                f"Do you really want to delete the profile '{profile_name}'?",
+                self.tr("Confirm"),
+                self.tr("Do you really want to delete the profile '{0}'?").format(
+                    profile_name
+                ),
             )
             logger.info(isOk)
             if isOk:

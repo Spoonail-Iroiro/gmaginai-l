@@ -35,7 +35,9 @@ class MaginaiWidget(ShownEventWidget):
         except Exception as ex:
             message = funcs.formatError(ex)
             self._display_error(
-                f"An error occured during getting release information. It might be network issue: {message}"
+                self.tr(
+                    "An error occured during getting release information. It might be network issue: {0}"
+                ).format(message)
             )
             raise
         else:
@@ -65,20 +67,22 @@ class MaginaiWidget(ShownEventWidget):
             self._set_all_maginai_buttons_enabled()
 
             if tags_exist and mod_exists:
-                message = "'maginai' installed."
+                message = self.tr("'maginai' installed.")
             elif mod_exists:
-                message = "'maginai' is not installed. ('mod' folder remains)"
+                message = self.tr("'maginai' is not installed. ('mod' folder remains)")
                 self.ui.btn_uninstall_only_tags.setEnabled(False)
             elif tags_exist:
-                message = "Invalid 'maginai' installation. ('mod' folder is missing)"
+                message = self.tr(
+                    "Invalid 'maginai' installation. ('mod' folder is missing)"
+                )
             else:
-                message = "'maginai' is not installed."
+                message = self.tr("'maginai' is not installed.")
                 self.ui.btn_uninstall_only_tags.setEnabled(False)
                 self.ui.btn_uninstall_all.setEnabled(False)
         except Exception as ex:
             logger.exception("")
             self._display_error(funcs.formatError(ex))
-            message = "Unknown installation state. Try install to clean up."
+            message = self.tr("Unknown installation state. Try install to clean up.")
 
         self._set_install_state(message)
 

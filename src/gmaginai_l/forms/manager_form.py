@@ -34,8 +34,8 @@ class ManagerForm(QDialog):
         self.ui.stwMain.addWidget(self.mods_widget)
         self.ui.stwMain.setCurrentIndex(0)
 
-        self.ui.lstMain.addItem("Mod Loader")
-        self.ui.lstMain.addItem("Mods")
+        self.ui.lstMain.addItem(self.tr("Mod Loader"))
+        self.ui.lstMain.addItem(self.tr("Mods"))
         self.ui.lstMain.setCurrentRow(0)
         self.ui.lstMain.currentRowChanged.connect(self.ui.stwMain.setCurrentIndex)
         self.ui.stwMain.currentChanged.connect(self.stwMain_currentChanged)
