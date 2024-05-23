@@ -86,7 +86,7 @@ class ModInstallMessageForm(MessageFormBase):
     def dispose(self):
         if self.temp_dir is not None and self.temp_dir.exists():
             try:
-                shutil.rmtree(self.work_dir)
+                shutil.rmtree(self.temp_dir)
             except Exception:
                 logger.exception("")
 
