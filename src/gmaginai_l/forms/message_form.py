@@ -29,6 +29,7 @@ class MessageFormBase(QDialog):
         self.setWindowFlags(
             Qt.WindowType.Dialog
             | Qt.WindowType.CustomizeWindowHint
+            | Qt.WindowType.WindowTitleHint
             # Qt.WindowType.FramelessWindowHint
             # self.windowFlags()
             # | Qt.WindowType.CustomizeWindowHint

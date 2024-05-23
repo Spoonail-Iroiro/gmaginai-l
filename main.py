@@ -1,4 +1,5 @@
 import logging
+import sys
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QTranslator, QLibraryInfo, QLocale
 
@@ -10,6 +11,8 @@ from gmaginai_l.core.profile_service import ProfileService
 from gmaginai_l.core.db import get_db
 from gmaginai_l import config
 import sys
+import os
+
 import tomli
 
 logger = logging.getLogger(__name__)
@@ -17,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 logging.basicConfig(level="INFO")
 try:
+    # os.environ["QT_QPA_PLATFORM"] = "windows:darkmode=2"
+    # sys.argv += ['-platform', 'windows:darkmode=1']
     config.load_from_file(application_dir / "config.toml")
 
     db_path = application_dir / "data" / "db.json"
@@ -26,6 +31,7 @@ try:
 
     app = QApplication(sys.argv)
 
+    app.setStyle("fusion")
     if qss_path.exists():
         app.setStyleSheet(qss_path.read_text(encoding="utf-8"))
     else:
