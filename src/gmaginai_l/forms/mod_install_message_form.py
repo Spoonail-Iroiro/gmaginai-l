@@ -51,7 +51,7 @@ class InterruptInstallError(Exception):
 
 class ModInstallMessageForm(MessageFormBase):
     def __init__(self, installer: ModInstaller, parent=None):
-        title = self.tr("Install Mod")
+        title = self.tr("Install/Update Mod")
         super().__init__(title, parent)
 
         self.installer = installer
@@ -117,7 +117,7 @@ class FormStateSelectMod(FormStateBase):
         body.set_message(
             QCoreApplication.translate(
                 "ModInstallMessageForm",
-                f"Select init.js in mod's main folder or distribution zip.\n"
+                f"Select init.js in mod's main folder or distribution zip file.\n"
                 "(If the selected mod is already installed, it will be updated)",
             )
         )

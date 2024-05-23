@@ -248,9 +248,8 @@
 <context>
     <name>ModInstallMessageForm</name>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="55"/>
         <source>Install Mod</source>
-        <translation>Modインストール</translation>
+        <translation type="vanished">Modインストール</translation>
     </message>
     <message>
         <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="72"/>
@@ -263,8 +262,19 @@
         <translation>キャンセル</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="123"/>
         <source>Select init.js in mod&apos;s main folder or distribution zip.
+(If the selected mod is already installed, it will be updated)</source>
+        <translation type="vanished">インストールしたいmodの本体フォルダ内のinit.jsかmodを含む配布zipファイルを選択してください。
+（選択したmodがすでにインストール済の場合アップデートが行われます）</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="55"/>
+        <source>Install/Update Mod</source>
+        <translation>Modインストール/アップデート</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="123"/>
+        <source>Select init.js in mod&apos;s main folder or distribution zip file.
 (If the selected mod is already installed, it will be updated)</source>
         <translation>インストールしたいmodの本体フォルダ内のinit.jsかmodを含む配布zipファイルを選択してください。
 （選択したmodがすでにインストール済の場合アップデートが行われます）</translation>
@@ -331,12 +341,17 @@
         <translation type="unfinished">Mod</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="62"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="52"/>
+        <source> (disabled)</source>
+        <translation type="unfinished">（無効）</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="66"/>
         <source>Disable</source>
         <translation>無効化</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="66"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="70"/>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="34"/>
         <source>Enable</source>
         <translation>有効化</translation>
@@ -353,8 +368,12 @@
     </message>
     <message>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="55"/>
+        <source>Install/Update</source>
+        <translation>新規インストール/アップデート</translation>
+    </message>
+    <message>
         <source>Add</source>
-        <translation type="unfinished">新規</translation>
+        <translation type="obsolete">新規</translation>
     </message>
     <message>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="62"/>

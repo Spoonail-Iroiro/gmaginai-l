@@ -47,7 +47,11 @@ class ModsWidget(ShownEventWidget):
             self.ui.lstMain.addItem(item)
 
         for mod in disabled_mods:
-            mod_info = {"name": mod, "display": mod + " (disabled)", "enabled": False}
+            mod_info = {
+                "name": mod,
+                "display": mod + self.tr(" (disabled)"),
+                "enabled": False,
+            }
             item = QListWidgetItem(mod_info["display"])  # type: ignore[call-overload]
             item.setData(Qt.ItemDataRole.UserRole, mod_info)
             self.ui.lstMain.addItem(item)
