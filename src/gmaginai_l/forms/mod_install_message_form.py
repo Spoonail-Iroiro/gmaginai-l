@@ -135,7 +135,7 @@ class FormStateSelectMod(FormStateBase):
         fdialog = QFileDialog(body)
         fdialog.setFileMode(QFileDialog.FileMode.ExistingFile)
         fdialog.setAcceptMode(QFileDialog.AcceptMode.AcceptOpen)
-        fdialog.setNameFilter("zip file (*.zip);;init.js (init.js)")
+        fdialog.setNameFilter("init.js or zip file (init.js *.zip)")
         rtn = fdialog.exec()
 
         filepaths = fdialog.selectedFiles()
