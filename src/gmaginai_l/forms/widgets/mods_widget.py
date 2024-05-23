@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QDialog, QWidget, QListWidgetItem
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QDesktopServices
 from .mods_widget_ui import Ui_ModsWidget
+from ... import funcs
 from .shown_event_widget import ShownEventWidget
 from ...core.mod_installer import ModInstaller
 from ..mod_install_message_form import ModInstallMessageForm
@@ -142,8 +143,10 @@ class ModsWidget(ShownEventWidget):
         if mod_info is None:
             return
         mod_dir = self.mod_installer.get_mod_own_dir(mod_info["name"])
-        mod_dir_url = mod_dir.as_uri()
-        QDesktopServices.openUrl(mod_dir_url)
+        funcs.open_directory(mod_dir)
 
     def shownEvent(self):
         self.refresh_mod_list()
+
+    def _on_error(self, exc):
+        logger.error("", exc_info=exc)

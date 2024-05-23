@@ -4,6 +4,7 @@ import shutil
 from typing import Optional, List, Tuple, Dict, Callable
 import logging
 from PySide6.QtWidgets import QMessageBox, QWidget
+from PySide6.QtGui import QDesktopServices
 import traceback
 
 logger = logging.getLogger(__name__)
@@ -46,4 +47,5 @@ def showMessageOk(
 
 
 def open_directory(dir_: Path):
-    raise NotImplementedError()
+    dir_uri = dir_.as_uri()
+    QDesktopServices.openUrl(dir_uri)
