@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mods_widget.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.0
+## Created by: Qt User Interface Compiler version 6.7.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -70,7 +70,7 @@ class Ui_ModsWidget(object):
 
         self.verticalLayout.addWidget(self.btn_open_mod_own_dir)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
@@ -87,7 +87,7 @@ class Ui_ModsWidget(object):
     # setupUi
 
     def retranslateUi(self, ModsWidget):
-        ModsWidget.setWindowTitle(QCoreApplication.translate("ModsWidget", u"Form", None))
+        ModsWidget.setWindowTitle(QCoreApplication.translate("ModsWidget", u"Mods", None))
         self.label.setText(QCoreApplication.translate("ModsWidget", u"Mods", None))
         self.btn_enable.setText(QCoreApplication.translate("ModsWidget", u"Enable", None))
         self.btn_up.setText(QCoreApplication.translate("ModsWidget", u"\u2191", None))
