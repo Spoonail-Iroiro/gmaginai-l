@@ -27,77 +27,102 @@ class ModsWidget(ShownEventWidget):
         self.ui.btn_up.clicked.connect(self.btn_up_clicked)
         self.ui.btn_down.clicked.connect(self.btn_down_clicked)
         self.ui.btn_add.clicked.connect(self.btn_add_clicked)
+        self.ui.btn_delete.clicked.connect(self.btn_delete_clicked)
         self.ui.btn_open_mod_own_dir.clicked.connect(self.btn_open_mod_directory)
 
     def refresh_mod_list(self):
-        self.ui.lstMain.setCurrentRow(-1)
-        self.ui.lstMain.clear()
-        enabled_mods = self.mod_installer.get_enabled_mods()
-        disabled_mods = self.mod_installer.get_disabled_mods()
-
-        enabled_mods_installed = [
-            mod for mod in enabled_mods if self.mod_installer.has_mod_own_folder(mod)
-        ]
-        if enabled_mods != enabled_mods_installed:
-            # don't allow inconsistent mod installation
-            self.mod_installer.set_enabled_mods(enabled_mods_installed)
+        try:
+            self.ui.lstMain.setCurrentRow(-1)
+            self.ui.lstMain.clear()
             enabled_mods = self.mod_installer.get_enabled_mods()
+            disabled_mods = self.mod_installer.get_disabled_mods()
 
-        for mod in enabled_mods:
-            mod_info = {"name": mod, "display": mod, "enabled": True}
-            item = QListWidgetItem(mod_info["display"])  # type:ignore[call-overload]
-            item.setData(Qt.ItemDataRole.UserRole, mod_info)
-            self.ui.lstMain.addItem(item)
+            enabled_mods_installed = [
+                mod
+                for mod in enabled_mods
+                if self.mod_installer.has_mod_own_folder(mod)
+            ]
+            if enabled_mods != enabled_mods_installed:
+                # don't allow inconsistent mod installation
+                self.mod_installer.set_enabled_mods(enabled_mods_installed)
+                enabled_mods = self.mod_installer.get_enabled_mods()
 
-        for mod in disabled_mods:
-            mod_info = {
-                "name": mod,
-                "display": mod + self.tr(" (disabled)"),
-                "enabled": False,
-            }
-            item = QListWidgetItem(mod_info["display"])  # type: ignore[call-overload]
-            item.setData(Qt.ItemDataRole.UserRole, mod_info)
-            self.ui.lstMain.addItem(item)
+            for mod in enabled_mods:
+                mod_info = {"name": mod, "display": mod, "enabled": True}
+                item = QListWidgetItem(
+                    mod_info["display"]
+                )  # type:ignore[call-overload]
+                item.setData(Qt.ItemDataRole.UserRole, mod_info)
+                self.ui.lstMain.addItem(item)
 
-        self.ui.lstMain.setCurrentRow(self.current_index_memo)
+            for mod in disabled_mods:
+                mod_info = {
+                    "name": mod,
+                    "display": mod + self.tr(" (disabled)"),
+                    "enabled": False,
+                }
+                item = QListWidgetItem(mod_info["display"])  # type: ignore[call-overload]
+                item.setData(Qt.ItemDataRole.UserRole, mod_info)
+                self.ui.lstMain.addItem(item)
+
+            self.ui.lstMain.setCurrentRow(self.current_index_memo)
+            # Clear message on successfull refresh
+            self._show_message("")
+        except Exception as ex:
+            logger.error("", exc_info=ex)
+            error_message = funcs.formatError(ex)
+            result_message = self.tr(
+                "Couldn't load mods information. Try (re)install 'maginai' to clean up.\n{0}"
+            ).format(error_message)
+            self._show_message(result_message)
 
     def lstMain_currentRowChanged(self, index):
-        if index >= 0:
-            selected_item = self.ui.lstMain.item(index)
-            mod_info = selected_item.data(Qt.ItemDataRole.UserRole)
-            if mod_info["enabled"]:
-                self.ui.btn_enable.setText(self.tr("Disable"))
-                self.ui.btn_up.setEnabled(True)
-                self.ui.btn_down.setEnabled(True)
-            else:
-                self.ui.btn_enable.setText(self.tr("Enable"))
-                self.ui.btn_up.setEnabled(False)
-                self.ui.btn_down.setEnabled(False)
+        try:
+            if index >= 0:
+                selected_item = self.ui.lstMain.item(index)
+                mod_info = selected_item.data(Qt.ItemDataRole.UserRole)
+                if mod_info["enabled"]:
+                    self.ui.btn_enable.setText(self.tr("Disable"))
+                    self.ui.btn_up.setEnabled(True)
+                    self.ui.btn_down.setEnabled(True)
+                else:
+                    self.ui.btn_enable.setText(self.tr("Enable"))
+                    self.ui.btn_up.setEnabled(False)
+                    self.ui.btn_down.setEnabled(False)
 
-            self.current_index_memo = index
+                self.current_index_memo = index
+        except Exception as ex:
+            self._on_error(ex)
 
     def btn_enable_clicked(self):
-        mod_info = self._get_current_mod_info()
-        if mod_info is None:
-            return
-        mod_name = mod_info["name"]
-        if mod_info["enabled"]:
-            self.mod_installer.disable_mod(mod_name)
-        else:
-            self.mod_installer.enable_mod(mod_name)
+        try:
+            mod_info = self._get_current_mod_info()
+            if mod_info is None:
+                return
+            mod_name = mod_info["name"]
+            if mod_info["enabled"]:
+                self.mod_installer.disable_mod(mod_name)
+            else:
+                self.mod_installer.enable_mod(mod_name)
 
-        self.refresh_mod_list()
+            self.refresh_mod_list()
 
-        # set selected row to moved mod
-        self._set_current_row_to_mod(mod_name)
-
-        pass
+            # set selected row to moved mod
+            self._set_current_row_to_mod(mod_name)
+        except Exception as ex:
+            self._on_error(ex)
 
     def btn_up_clicked(self):
-        self.move_row(-1)
+        try:
+            self.move_row(-1)
+        except Exception as ex:
+            self._on_error(ex)
 
     def btn_down_clicked(self):
-        self.move_row(+1)
+        try:
+            self.move_row(+1)
+        except Exception as ex:
+            self._on_error(ex)
 
     def move_row(self, delta):
         current_index = self.ui.lstMain.currentRow()
@@ -134,19 +159,42 @@ class ModsWidget(ShownEventWidget):
         return None
 
     def btn_add_clicked(self):
-        form = ModInstallMessageForm(self.mod_installer, parent=self)
-        form.exec()
-        self.refresh_mod_list()
+        try:
+            form = ModInstallMessageForm(self.mod_installer, parent=self)
+            form.exec()
+            self.refresh_mod_list()
+        except Exception as ex:
+            self._on_error(ex)
 
     def btn_open_mod_directory(self):
+        try:
+            mod_info = self._get_current_mod_info()
+            if mod_info is None:
+                return
+            mod_dir = self.mod_installer.get_mod_own_dir(mod_info["name"])
+            funcs.open_directory(mod_dir)
+        except Exception as ex:
+            self._on_error(ex)
+
+    def btn_delete_clicked(self):
         mod_info = self._get_current_mod_info()
         if mod_info is None:
             return
-        mod_dir = self.mod_installer.get_mod_own_dir(mod_info["name"])
-        funcs.open_directory(mod_dir)
+        isOk = funcs.showConfirm(
+            self,
+            self.tr("Confirm"),
+            self.tr("Uninstall mod '{0}'?").format(mod_info["name"]),
+        )
+        if isOk:
+            self.mod_installer.uninstall_mod(mod_info["name"])
+            self.refresh_mod_list()
+
+    def _show_message(self, message: str):
+        self.ui.txt_main.setVisible(message == "")
+        self.ui.txt_main.setText(message)
 
     def shownEvent(self):
         self.refresh_mod_list()
 
-    def _on_error(self, exc):
-        logger.error("", exc_info=exc)
+    def _on_error(self, ex):
+        logger.error("", exc_info=ex)

@@ -13,11 +13,33 @@
   <property name="windowTitle">
    <string>Mods</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
+  <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Mods</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="txt_main">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::TextFormat::PlainText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

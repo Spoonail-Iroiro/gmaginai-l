@@ -31,6 +31,14 @@ class Ui_ModsWidget(object):
 
         self.verticalLayout_2.addWidget(self.label)
 
+        self.txt_main = QLabel(ModsWidget)
+        self.txt_main.setObjectName(u"txt_main")
+        self.txt_main.setTextFormat(Qt.TextFormat.PlainText)
+        self.txt_main.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
+        self.txt_main.setWordWrap(True)
+
+        self.verticalLayout_2.addWidget(self.txt_main)
+
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.lstMain = QListWidget(ModsWidget)
@@ -89,6 +97,7 @@ class Ui_ModsWidget(object):
     def retranslateUi(self, ModsWidget):
         ModsWidget.setWindowTitle(QCoreApplication.translate("ModsWidget", u"Mods", None))
         self.label.setText(QCoreApplication.translate("ModsWidget", u"Mods", None))
+        self.txt_main.setText("")
         self.btn_enable.setText(QCoreApplication.translate("ModsWidget", u"Enable", None))
         self.btn_up.setText(QCoreApplication.translate("ModsWidget", u"\u2191", None))
         self.btn_down.setText(QCoreApplication.translate("ModsWidget", u"\u2193", None))
