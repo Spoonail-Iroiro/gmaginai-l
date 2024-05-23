@@ -268,66 +268,72 @@
 （選択したmodがすでにインストール済の場合アップデートが行われます）</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="55"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="53"/>
         <source>Install/Update Mod</source>
         <translation>Modインストール/アップデート</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="123"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="144"/>
         <source>Select init.js in mod&apos;s main folder or distribution zip file.
 (If the selected mod is already installed, it will be updated)</source>
         <translation>インストールしたいmodの本体フォルダ内のinit.jsかmodを含む配布zipファイルを選択してください。
 （選択したmodがすでにインストール済の場合アップデートが行われます）</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="184"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="206"/>
         <source>The selected file is not init.js, so you might selected wrong mod&apos;s main folder. Proceed anyway?</source>
         <translation>選択されたファイルはinit.jsファイルではありません。指定されたフォルダーがmod本体フォルダーではない可能性があります。続行しますか？</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="215"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="237"/>
         <source>Mod &apos;{0}&apos; will be installed.</source>
         <translation>mod &apos;{0}&apos;がインストールされます。よろしいですか？</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="220"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="242"/>
         <source>Mod &apos;{0}&apos; will be updated.</source>
         <translation>mod &apos;{0}&apos;がアップデートされます。よろしいですか？</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="267"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="76"/>
         <source>Next</source>
         <translation>次へ</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="276"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="286"/>
         <source>Usually distribution zip file includes helpful readme, other docs or utilities.It&apos;s recommended to see what&apos;s inside the extracted folder.</source>
         <translation>通常、配布zipファイルは説明書や他のドキュメント、ユーティリティスクリプト等を含んでいます。解凍されたフォルダを確認することをおすすめします。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="282"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="294"/>
         <source>Open extracted folder</source>
         <translation>解凍されたフォルダを開く</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="336"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="330"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="363"/>
+        <source>Finish</source>
+        <translation>終了</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="348"/>
         <source>Installed &apos;{0}&apos; successfully.</source>
         <translation>Mod &apos;{0}&apos;を正常にインストールしました。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="341"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="353"/>
         <source>Updated &apos;{0}&apos; successfully.</source>
         <translation>Mod &apos;{0}&apos;を正常にアップデートしました。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="360"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="375"/>
         <source>An error occured during install.
 {0}</source>
         <translation>インストール中にエラーが発生しました。
 {0}</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="179"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="201"/>
         <source>Confirm</source>
         <translation>確認</translation>
     </message>
@@ -338,20 +344,20 @@
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="14"/>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="20"/>
         <source>Mods</source>
-        <translation type="unfinished">Mod</translation>
+        <translation>Mod</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="52"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="54"/>
         <source> (disabled)</source>
-        <translation type="unfinished">（無効）</translation>
+        <translation>（無効）</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="66"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="68"/>
         <source>Disable</source>
         <translation>無効化</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="70"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="72"/>
         <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="34"/>
         <source>Enable</source>
         <translation>有効化</translation>

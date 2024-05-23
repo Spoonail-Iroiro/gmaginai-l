@@ -39,6 +39,9 @@ class FormStateBase:
     def btn_cancel_clicked(self, body):
         pass
 
+    def btn_next_clicked(self, body):
+        pass
+
 
 class CancelError(Exception):
     pass
@@ -56,27 +59,38 @@ class ModInstallMessageForm(MessageFormBase):
         self.extracted_dir: Path | None = None
 
         self.state: FormStateBase = FormStateBase()
-        self.set_state(FormStateSelectMod())
 
         (
             self.btn_ok,
             self.btn_cancel,
+            self.btn_action1,
+            self.btn_action2,
+            self.btn_next,
         ) = tuple(
             self.set_buttons(
                 [
                     (self.tr("OK"), self.Buttons.AcceptRole),
                     (self.tr("Cancel"), self.Buttons.RejectRole),
+                    ("Action1", self.Buttons.ActionRole),
+                    ("Action2", self.Buttons.ActionRole),
+                    (self.tr("Next"), self.Buttons.ActionRole),
                 ]
             )
         )
         self.btn_ok.clicked.connect(self.btn_ok_clicked)
         self.btn_cancel.clicked.connect(self.rejectDialog)
+        self.btn_next.clicked.connect(self.btn_next_clicked)
+
+        self.set_state(FormStateSelectMod())
 
     def btn_ok_clicked(self):
         self.state.btn_ok_clicked(self)
 
     def btn_cancel_clicked(self):
         self.state.btn_cancel_clicked(self)
+
+    def btn_next_clicked(self):
+        self.state.btn_next_clicked(self)
 
     def dispose(self):
         if self.temp_dir is not None and self.temp_dir.exists():
@@ -90,6 +104,25 @@ class ModInstallMessageForm(MessageFormBase):
             self.state.exit(self)
         self.state = state
         self.state.enter(self)
+
+    def set_ok_cancel_buttons(self):
+        self.btn_ok.setVisible(True)
+        self.btn_ok.setEnabled(True)
+        self.btn_cancel.setVisible(True)
+        self.btn_cancel.setEnabled(True)
+        self.btn_action1.setVisible(False)
+        self.btn_action2.setVisible(False)
+        self.btn_next.setVisible(False)
+
+    def set_next_actions_buttons(self):
+        self.btn_ok.setVisible(False)
+        self.btn_cancel.setVisible(False)
+        self.btn_action1.setVisible(True)
+        self.btn_action1.setEnabled(True)
+        self.btn_action2.setVisible(True)
+        self.btn_action2.setEnabled(True)
+        self.btn_next.setVisible(True)
+        self.btn_next.setEnabled(True)
 
     def acceptDialog(self):
         self.dispose()
@@ -109,6 +142,7 @@ class FormStateSelectMod(FormStateBase):
                 "(If the selected mod is already installed, it will be updated)",
             )
         )
+        body.set_ok_cancel_buttons()
 
     def btn_ok_clicked(self, body: ModInstallMessageForm):
         try:
@@ -209,10 +243,7 @@ class FormStateConfirmMod(FormStateBase):
         )
         body.set_message(text_install_update)
 
-        body.btn_ok.setVisible(True)
-        body.btn_ok.setEnabled(True)
-        body.btn_cancel.setVisible(True)
-        body.btn_cancel.setEnabled(True)
+        body.set_ok_cancel_buttons()
 
     def btn_ok_clicked(self, body: ModInstallMessageForm):
         try:
@@ -246,17 +277,6 @@ class FormStateConfirmZip(FormStateBase):
         self._original_ok_text: str | None = None
 
     def enter(self, body: ModInstallMessageForm):
-        body.btn_ok.setVisible(True)
-        body.btn_ok.setEnabled(True)
-        self._original_ok_text = body.btn_ok.text()
-        body.btn_ok.setText(
-            QCoreApplication.translate(
-                "ModInstallMessageForm",
-                "Next",
-            )
-        )
-        body.btn_cancel.setVisible(False)
-        body.btn_cancel.setEnabled(False)
         body.set_message(
             QCoreApplication.translate(
                 "ModInstallMessageForm",
@@ -264,17 +284,19 @@ class FormStateConfirmZip(FormStateBase):
                 "It's recommended to see what's inside the extracted folder.",
             )
         )
-        (self.btn_open_extracted_dir,) = body.set_buttons(
-            [
-                (
-                    QCoreApplication.translate(
-                        "ModInstallMessageForm", "Open extracted folder"
-                    ),
-                    body.Buttons.ActionRole,
-                )
-            ]
+        body.set_next_actions_buttons()
+        body.btn_action2.setVisible(False)
+        self._init_action_button(body)
+
+    def _init_action_button(self, body: ModInstallMessageForm):
+        body.btn_action1.setText(
+            QCoreApplication.translate("ModInstallMessageForm", "Open extracted folder")
         )
-        self.btn_open_extracted_dir.clicked.connect(self.btn_open_extracted_dir_clicked)
+        body.btn_action1.clicked.connect(self.btn_open_extracted_dir_clicked)
+
+    def _dispose_action_button(self, body: ModInstallMessageForm):
+        body.btn_action1.setText("")
+        body.btn_action1.clicked.disconnect()
 
     def btn_open_extracted_dir_clicked(self):
         try:
@@ -282,17 +304,14 @@ class FormStateConfirmZip(FormStateBase):
         except Exception as ex:
             logger.exception("")
 
-    def btn_ok_clicked(self, body):
+    def btn_next_clicked(self, body):
         try:
             body.set_state(self.next_state)
         except Exception as ex:
             on_error(ex, body)
 
     def exit(self, body: ModInstallMessageForm):
-        body.btn_ok.setText(str(self._original_ok_text))
-        body.btn_cancel.setVisible(True)
-        if self.btn_open_extracted_dir is not None:
-            body.ui.bbx_main.removeButton(self.btn_open_extracted_dir)
+        self._dispose_action_button(body)
 
 
 class FormStateFinish(FormStateBase):
@@ -302,12 +321,15 @@ class FormStateFinish(FormStateBase):
     def enter(self, body: ModInstallMessageForm):
         body.set_message(self.message)
 
-        body.btn_ok.setVisible(True)
-        body.btn_ok.setEnabled(True)
-        body.btn_cancel.setVisible(True)
-        body.btn_cancel.setEnabled(False)
+        body.set_next_actions_buttons()
+        body.btn_action1.setVisible(False)
+        body.btn_action2.setVisible(False)
 
-    def btn_ok_clicked(self, body: ModInstallMessageForm):
+        body.btn_next.setText(
+            QCoreApplication.translate("ModInstallMessageForm", "Finish")
+        )
+
+    def btn_next_clicked(self, body: ModInstallMessageForm):
         body.rejectDialog()
 
 
@@ -332,12 +354,15 @@ class FormStateCompleted(FormStateBase):
         text_install_update = text_install_update.format(mod_name)
         body.set_message(text_install_update)
 
-        body.btn_ok.setVisible(True)
-        body.btn_ok.setEnabled(True)
-        body.btn_cancel.setVisible(True)
-        body.btn_cancel.setEnabled(False)
+        body.set_next_actions_buttons()
+        body.btn_action1.setVisible(False)
+        body.btn_action2.setVisible(False)
 
-    def btn_ok_clicked(self, body: ModInstallMessageForm):
+        body.btn_next.setText(
+            QCoreApplication.translate("ModInstallMessageForm", "Finish")
+        )
+
+    def btn_next_clicked(self, body: ModInstallMessageForm):
         body.acceptDialog()
 
 
