@@ -3,6 +3,7 @@ from typing import Optional, List, Tuple, Dict
 import logging
 from PySide6.QtWidgets import QDialog, QWidget, QListWidgetItem
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QDesktopServices
 from .mods_widget_ui import Ui_ModsWidget
 from .shown_event_widget import ShownEventWidget
 from ...core.mod_installer import ModInstaller
@@ -25,6 +26,7 @@ class ModsWidget(ShownEventWidget):
         self.ui.btn_up.clicked.connect(self.btn_up_clicked)
         self.ui.btn_down.clicked.connect(self.btn_down_clicked)
         self.ui.btn_add.clicked.connect(self.btn_add_clicked)
+        self.ui.btn_open_mod_own_dir.clicked.connect(self.btn_open_mod_directory)
 
     def refresh_mod_list(self):
         self.ui.lstMain.setCurrentRow(-1)
@@ -74,20 +76,19 @@ class ModsWidget(ShownEventWidget):
             self.current_index_memo = index
 
     def btn_enable_clicked(self):
-        selected_items = self.ui.lstMain.selectedItems()
-        if len(selected_items) >= 1:
-            selected_item = selected_items[0]
-            mod_info = selected_item.data(Qt.ItemDataRole.UserRole)
-            mod_name = mod_info["name"]
-            if mod_info["enabled"]:
-                self.mod_installer.disable_mod(mod_name)
-            else:
-                self.mod_installer.enable_mod(mod_name)
+        mod_info = self._get_current_mod_info()
+        if mod_info is None:
+            return
+        mod_name = mod_info["name"]
+        if mod_info["enabled"]:
+            self.mod_installer.disable_mod(mod_name)
+        else:
+            self.mod_installer.enable_mod(mod_name)
 
-            self.refresh_mod_list()
+        self.refresh_mod_list()
 
-            # set selected row to moved mod
-            self._set_current_row_to_mod(mod_name)
+        # set selected row to moved mod
+        self._set_current_row_to_mod(mod_name)
 
         pass
 
@@ -123,10 +124,26 @@ class ModsWidget(ShownEventWidget):
         self.ui.lstMain.setCurrentRow(moved_index)
         pass
 
+    def _get_current_mod_info(self):
+        selected_items = self.ui.lstMain.selectedItems()
+        if len(selected_items) >= 1:
+            selected_item = selected_items[0]
+            mod_info = selected_item.data(Qt.ItemDataRole.UserRole)
+            return mod_info
+        return None
+
     def btn_add_clicked(self):
         form = ModInstallMessageForm(self.mod_installer, parent=self)
         form.exec()
         self.refresh_mod_list()
+
+    def btn_open_mod_directory(self):
+        mod_info = self._get_current_mod_info()
+        if mod_info is None:
+            return
+        mod_dir = self.mod_installer.get_mod_own_dir(mod_info["name"])
+        mod_dir_url = mod_dir.as_uri()
+        QDesktopServices.openUrl(mod_dir_url)
 
     def shownEvent(self):
         self.refresh_mod_list()
