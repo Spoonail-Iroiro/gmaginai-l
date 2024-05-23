@@ -17,7 +17,7 @@ from .message_form_ui import Ui_MessageForm
 from .message_form import MessageFormBase
 from ..core.maginai_installer import MaginaiInstaller
 from ..core.mod_installer import ModInstaller
-from .. import funcs
+from .. import funcs, dirs
 
 
 logger = logging.getLogger(__name__)
@@ -277,6 +277,8 @@ class FormStateConfirmZip(FormStateBase):
 
         self.btn_open_extracted_dir: QPushButton | None = None
         self._original_ok_text: str | None = None
+        # Extracted dir copied from body.extracted_dir
+        self.copied_extracted_dir: Path | None = None
 
     def enter(self, body: ModInstallMessageForm):
         body.set_message(
@@ -302,7 +304,14 @@ class FormStateConfirmZip(FormStateBase):
 
     def btn_open_extracted_dir_clicked(self):
         try:
-            funcs.open_directory(self.extracted_dir)
+            if self.copied_extracted_dir is None:
+                dst = dirs.application_dir / "temp"
+                dst.mkdir(exist_ok=True)
+                temp_dir = Path(tempfile.mkdtemp(dir=dst))
+                shutil.copytree(self.extracted_dir, temp_dir, dirs_exist_ok=True)
+                self.copied_extracted_dir = temp_dir
+
+            funcs.open_directory(self.copied_extracted_dir)
         except Exception as ex:
             logger.exception("")
 
