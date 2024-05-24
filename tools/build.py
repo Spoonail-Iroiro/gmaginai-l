@@ -40,8 +40,8 @@ def place_assets():
     shutil.copy(proj_dir / "assets" / "run.bat", dist_dir / "run.bat")
     overwritetree_no_gitkeep(proj_dir / "_internal", dist_dir / "_internal")
     os.remove(dist_dir / "_internal" / "content_translation" / ".gitkeep")
-    shutil.copytree(proj_dir / "data", dist_dir / "data")
-    shutil.copytree(proj_dir / "QSS", dist_dir / "QSS")
+    (dist_dir / "data").mkdir()
+    shutil.copytree(proj_dir / "qss", dist_dir / "qss")
 
 
 if dist_dir.exists():
