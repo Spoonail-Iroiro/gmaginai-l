@@ -1,12 +1,21 @@
 from pathlib import Path
 from typing import Optional, List, Tuple, Dict
-from PySide6.QtWidgets import QDialog, QWidget, QListWidgetItem, QMessageBox
+from PySide6.QtWidgets import (
+    QDialog,
+    QWidget,
+    QListWidgetItem,
+    QMessageBox,
+    QApplication,
+)
 from PySide6.QtCore import Qt
 from .profile_form_ui import Ui_ProfileForm
 from .profile_edit_form import ProfileEditForm
 from .manager_form import ManagerForm
 from ..core.profile_service import ProfileService
 from .. import funcs
+from ..core.config_enum import Language
+from ..core.config_service import ConfigService
+from ..core.translation import set_translation
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,6 +38,21 @@ class ProfileForm(QDialog):
         self.ui.btn_add.clicked.connect(self.btn_add_clicked)
         self.ui.btn_edit.clicked.connect(self.btn_edit_clicked)
         self.ui.btn_delete.clicked.connect(self.btn_delete_clicked)
+
+        config = ConfigService().get_config()
+        i = 0
+        current_index = -1
+        for ln in Language:
+            self.ui.cmb_language.addItem(ln.value, ln)
+            if config.appearance.language == ln:
+                current_index = i
+            i += 1
+
+        self.ui.cmb_language.setCurrentIndex(current_index)
+
+        self.ui.cmb_language.currentIndexChanged.connect(
+            self.cmb_language_current_index_changed
+        )
 
         # for name in self.controller.get_profile_names():
         #     self.ui.lstMain.addItem(name)
@@ -100,7 +124,14 @@ class ProfileForm(QDialog):
                     profile_name
                 ),
             )
-            logger.info(isOk)
             if isOk:
                 self.profile_service.remove_profile(profile["id"])
                 self.refresh_list()
+
+    def cmb_language_current_index_changed(self, index):
+        config = ConfigService().get_config()
+        language = self.ui.cmb_language.itemData(index)
+        config.appearance.language = language
+        set_translation(QApplication.instance(), language)
+        self.ui.retranslateUi(self)
+        # logger.info(language)

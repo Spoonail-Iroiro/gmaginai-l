@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
-    QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
-    QSpacerItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QHBoxLayout,
+    QLabel, QListWidget, QListWidgetItem, QPushButton,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_ProfileForm(object):
     def setupUi(self, ProfileForm):
@@ -85,6 +85,21 @@ class Ui_ProfileForm(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_2 = QLabel(ProfileForm)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout_5.addWidget(self.label_2)
+
+        self.cmb_language = QComboBox(ProfileForm)
+        self.cmb_language.setObjectName(u"cmb_language")
+
+        self.horizontalLayout_5.addWidget(self.cmb_language)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
+
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
@@ -101,5 +116,6 @@ class Ui_ProfileForm(object):
         self.btn_add.setText(QCoreApplication.translate("ProfileForm", u"New", None))
         self.btn_edit.setText(QCoreApplication.translate("ProfileForm", u"Edit", None))
         self.btn_delete.setText(QCoreApplication.translate("ProfileForm", u"Delete", None))
+        self.label_2.setText(QCoreApplication.translate("ProfileForm", u"Language", None))
     # retranslateUi
 
