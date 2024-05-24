@@ -18,9 +18,8 @@ import logging
 from tinydb import TinyDB, Query
 from tinydb.table import Table
 from dataclasses import dataclass
-from .db_repository import get_current_db
 from .config_enum import Theme, Language
-from .db import get_db
+from .db import get_db, get_current_db
 
 logger = logging.getLogger(__name__)
 

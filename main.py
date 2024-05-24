@@ -7,8 +7,7 @@ from PySide6.QtCore import QTranslator, QLibraryInfo, QLocale
 from gmaginai_l.forms.profile_form import ProfileForm
 from gmaginai_l.dirs import application_dir
 from gmaginai_l.core.profile_service import ProfileService
-from gmaginai_l.core.db import get_db
-from gmaginai_l.core.db_repository import set_current_db
+from gmaginai_l.core.db import get_db, set_current_db
 from gmaginai_l.core.config_service import ConfigService
 from gmaginai_l.core.config_enum import Language, Theme
 from gmaginai_l.core.translation import set_translation
