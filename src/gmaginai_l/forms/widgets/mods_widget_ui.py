@@ -31,6 +31,20 @@ class Ui_ModsWidget(object):
 
         self.verticalLayout_2.addWidget(self.label)
 
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.btn_add = QPushButton(ModsWidget)
+        self.btn_add.setObjectName(u"btn_add")
+
+        self.horizontalLayout_2.addWidget(self.btn_add)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+
         self.txt_main = QLabel(ModsWidget)
         self.txt_main.setObjectName(u"txt_main")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
@@ -68,11 +82,6 @@ class Ui_ModsWidget(object):
 
         self.verticalLayout.addWidget(self.btn_down)
 
-        self.btn_add = QPushButton(ModsWidget)
-        self.btn_add.setObjectName(u"btn_add")
-
-        self.verticalLayout.addWidget(self.btn_add)
-
         self.btn_delete = QPushButton(ModsWidget)
         self.btn_delete.setObjectName(u"btn_delete")
 
@@ -102,11 +111,11 @@ class Ui_ModsWidget(object):
     def retranslateUi(self, ModsWidget):
         ModsWidget.setWindowTitle(QCoreApplication.translate("ModsWidget", u"Mods", None))
         self.label.setText(QCoreApplication.translate("ModsWidget", u"Mods", None))
+        self.btn_add.setText(QCoreApplication.translate("ModsWidget", u"Install/Update", None))
         self.txt_main.setText("")
         self.btn_enable.setText(QCoreApplication.translate("ModsWidget", u"Enable", None))
         self.btn_up.setText(QCoreApplication.translate("ModsWidget", u"\u2191", None))
         self.btn_down.setText(QCoreApplication.translate("ModsWidget", u"\u2193", None))
-        self.btn_add.setText(QCoreApplication.translate("ModsWidget", u"Install/Update", None))
         self.btn_delete.setText(QCoreApplication.translate("ModsWidget", u"Delete", None))
         self.btn_open_mod_own_dir.setText(QCoreApplication.translate("ModsWidget", u"Open mod's folder", None))
     # retranslateUi
