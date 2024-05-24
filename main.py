@@ -8,7 +8,11 @@ from gmaginai_l.forms.profile_form import ProfileForm
 from gmaginai_l.dirs import application_dir
 from gmaginai_l.core.profile_service import ProfileService
 from gmaginai_l.core.db import get_db
-from gmaginai_l import config
+from gmaginai_l.core.db_repository import set_current_db
+from gmaginai_l.core.config_service import ConfigService
+from gmaginai_l.core.config_enum import Language, Theme
+from gmaginai_l.core.translation import set_translation
+from gmaginai_l.core.theme import set_theme
 import sys
 import os
 
@@ -21,27 +25,19 @@ logging.basicConfig(level="INFO")
 try:
     # os.environ["QT_QPA_PLATFORM"] = "windows:darkmode=2"
     # sys.argv += ['-platform', 'windows:darkmode=1']
-    config.load_from_file(application_dir / "config.toml")
 
     db_path = application_dir / "data" / "db.json"
     db = get_db(db_path)
+    # set application db
+    set_current_db(db)
 
-    qss_path = application_dir / "QSS" / "QtDark.qss"
+    config = ConfigService().get_config()
 
     app = QApplication(sys.argv)
 
-    app.setStyle("fusion")
-    if qss_path.exists():
-        app.setStyleSheet(qss_path.read_text(encoding="utf-8"))
-    else:
-        raise ValueError()
+    set_translation(app, config.appearance.language)
 
-    translation_file_path = (
-        application_dir / "_internal" / "content_translation" / "gmaginai-l_ja.qm"
-    )
-    translator = QTranslator(app)
-    translator.load(translation_file_path.name, str(translation_file_path.parent))
-    app.installTranslator(translator)
+    set_theme(app, config.appearance.theme)
 
     profile_service = ProfileService(db)
     form = ProfileForm(profile_service)

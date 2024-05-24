@@ -7,7 +7,6 @@ from .maginai_widget_ui import Ui_MaginaiWidget
 from ..maginai_install_message_form import MaginaiInstallMessageForm
 from ...core.maginai_installer import MaginaiInstaller
 from ..maginai_uninstall_message_form import MaginaiUninstallMessageForm
-from ... import config
 from ... import funcs
 
 logger = logging.getLogger(__name__)

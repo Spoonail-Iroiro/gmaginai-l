@@ -8,7 +8,7 @@ from .widgets.maginai_widget import MaginaiWidget
 from ..core.maginai_installer import MaginaiInstaller
 from ..core.mod_installer import ModInstaller
 from .widgets.shown_event_widget import ShownEventWidget
-from .. import config
+from ..core.config_service import ConfigService
 
 logger = logging.getLogger(__name__)
 
@@ -45,9 +45,9 @@ class ManagerForm(QDialog):
         )
 
     def _get_installer(self):
-        config_obj = config.get_config()
+        config = ConfigService().get_config()
         installer = MaginaiInstaller(
-            Path(self.profile["game_dir"]), config_obj.list_release_endpoint
+            Path(self.profile["game_dir"]), config.externalSource.list_release_endpoint
         )
 
         return installer

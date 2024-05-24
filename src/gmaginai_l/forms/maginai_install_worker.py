@@ -8,7 +8,6 @@ from PySide6.QtWidgets import QDialog, QWidget, QDialogButtonBox
 from PySide6.QtCore import QThreadPool, Signal, QObject, Slot
 from ..core.maginai_installer import MaginaiInstaller
 from .message_form_ui import Ui_MessageForm
-from .. import config
 
 
 logger = logging.getLogger(__name__)
