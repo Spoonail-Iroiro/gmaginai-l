@@ -5,7 +5,6 @@ from PySide6.QtCore import QTranslator, QLibraryInfo, QLocale
 
 # from save_backup.forms.game_select_form import GameSelectForm
 from gmaginai_l.forms.profile_form import ProfileForm
-from gmaginai_l.core.app_setting_manager import AppSettingManager
 from gmaginai_l.dirs import application_dir
 from gmaginai_l.core.profile_service import ProfileService
 from gmaginai_l.core.db import get_db
