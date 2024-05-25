@@ -1,3 +1,5 @@
+set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
+
 # first command
 default:
     just -l --unsorted
@@ -36,7 +38,7 @@ linguist:
 # generate/update translation file (.ts)
 update-translation-files:
     python ./tools/list_translation_targets.py
-    pyside6-lupdate @.trlist -ts ./src/translation/gmaginai-l_ja.ts
+    pyside6-lupdate "@.trlist" -ts ./src/translation/gmaginai-l_ja.ts
 
 # compile translation file (.ts) to binary (.qm)
 compile-translation:
