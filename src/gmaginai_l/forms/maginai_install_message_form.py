@@ -9,7 +9,7 @@ from enum import Enum, auto
 from ..core.maginai_installer import MaginaiInstaller
 from .message_form_ui import Ui_MessageForm
 from .message_form import MessageFormBase
-from .maginai_install_worker import MaginaiInstallWorker
+from .workers.maginai_install_worker import MaginaiInstallWorker
 
 
 logger = logging.getLogger(__name__)
