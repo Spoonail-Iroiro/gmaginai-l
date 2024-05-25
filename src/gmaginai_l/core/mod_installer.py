@@ -68,6 +68,9 @@ class ModInstaller:
         return init_js_paths[0].parent
 
     def install_mod(self, mod_main_folder: Path):
+        mod_dir = self.maginai_installer.get_mod_dir()
+        if not mod_dir.exists():
+            raise ValueError(f"maginai is not installed")
         mod_name = mod_main_folder.name
         mod_own_dir = self.get_mod_own_dir(mod_name)
         if not mod_main_folder.is_dir():

@@ -32,6 +32,11 @@ class ModsWidget(ShownEventWidget):
 
     def refresh_mod_list(self):
         try:
+            mod_exists = self.mod_installer.maginai_installer.get_mod_dir().exists()
+            if not mod_exists:
+                self._show_message("'maginai' is not installed.")
+                self._disable_all_buttons()
+                return
             self.ui.lstMain.setCurrentRow(-1)
             self.ui.lstMain.clear()
             enabled_mods = self.mod_installer.get_enabled_mods()
@@ -65,7 +70,12 @@ class ModsWidget(ShownEventWidget):
                 item.setData(Qt.ItemDataRole.UserRole, mod_info)
                 self.ui.lstMain.addItem(item)
 
+            self._enabled_all_buttons()
+            if self.ui.lstMain.count() == 0:
+                self._disable_buttons_for_each_mod()
+
             self.ui.lstMain.setCurrentRow(self.current_index_memo)
+            logger.info(f"Current: {self.current_index_memo}")
             # Clear message on successfull refresh
             self._show_message("")
         except Exception as ex:
@@ -89,10 +99,33 @@ class ModsWidget(ShownEventWidget):
                     self.ui.btn_enable.setText(self.tr("Enable"))
                     self.ui.btn_up.setEnabled(False)
                     self.ui.btn_down.setEnabled(False)
-
                 self.current_index_memo = index
+                logger.info(f"Set {index}")
+            else:
+                self._disable_buttons_for_each_mod()
+
         except Exception as ex:
             self._on_error(ex)
+
+    def _enabled_all_buttons(self):
+        self.ui.btn_enable.setEnabled(True)
+        self.ui.btn_up.setEnabled(True)
+        self.ui.btn_down.setEnabled(True)
+        self.ui.btn_open_mod_own_dir.setEnabled(True)
+        self.ui.btn_delete.setEnabled(True)
+        self.ui.btn_add.setEnabled(True)
+
+    def _disable_buttons_for_each_mod(self):
+        self.ui.btn_enable.setText(self.tr("Enable"))
+        self.ui.btn_enable.setEnabled(False)
+        self.ui.btn_up.setEnabled(False)
+        self.ui.btn_down.setEnabled(False)
+        self.ui.btn_open_mod_own_dir.setEnabled(False)
+        self.ui.btn_delete.setEnabled(False)
+
+    def _disable_all_buttons(self):
+        self._disable_buttons_for_each_mod()
+        self.ui.btn_add.setEnabled(False)
 
     def btn_enable_clicked(self):
         try:

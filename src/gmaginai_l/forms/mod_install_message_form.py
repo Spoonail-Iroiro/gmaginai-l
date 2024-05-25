@@ -284,7 +284,7 @@ class FormStateConfirmZip(FormStateBase):
         body.set_message(
             QCoreApplication.translate(
                 "ModInstallMessageForm",
-                "Usually distribution zip file includes helpful readme, other docs or utilities."
+                "Note: usually distribution zip file includes helpful readme, other docs or utilities. "
                 "It's recommended to see what's inside the extracted folder.",
             )
         )
