@@ -45,10 +45,11 @@ def test_from_dict(service):
     expected = """
 LOADDATA = {
   mods: [
+    // enabled mods
     'atrack',
     'sample',
   ]
-}
+};
     """.strip()
 
     assert js == expected
