@@ -71,6 +71,11 @@ class Ui_ProfileEditForm(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
+        self.btn_detect_steam_version = QPushButton(ProfileEditForm)
+        self.btn_detect_steam_version.setObjectName(u"btn_detect_steam_version")
+
+        self.horizontalLayout_2.addWidget(self.btn_detect_steam_version)
+
         self.btn_ok = QPushButton(ProfileEditForm)
         self.btn_ok.setObjectName(u"btn_ok")
 
@@ -95,6 +100,7 @@ class Ui_ProfileEditForm(object):
         self.label_4.setText(QCoreApplication.translate("ProfileEditForm", u"Name", None))
         self.label.setText(QCoreApplication.translate("ProfileEditForm", u"Game directory", None))
         self.btn_open.setText(QCoreApplication.translate("ProfileEditForm", u"Select Game.exe", None))
+        self.btn_detect_steam_version.setText(QCoreApplication.translate("ProfileEditForm", u"Detect Steam version", None))
         self.btn_ok.setText(QCoreApplication.translate("ProfileEditForm", u"OK", None))
         self.btn_cancel.setText(QCoreApplication.translate("ProfileEditForm", u"Cancel", None))
     # retranslateUi

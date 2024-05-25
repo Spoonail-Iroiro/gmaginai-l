@@ -10,10 +10,10 @@ logger = logging.getLogger(__name__)
 
 class ProfileEditForm(QDialog):
     def __init__(
-        self,
-        name: str = "",
-        game_dir: str | Path = "",
-        parent=None,
+            self,
+            name: str = "",
+            game_dir: str | Path = "",
+            parent=None,
     ):
         super().__init__(parent)
         self.ui = Ui_ProfileEditForm()
@@ -27,6 +27,8 @@ class ProfileEditForm(QDialog):
         self.ui.btn_ok.clicked.connect(self.btn_ok_clicked)
         self.ui.btn_cancel.clicked.connect(self.reject)
         self.ui.btn_open.clicked.connect(self.btn_open_clicked)
+
+        self.ui.btn_detect_steam_version.clicked.connect(self.btn_detect_steam_version)
 
     def btn_ok_clicked(self):
         game_dir = Path(self.ui.txt_game_dir.text())
@@ -73,3 +75,10 @@ class ProfileEditForm(QDialog):
             game_dir = game_exe_path.parent
 
             self.ui.txt_game_dir.setText(str(game_dir))
+
+    # def btn_steam
+    def btn_detect_steam_version(self):
+        PATH = Path(r"C:\Program Files (x86)\Steam\steamapps\common\isekainosouzousha")
+        if PATH.exists():
+            self.ui.txt_game_dir.setText(str(PATH))
+            self.ui.txt_name.setText("steam")
