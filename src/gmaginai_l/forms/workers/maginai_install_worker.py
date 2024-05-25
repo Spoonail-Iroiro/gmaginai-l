@@ -55,7 +55,7 @@ class MaginaiInstallWorker(QObject):
                     self._set_message(self.tr("Downloading..."))
                     self.installer.set_work_dir(temp_dir)
                     zip_path = self.installer.download_by_tag_name(
-                        self.tag_name_to_install
+                        self.tag_name_to_install, timeout=20
                     )
                     self._check_cancel()
                     self._set_message(self.tr("Extracting..."))
