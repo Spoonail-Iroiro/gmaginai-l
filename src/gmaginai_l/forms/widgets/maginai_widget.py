@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Optional, List, Tuple, Dict
 import logging
 from PySide6.QtWidgets import QDialog, QWidget
+from PySide6.QtCore import QThreadPool
 from .shown_event_widget import ShownEventWidget
 from .maginai_widget_ui import Ui_MaginaiWidget
 from ..maginai_install_message_form import MaginaiInstallMessageForm
@@ -10,6 +11,7 @@ from ...core.maginai_installer import MaginaiInstaller
 from ..maginai_uninstall_message_form import MaginaiUninstallMessageForm
 from ... import funcs
 from ...core.coaw_launcher import CoAWLauncher
+from ..workers.release_info_worker import ReleaseInfoWorker
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +21,11 @@ class MaginaiWidget(ShownEventWidget):
         super().__init__(parent)
         self.ui = Ui_MaginaiWidget()
         self.ui.setupUi(self)
+
         self.installer = installer
+        self.release_info_worker = ReleaseInfoWorker(self.installer, self)
+        self.release_info_requested = False
+        self.tag_names: List[str] | None = None
 
         self.ui.btn_install.clicked.connect(self.btn_install_clicked)
         self.ui.btn_open_mod_folder.clicked.connect(self.btn_open_mod_folder_clicked)
@@ -36,25 +42,15 @@ class MaginaiWidget(ShownEventWidget):
         # self.ui.btn_install
 
     def btn_install_clicked(self):
-        try:
-            tag_names = self.installer.get_release_tag_names()
-        except Exception as ex:
-            message = funcs.formatError(ex)
-            self._display_error(
-                self.tr(
-                    "An error occured during getting release information. It might be network issue: {0}"
-                ).format(message)
-            )
-            raise
-        else:
-            # Install latest
-            form = MaginaiInstallMessageForm(
-                self.installer,
-                tag_names[0],
-                parent=self,
-            )
-            form.exec()
-            self.refresh_install_state()
+        tag_name = self.ui.cmb_tag.currentText()
+        # Install latest
+        form = MaginaiInstallMessageForm(
+            self.installer,
+            tag_name,
+            parent=self,
+        )
+        form.exec()
+        self.refresh_install_state()
 
     def btn_open_mod_folder_clicked(self):
         funcs.open_directory(self.installer.get_mod_dir())
@@ -74,6 +70,8 @@ class MaginaiWidget(ShownEventWidget):
             tags_exist = self.installer.maginai_tags_exist()
             mod_exists = self.installer.get_mod_dir().exists()
             self._set_all_maginai_buttons_enabled()
+            # disable install (online) when can't access release
+            self.ui.btn_install.setEnabled(self.tag_names is not None)
 
             if tags_exist and mod_exists:
                 message = self.tr("'maginai' installed.")
@@ -119,3 +117,23 @@ class MaginaiWidget(ShownEventWidget):
 
     def shownEvent(self):
         pass
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        # request only once
+        if not self.release_info_requested:
+            self.release_info_worker.completed.connect(
+                self.release_info_worker_completed
+            )
+            self.release_info_worker.failed.connect(self._display_error)
+            QThreadPool.globalInstance().start(self.release_info_worker.run)
+            self.release_info_requested = True
+
+    def release_info_worker_completed(self, tag_names: List[str]):
+        logger.info(f"tag name received: {tag_names}")
+        self.tag_names = tag_names
+        self.ui.btn_install.setEnabled(True)
+        self.ui.cmb_tag.clear()
+        for tag_name in tag_names:
+            self.ui.cmb_tag.addItem(tag_name)
+        self.ui.cmb_tag.setCurrentIndex(0)

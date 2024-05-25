@@ -15,8 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QPushButton,
-    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QHBoxLayout, QLabel,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
 class Ui_MaginaiWidget(object):
     def setupUi(self, MaginaiWidget):
@@ -87,6 +88,11 @@ class Ui_MaginaiWidget(object):
 
         self.horizontalLayout_5.addWidget(self.btn_install)
 
+        self.cmb_tag = QComboBox(MaginaiWidget)
+        self.cmb_tag.setObjectName(u"cmb_tag")
+
+        self.horizontalLayout_5.addWidget(self.cmb_tag)
+
         self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer_4)
@@ -156,7 +162,7 @@ class Ui_MaginaiWidget(object):
         self.txt_error.setText("")
         self.btn_start_game.setText(QCoreApplication.translate("MaginaiWidget", u"Start game", None))
         self.btn_start_game_with_console.setText(QCoreApplication.translate("MaginaiWidget", u"Start game with console", None))
-        self.btn_install.setText(QCoreApplication.translate("MaginaiWidget", u"Install/Update maginai (latest)", None))
+        self.btn_install.setText(QCoreApplication.translate("MaginaiWidget", u"Install/Update maginai", None))
         self.btn_open_mod_folder.setText(QCoreApplication.translate("MaginaiWidget", u"Open 'mod' folder", None))
         self.btn_uninstall_only_tags.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (only tags)", None))
         self.btn_uninstall_all.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (all)", None))

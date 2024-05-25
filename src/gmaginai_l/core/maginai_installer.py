@@ -43,8 +43,8 @@ class MaginaiInstaller:
             raise ValueError(f"work_dir required")
         return self._work_dir
 
-    def get_release_tag_names(self) -> List[str]:
-        res = requests.get(self.list_release_endpoint)
+    def get_release_tag_names(self, timeout: int | None = None) -> List[str]:
+        res = requests.get(self.list_release_endpoint, timeout=timeout)
         res.raise_for_status()
         release_list = res.json()
         tag_names_with_release = (
@@ -58,8 +58,8 @@ class MaginaiInstaller:
 
         return tag_names_with_release
 
-    def download_by_tag_name(self, tag_name: str) -> Path:
-        res = requests.get(self.list_release_endpoint)
+    def download_by_tag_name(self, tag_name: str, timeout: int | None = None) -> Path:
+        res = requests.get(self.list_release_endpoint, timeout=timeout)
         res.raise_for_status()
         release_list = res.json()
         target_release_asset: dict | None = None

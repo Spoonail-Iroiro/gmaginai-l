@@ -131,9 +131,12 @@
      <item>
       <widget class="QPushButton" name="btn_install">
        <property name="text">
-        <string>Install/Update maginai (latest)</string>
+        <string>Install/Update maginai</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="cmb_tag"/>
      </item>
      <item>
       <spacer name="horizontalSpacer_4">
