@@ -22,12 +22,15 @@ class MaginaiWidget(ShownEventWidget):
         self.installer = installer
 
         self.ui.btn_install.clicked.connect(self.btn_install_clicked)
+        self.ui.btn_open_mod_folder.clicked.connect(self.btn_open_mod_folder_clicked)
         self.ui.btn_uninstall_only_tags.clicked.connect(
             self.btn_uninstall_only_tags_clicked
         )
         self.ui.btn_uninstall_all.clicked.connect(self.btn_uninstall_all_clicked)
         self.ui.btn_start_game.clicked.connect(self.btn_start_game_clicked)
-        self.ui.btn_start_game_with_console.clicked.connect(self.btn_start_game_with_console_clicked)
+        self.ui.btn_start_game_with_console.clicked.connect(
+            self.btn_start_game_with_console_clicked
+        )
 
         self.refresh_install_state()
         # self.ui.btn_install
@@ -52,6 +55,9 @@ class MaginaiWidget(ShownEventWidget):
             )
             form.exec()
             self.refresh_install_state()
+
+    def btn_open_mod_folder_clicked(self):
+        funcs.open_directory(self.installer.get_mod_dir())
 
     def btn_uninstall_only_tags_clicked(self):
         form = MaginaiUninstallMessageForm(self.installer, False)
@@ -78,10 +84,12 @@ class MaginaiWidget(ShownEventWidget):
                 message = self.tr(
                     "Invalid 'maginai' installation. ('mod' folder is missing)"
                 )
+                self.ui.btn_open_mod_folder.setEnabled(False)
             else:
                 message = self.tr("'maginai' is not installed.")
                 self.ui.btn_uninstall_only_tags.setEnabled(False)
                 self.ui.btn_uninstall_all.setEnabled(False)
+                self.ui.btn_open_mod_folder.setEnabled(False)
         except Exception as ex:
             logger.exception("")
             self._display_error(funcs.formatError(ex))
@@ -91,8 +99,11 @@ class MaginaiWidget(ShownEventWidget):
 
     def _set_all_maginai_buttons_enabled(self):
         self.ui.btn_install.setEnabled(True)
+        self.ui.btn_open_mod_folder.setEnabled(True)
         self.ui.btn_uninstall_only_tags.setEnabled(True)
         self.ui.btn_uninstall_all.setEnabled(True)
+        self.ui.btn_start_game.setEnabled(True)
+        self.ui.btn_start_game_with_console.setEnabled(True)
 
     def _set_install_state(self, message):
         self.ui.txt_main.setText(message)

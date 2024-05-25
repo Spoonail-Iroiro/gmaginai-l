@@ -30,7 +30,7 @@ class Ui_MaginaiWidget(object):
         self.txt_main = QLabel(MaginaiWidget)
         self.txt_main.setObjectName(u"txt_main")
         self.txt_main.setMinimumSize(QSize(0, 0))
-        self.txt_main.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.txt_main.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
         self.txt_main.setWordWrap(True)
         self.txt_main.setOpenExternalLinks(True)
 
@@ -42,7 +42,7 @@ class Ui_MaginaiWidget(object):
         self.txt_error = QLabel(MaginaiWidget)
         self.txt_error.setObjectName(u"txt_error")
         self.txt_error.setMinimumSize(QSize(0, 0))
-        self.txt_error.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.txt_error.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
         self.txt_error.setWordWrap(True)
         self.txt_error.setOpenExternalLinks(True)
 
@@ -94,6 +94,20 @@ class Ui_MaginaiWidget(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_5)
 
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.btn_open_mod_folder = QPushButton(MaginaiWidget)
+        self.btn_open_mod_folder.setObjectName(u"btn_open_mod_folder")
+
+        self.horizontalLayout_10.addWidget(self.btn_open_mod_folder)
+
+        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_10.addItem(self.horizontalSpacer_9)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_10)
+
         self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
@@ -143,6 +157,7 @@ class Ui_MaginaiWidget(object):
         self.btn_start_game.setText(QCoreApplication.translate("MaginaiWidget", u"Start game", None))
         self.btn_start_game_with_console.setText(QCoreApplication.translate("MaginaiWidget", u"Start game with console", None))
         self.btn_install.setText(QCoreApplication.translate("MaginaiWidget", u"Install/Update maginai (latest)", None))
+        self.btn_open_mod_folder.setText(QCoreApplication.translate("MaginaiWidget", u"Open 'mod' folder", None))
         self.btn_uninstall_only_tags.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (only tags)", None))
         self.btn_uninstall_all.setText(QCoreApplication.translate("MaginaiWidget", u"Uninstall (all)", None))
     # retranslateUi
