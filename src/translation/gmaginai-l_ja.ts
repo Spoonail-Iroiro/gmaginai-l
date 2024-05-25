@@ -27,54 +27,54 @@
 <context>
     <name>MaginaiInstallWorker</name>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="38"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="37"/>
         <source>Starting...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="51"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="50"/>
         <source>Making backup of existing mod folder...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="56"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="55"/>
         <source>Downloading...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="62"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="61"/>
         <source>Extracting...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="66"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="65"/>
         <source>Installing...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="70"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="69"/>
         <source>Migrating mods from old...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="82"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="81"/>
         <source>Failed to recovery old mod folder from {0}. Please recover it manually.
 </source>
         <translation>{0}からのアップデート前の&apos;mod&apos;フォルダーの復元に失敗しました。手動で復元してください。
 </translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="88"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="87"/>
         <source>Mod loader &apos;maginai&apos; successfully installed.</source>
         <translation>Modローダー&apos;maginai&apos;は正常にインストールされました。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="91"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="90"/>
         <source>Installation is cancelled by user.</source>
         <translation>インストールはキャンセルされました。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="96"/>
+        <location filename="../gmaginai_l/forms/maginai_install_worker.py" line="95"/>
         <source>An error occured during install. Please try again.
 {0}{1}</source>
         <translation>インストール中にエラーが発生しました。
@@ -189,32 +189,32 @@
         <translation>アンインストール（すべて）</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="40"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="43"/>
         <source>An error occured during getting release information. It might be network issue: {0}</source>
         <translation>&apos;maginai&apos;のリリース情報を取得中にエラーが発生しました。ネットワーク接続に問題がある可能性があります。{0}</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="71"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="74"/>
         <source>&apos;maginai&apos; installed.</source>
         <translation type="unfinished">’maginai’がインストールされています。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="73"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="76"/>
         <source>&apos;maginai&apos; is not installed. (&apos;mod&apos; folder remains)</source>
         <translation>’maginai’がインストールされていません（以前の&apos;mod&apos;フォルダーが存在します）。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="78"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="81"/>
         <source>Invalid &apos;maginai&apos; installation. (&apos;mod&apos; folder is missing)</source>
         <translation>&apos;maginai&apos;インストールの状態が不正です（&apos;mod&apos;フォルダーが存在しません）。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="80"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="83"/>
         <source>&apos;maginai&apos; is not installed.</source>
         <translation>’maginai’がインストールされていません。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="87"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.py" line="90"/>
         <source>Unknown installation state. Try install to clean up.</source>
         <translation>インストール状態を取得できませんでした。新規インストールで解決する可能性があります。</translation>
     </message>
@@ -273,26 +273,42 @@
         <translation>Modインストール/アップデート</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="144"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="146"/>
         <source>Select init.js in mod&apos;s main folder or distribution zip file.
 (If the selected mod is already installed, it will be updated)</source>
         <translation>インストールしたいmodの本体フォルダ内のinit.jsかmodを含む配布zipファイルを選択してください。
 （選択したmodがすでにインストール済の場合アップデートが行われます）</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="206"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="208"/>
         <source>The selected file is not init.js, so you might selected wrong mod&apos;s main folder. Proceed anyway?</source>
         <translation>選択されたファイルはinit.jsファイルではありません。指定されたフォルダーがmod本体フォルダーではない可能性があります。続行しますか？</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="237"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="239"/>
         <source>Mod &apos;{0}&apos; will be installed.</source>
         <translation>mod &apos;{0}&apos;がインストールされます。よろしいですか？</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="242"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="244"/>
         <source>Mod &apos;{0}&apos; will be updated.</source>
         <translation>mod &apos;{0}&apos;がアップデートされます。よろしいですか？</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="366"/>
+        <source>Updated &apos;{0}&apos; successfully.
+Note: If the mod contains user-editable files, such as setting file, you should manually migrate it from old to current.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="384"/>
+        <source>Open old folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="389"/>
+        <source>Open current folder</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="76"/>
@@ -300,40 +316,39 @@
         <translation>次へ</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="286"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="290"/>
         <source>Usually distribution zip file includes helpful readme, other docs or utilities.It&apos;s recommended to see what&apos;s inside the extracted folder.</source>
         <translation>通常、配布zipファイルは説明書や他のドキュメント、ユーティリティスクリプト等を含んでいます。解凍されたフォルダを確認することをおすすめします。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="294"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="298"/>
         <source>Open extracted folder</source>
         <translation>解凍されたフォルダを開く</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="330"/>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="363"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="341"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="379"/>
         <source>Finish</source>
         <translation>終了</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="348"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="359"/>
         <source>Installed &apos;{0}&apos; successfully.</source>
         <translation>Mod &apos;{0}&apos;を正常にインストールしました。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="353"/>
         <source>Updated &apos;{0}&apos; successfully.</source>
-        <translation>Mod &apos;{0}&apos;を正常にアップデートしました。</translation>
+        <translation type="vanished">Mod &apos;{0}&apos;を正常にアップデートしました。</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="375"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="419"/>
         <source>An error occured during install.
 {0}</source>
         <translation>インストール中にエラーが発生しました。
 {0}</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="201"/>
+        <location filename="../gmaginai_l/forms/mod_install_message_form.py" line="203"/>
         <source>Confirm</source>
         <translation>確認</translation>
     </message>
@@ -347,33 +362,49 @@
         <translation>Mod</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="54"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="61"/>
         <source> (disabled)</source>
         <translation>（無効）</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="68"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="76"/>
+        <source>Couldn&apos;t load mods information. Try (re)install &apos;maginai&apos; to clean up.
+{0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="85"/>
         <source>Disable</source>
         <translation>無効化</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="72"/>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="34"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="89"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="80"/>
         <source>Enable</source>
         <translation>有効化</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="41"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="185"/>
+        <source>Confirm</source>
+        <translation type="unfinished">確認</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.py" line="186"/>
+        <source>Uninstall mod &apos;{0}&apos;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="87"/>
         <source>↑</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="48"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="94"/>
         <source>↓</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="55"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="29"/>
         <source>Install/Update</source>
         <translation>新規インストール/アップデート</translation>
     </message>
@@ -382,12 +413,12 @@
         <translation type="obsolete">新規</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="62"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="101"/>
         <source>Delete</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="69"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="108"/>
         <source>Open mod&apos;s folder</source>
         <translation>modのフォルダーを開く</translation>
     </message>
@@ -416,11 +447,16 @@
     </message>
     <message>
         <location filename="../gmaginai_l/forms/profile_edit_form.ui" line="83"/>
+        <source>Detect Steam version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/profile_edit_form.ui" line="90"/>
         <source>OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/profile_edit_form.ui" line="90"/>
+        <location filename="../gmaginai_l/forms/profile_edit_form.ui" line="97"/>
         <source>Cancel</source>
         <translation>キャンセル</translation>
     </message>
@@ -448,9 +484,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/profile_form.ui" line="25"/>
         <source>Select profile</source>
-        <translation>プロファイルを選択してください</translation>
+        <translation type="vanished">プロファイルを選択してください</translation>
     </message>
     <message>
         <location filename="../gmaginai_l/forms/profile_form.ui" line="47"/>
@@ -458,27 +493,41 @@
         <translation>選択</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/profile_form.ui" line="71"/>
         <source>Add</source>
-        <translation>新規</translation>
+        <translation type="vanished">新規</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/profile_form.ui" line="78"/>
+        <location filename="../gmaginai_l/forms/profile_form.ui" line="27"/>
+        <source>Select profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/profile_form.ui" line="77"/>
+        <source>New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/profile_form.ui" line="84"/>
         <source>Edit</source>
         <translation>編集</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/profile_form.ui" line="85"/>
+        <location filename="../gmaginai_l/forms/profile_form.ui" line="91"/>
         <source>Delete</source>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/profile_form.py" line="98"/>
+        <location filename="../gmaginai_l/forms/profile_form.ui" line="115"/>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/profile_form.py" line="122"/>
         <source>Confirm</source>
         <translation>確認</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/profile_form.py" line="99"/>
+        <location filename="../gmaginai_l/forms/profile_form.py" line="123"/>
         <source>Do you really want to delete the profile &apos;{0}&apos;?</source>
         <translation>プロファイル&apos;{0}&apos;を削除しますか？</translation>
     </message>

@@ -32,7 +32,10 @@ import os
 # TODO: fix
 def overwritetree_no_gitkeep(src_dir, dst_dir):
     for path in src_dir.glob("*"):
-        shutil.copytree(path, dst_dir / path.name)
+        if path.is_dir():
+            shutil.copytree(path, dst_dir / path.name)
+        else:
+            shutil.copy(path, dst_dir / path.name)
 
 
 def place_assets():

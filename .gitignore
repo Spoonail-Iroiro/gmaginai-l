@@ -28,6 +28,7 @@ config.toml
 /tests/sandbox
 /data/db.json
 /temp/
+/_internal/launch*
 
 _internal/content_translation/*
 !_internal/content_translation/.gitkeep

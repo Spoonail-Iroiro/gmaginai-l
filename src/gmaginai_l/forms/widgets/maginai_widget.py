@@ -1,3 +1,4 @@
+import subprocess
 from pathlib import Path
 from typing import Optional, List, Tuple, Dict
 import logging
@@ -8,6 +9,7 @@ from ..maginai_install_message_form import MaginaiInstallMessageForm
 from ...core.maginai_installer import MaginaiInstaller
 from ..maginai_uninstall_message_form import MaginaiUninstallMessageForm
 from ... import funcs
+from ...core.coaw_launcher import CoAWLauncher
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +26,8 @@ class MaginaiWidget(ShownEventWidget):
             self.btn_uninstall_only_tags_clicked
         )
         self.ui.btn_uninstall_all.clicked.connect(self.btn_uninstall_all_clicked)
+        self.ui.btn_start_game.clicked.connect(self.btn_start_game_clicked)
+        self.ui.btn_start_game_with_console.clicked.connect(self.btn_start_game_with_console_clicked)
 
         self.refresh_install_state()
         # self.ui.btn_install
@@ -92,6 +96,12 @@ class MaginaiWidget(ShownEventWidget):
 
     def _set_install_state(self, message):
         self.ui.txt_main.setText(message)
+
+    def btn_start_game_clicked(self):
+        CoAWLauncher().launch(self.installer.game_dir)
+
+    def btn_start_game_with_console_clicked(self):
+        CoAWLauncher().launch_with_dev_console(self.installer.game_dir)
 
     def _display_error(self, message):
         self.ui.txt_error.setText(message)
