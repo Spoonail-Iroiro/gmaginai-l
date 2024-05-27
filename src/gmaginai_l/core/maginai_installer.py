@@ -43,6 +43,21 @@ class MaginaiInstaller:
             raise ValueError(f"work_dir required")
         return self._work_dir
 
+    def get_version(self) -> str | None:
+        version_js_path = self.get_mod_dir() / "version.js"
+
+        if version_js_path.exists():
+            target_text = version_js_path.read_text(encoding="utf-8")
+        else:
+            target_text = (self.get_mod_dir() / "loader.js").read_text(encoding="utf-8")
+
+        matches = re.findall(r"\d+\.\d+\.\d+", target_text)
+
+        if len(matches) == 0:
+            return None
+        else:
+            return matches[-1]
+
     def get_release_tag_names(self, timeout: int | None = None) -> List[str]:
         res = requests.get(self.list_release_endpoint, timeout=timeout)
         res.raise_for_status()

@@ -65,16 +65,26 @@ class MaginaiWidget(ShownEventWidget):
         form.exec()
         self.refresh_install_state()
 
+    def _get_version_text(self):
+        try:
+            version = self.installer.get_version()
+            version = version if version is not None else "<unknown version>"
+        except Exception:
+            version = "<unknown version>"
+
+        return version
+
     def refresh_install_state(self):
         try:
             tags_exist = self.installer.maginai_tags_exist()
             mod_exists = self.installer.get_mod_dir().exists()
+            version = self._get_version_text()
             self._set_all_maginai_buttons_enabled()
             # disable install (online) when can't access release
             self.ui.btn_install.setEnabled(self.tag_names is not None)
 
             if tags_exist and mod_exists:
-                message = self.tr("'maginai' installed.")
+                message = self.tr("'maginai' v{0} installed.").format(version)
             elif mod_exists:
                 message = self.tr("'maginai' is not installed. ('mod' folder remains)")
                 self.ui.btn_uninstall_only_tags.setEnabled(False)
