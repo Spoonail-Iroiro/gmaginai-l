@@ -40,9 +40,16 @@ class ExternalSourceConfig:
 
 @serde()
 @dataclass
+class MiscConfig:
+    log_level: str = "WARNING"
+
+
+@serde()
+@dataclass
 class Config:
     appearance: AppearanceConfig = field(default_factory=AppearanceConfig)
     external_source: ExternalSourceConfig = field(default_factory=ExternalSourceConfig)
+    misc: MiscConfig = field(default_factory=MiscConfig)
 
 
 class ConfigService:

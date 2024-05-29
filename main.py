@@ -27,9 +27,12 @@ try:
     # set application db
     set_current_db(db)
 
-    config = ConfigService().get_config()
+    service = ConfigService()
+    config = service.get_config()
+    # for app update
+    service.save_config(config)
 
-    setup_log("INFO")
+    setup_log(config.misc.log_level)
 
     app = QApplication(sys.argv)
 

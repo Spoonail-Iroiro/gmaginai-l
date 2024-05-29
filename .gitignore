@@ -33,3 +33,5 @@ config.toml
 _internal/content_translation/*
 !_internal/content_translation/.gitkeep
 
+log.log
+
