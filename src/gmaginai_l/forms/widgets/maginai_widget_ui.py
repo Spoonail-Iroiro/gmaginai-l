@@ -26,6 +26,11 @@ class Ui_MaginaiWidget(object):
         MaginaiWidget.resize(533, 326)
         self.verticalLayout = QVBoxLayout(MaginaiWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.label = QLabel(MaginaiWidget)
+        self.label.setObjectName(u"label")
+
+        self.verticalLayout.addWidget(self.label)
+
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.txt_main = QLabel(MaginaiWidget)
@@ -158,6 +163,7 @@ class Ui_MaginaiWidget(object):
 
     def retranslateUi(self, MaginaiWidget):
         MaginaiWidget.setWindowTitle(QCoreApplication.translate("MaginaiWidget", u"Form", None))
+        self.label.setText(QCoreApplication.translate("MaginaiWidget", u"Mod Loader", None))
         self.txt_main.setText(QCoreApplication.translate("MaginaiWidget", u"...Loading", None))
         self.txt_error.setText("")
         self.btn_start_game.setText(QCoreApplication.translate("MaginaiWidget", u"Start game", None))
