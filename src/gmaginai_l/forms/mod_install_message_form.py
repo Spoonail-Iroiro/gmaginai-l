@@ -350,7 +350,6 @@ class FormStateCompleted(FormStateBase):
 
     def enter(self, body: ModInstallMessageForm):
         mod_name = body.mod_dir_to_install.name  # type: ignore [union-attr]
-        # TODO: update case
         text_install_update = (
             QCoreApplication.translate(
                 "ModInstallMessageForm",

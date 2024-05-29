@@ -29,7 +29,6 @@ import shutil
 import os
 
 
-# TODO: fix
 def overwritetree_no_gitkeep(src_dir, dst_dir):
     for path in src_dir.glob("*"):
         if path.is_dir():

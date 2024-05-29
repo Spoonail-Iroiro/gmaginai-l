@@ -25,7 +25,6 @@ class MessageFormBase(QDialog):
 
         self.setWindowTitle(title)
 
-        # TODO: Ubuntu環境では変化なし
         self.setWindowFlags(
             Qt.WindowType.Dialog
             | Qt.WindowType.CustomizeWindowHint
