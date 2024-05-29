@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
-    <height>435</height>
+    <width>760</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,7 @@
       <number>11</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
        <property name="spacing">
         <number>11</number>
        </property>
@@ -81,16 +81,37 @@
           </size>
          </property>
          <property name="sizeAdjustPolicy">
-          <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+          <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContentsOnFirstShow</enum>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QStackedWidget" name="stwMain">
-         <property name="currentIndex">
-          <number>-1</number>
-         </property>
-        </widget>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="txt_name">
+           <property name="text">
+            <string>name</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="txt_game_dir">
+           <property name="text">
+            <string>Game Directory</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QStackedWidget" name="stwMain">
+           <property name="currentIndex">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>

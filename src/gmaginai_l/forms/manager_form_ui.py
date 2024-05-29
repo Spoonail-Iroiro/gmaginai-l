@@ -16,14 +16,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDialog, QHBoxLayout,
-    QListWidget, QListWidgetItem, QSizePolicy, QStackedWidget,
-    QVBoxLayout, QWidget)
+    QLabel, QListWidget, QListWidgetItem, QSizePolicy,
+    QStackedWidget, QVBoxLayout, QWidget)
 
 class Ui_ManagerForm(object):
     def setupUi(self, ManagerForm):
         if not ManagerForm.objectName():
             ManagerForm.setObjectName(u"ManagerForm")
-        ManagerForm.resize(650, 435)
+        ManagerForm.resize(760, 481)
         self.verticalLayout = QVBoxLayout(ManagerForm)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -44,16 +44,31 @@ class Ui_ManagerForm(object):
         self.lstMain.setSizePolicy(sizePolicy)
         self.lstMain.setMinimumSize(QSize(0, 0))
         self.lstMain.setMaximumSize(QSize(16777215, 16777215))
-        self.lstMain.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContentsOnFirstShow)
+        self.lstMain.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContentsOnFirstShow)
 
         self.horizontalLayout.addWidget(self.lstMain)
+
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.txt_name = QLabel(ManagerForm)
+        self.txt_name.setObjectName(u"txt_name")
+
+        self.verticalLayout_3.addWidget(self.txt_name)
+
+        self.txt_game_dir = QLabel(ManagerForm)
+        self.txt_game_dir.setObjectName(u"txt_game_dir")
+        self.txt_game_dir.setWordWrap(True)
+
+        self.verticalLayout_3.addWidget(self.txt_game_dir)
 
         self.stwMain = QStackedWidget(ManagerForm)
         self.stwMain.setObjectName(u"stwMain")
 
-        self.horizontalLayout.addWidget(self.stwMain)
+        self.verticalLayout_3.addWidget(self.stwMain)
 
-        self.horizontalLayout.setStretch(1, 1)
+
+        self.horizontalLayout.addLayout(self.verticalLayout_3)
+
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
@@ -73,5 +88,7 @@ class Ui_ManagerForm(object):
 
     def retranslateUi(self, ManagerForm):
         ManagerForm.setWindowTitle(QCoreApplication.translate("ManagerForm", u"Manager", None))
+        self.txt_name.setText(QCoreApplication.translate("ManagerForm", u"name", None))
+        self.txt_game_dir.setText(QCoreApplication.translate("ManagerForm", u"Game Directory", None))
     # retranslateUi
 

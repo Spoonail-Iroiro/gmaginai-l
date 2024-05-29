@@ -44,6 +44,11 @@ class ManagerForm(QDialog):
             self.ui.lstMain.sizeHintForColumn(0) + self.ui.lstMain.frameWidth() * 2
         )
 
+        self.ui.txt_game_dir.setText(
+            self.tr("Game directory: {0}").format(profile["game_dir"])
+        )
+        self.ui.txt_name.setText(profile["name"])
+
     def _get_installer(self):
         config = ConfigService().get_config()
         installer = MaginaiInstaller(
