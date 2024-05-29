@@ -4,3 +4,4 @@ tinydb
 tinydb_serialization
 requests
 pyjsparser
+pyserde

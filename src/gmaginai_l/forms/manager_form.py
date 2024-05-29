@@ -47,7 +47,7 @@ class ManagerForm(QDialog):
     def _get_installer(self):
         config = ConfigService().get_config()
         installer = MaginaiInstaller(
-            Path(self.profile["game_dir"]), config.externalSource.list_release_endpoint
+            Path(self.profile["game_dir"]), config.external_source.list_release_endpoint
         )
 
         return installer

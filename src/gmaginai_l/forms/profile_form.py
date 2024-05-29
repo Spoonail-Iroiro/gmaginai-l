@@ -129,9 +129,11 @@ class ProfileForm(QDialog):
                 self.refresh_list()
 
     def cmb_language_current_index_changed(self, index):
-        config = ConfigService().get_config()
+        service = ConfigService()
+        config = service.get_config()
         language = self.ui.cmb_language.itemData(index)
         config.appearance.language = language
+        service.save_config(config)
         set_translation(QApplication.instance(), language)
         self.ui.retranslateUi(self)
         # logger.info(language)

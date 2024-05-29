@@ -12,6 +12,7 @@ from gmaginai_l.core.config_service import ConfigService
 from gmaginai_l.core.config_enum import Language, Theme
 from gmaginai_l.core.translation import set_translation
 from gmaginai_l.core.theme import set_theme
+from gmaginai_l.core.log import setup_log
 import sys
 import os
 
@@ -20,17 +21,15 @@ import tomli
 logger = logging.getLogger(__name__)
 
 
-logging.basicConfig(level="INFO")
 try:
-    # os.environ["QT_QPA_PLATFORM"] = "windows:darkmode=2"
-    # sys.argv += ['-platform', 'windows:darkmode=1']
-
     db_path = application_dir / "data" / "db.json"
     db = get_db(db_path)
     # set application db
     set_current_db(db)
 
     config = ConfigService().get_config()
+
+    setup_log("INFO")
 
     app = QApplication(sys.argv)
 

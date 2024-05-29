@@ -26,6 +26,7 @@ mypy==1.7.0
     # via -r requirements_dev.in
 mypy-extensions==1.0.0
     # via
+    #   -c requirements.txt
     #   black
     #   mypy
 packaging==23.2
@@ -61,8 +62,9 @@ tomli==2.0.1
     #   coverage
     #   mypy
     #   pytest
-typing-extensions==4.8.0
+typing-extensions==4.12.0
     # via
+    #   -c requirements.txt
     #   black
     #   mypy
 
