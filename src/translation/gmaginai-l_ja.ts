@@ -529,11 +529,6 @@ Note: If the mod contains user-editable files, such as setting file, you should 
 <context>
     <name>ProfileForm</name>
     <message>
-        <location filename="../gmaginai_l/forms/profile_form.ui" line="14"/>
-        <source>Dialog</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Select profile</source>
         <translation type="vanished">プロファイルを選択してください</translation>
     </message>
@@ -545,6 +540,11 @@ Note: If the mod contains user-editable files, such as setting file, you should 
     <message>
         <source>Add</source>
         <translation type="vanished">新規</translation>
+    </message>
+    <message>
+        <location filename="../gmaginai_l/forms/profile_form.ui" line="14"/>
+        <source>Profile</source>
+        <translation>プロファイル</translation>
     </message>
     <message>
         <location filename="../gmaginai_l/forms/profile_form.ui" line="27"/>

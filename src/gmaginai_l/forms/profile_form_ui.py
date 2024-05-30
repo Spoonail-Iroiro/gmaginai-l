@@ -114,7 +114,7 @@ class Ui_ProfileForm(object):
     # setupUi
 
     def retranslateUi(self, ProfileForm):
-        ProfileForm.setWindowTitle(QCoreApplication.translate("ProfileForm", u"Dialog", None))
+        ProfileForm.setWindowTitle(QCoreApplication.translate("ProfileForm", u"Profile", None))
         self.label.setText(QCoreApplication.translate("ProfileForm", u"Select profile.", None))
         self.btnSelect.setText(QCoreApplication.translate("ProfileForm", u"Go", None))
         self.btn_add.setText(QCoreApplication.translate("ProfileForm", u"New", None))
