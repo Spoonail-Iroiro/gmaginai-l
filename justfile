@@ -11,6 +11,7 @@ run:
 
 # build app
 build:
+    just export-license-json
     just compile-translation
     python ./tools/build.py
 
@@ -56,3 +57,6 @@ sync-python-environment:
 
 mypy-test:
     mypy --no-color-output --no-error-summary --show-column-numbers --follow-imports=normal --check-untyped-defs ./src/gmaginai_l/forms/maginai_uninstall_message_form.py
+
+export-license-json:
+    python ./tools/lic_generate.py

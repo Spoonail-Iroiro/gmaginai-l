@@ -30,8 +30,9 @@ config.toml
 /temp/
 /_internal/launch*
 
-_internal/content_translation/*
-!_internal/content_translation/.gitkeep
-
+/_internal/content_translation/*
+!/_internal/content_translation/.gitkeep
+asset/LICENSES
 log.log
+/lic/
 

@@ -38,6 +38,7 @@ def overwritetree_no_gitkeep(src_dir, dst_dir):
 
 
 def place_assets():
+    overwritetree_no_gitkeep(proj_dir / "asset", dist_dir)
     overwritetree_no_gitkeep(proj_dir / "_internal", dist_dir / "_internal")
     os.remove(dist_dir / "_internal" / "content_translation" / ".gitkeep")
     (dist_dir / "data").mkdir()
