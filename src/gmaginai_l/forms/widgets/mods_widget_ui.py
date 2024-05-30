@@ -116,7 +116,7 @@ class Ui_ModsWidget(object):
         self.btn_enable.setText(QCoreApplication.translate("ModsWidget", u"Enable", None))
         self.btn_up.setText(QCoreApplication.translate("ModsWidget", u"\u2191", None))
         self.btn_down.setText(QCoreApplication.translate("ModsWidget", u"\u2193", None))
-        self.btn_delete.setText(QCoreApplication.translate("ModsWidget", u"Delete", None))
+        self.btn_delete.setText(QCoreApplication.translate("ModsWidget", u"Uninstall", None))
         self.btn_open_mod_own_dir.setText(QCoreApplication.translate("ModsWidget", u"Open mod's folder", None))
     # retranslateUi
 

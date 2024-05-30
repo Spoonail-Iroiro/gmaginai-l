@@ -98,7 +98,7 @@
        <item>
         <widget class="QPushButton" name="btn_delete">
          <property name="text">
-          <string>Delete</string>
+          <string>Uninstall</string>
          </property>
         </widget>
        </item>

@@ -40,10 +40,10 @@ class MaginaiUninstallMessageForm(MessageFormBase):
 
         if self.is_all:
             mod_dir_message = self.tr(
-                "'mod' folder will be removed. This can't be reverted."
+                "'mod' folder and all mods will be removed. This can't be reverted."
             )
         else:
-            mod_dir_message = self.tr("'mod' folder will remain.")
+            mod_dir_message = self.tr("'mod' folder and all mods will remain.")
 
         self.set_message(self.tr("Uninstall 'maginai'? {0}").format(mod_dir_message))
         self.state = FormState.CONFIRM

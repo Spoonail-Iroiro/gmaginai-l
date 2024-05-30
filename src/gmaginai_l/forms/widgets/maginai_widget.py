@@ -84,9 +84,9 @@ class MaginaiWidget(ShownEventWidget):
             self.ui.btn_install.setEnabled(self.tag_names is not None)
 
             if tags_exist and mod_exists:
-                message = self.tr("'maginai' v{0} installed.").format(version)
+                message = self.tr("'maginai' v{0} is installed.").format(version)
             elif mod_exists:
-                message = self.tr("'maginai' is not installed. ('mod' folder remains)")
+                message = self.tr("'maginai' is not installed. (mods are present)")
                 self.ui.btn_uninstall_only_tags.setEnabled(False)
             elif tags_exist:
                 message = self.tr(
@@ -98,6 +98,7 @@ class MaginaiWidget(ShownEventWidget):
                 self.ui.btn_uninstall_only_tags.setEnabled(False)
                 self.ui.btn_uninstall_all.setEnabled(False)
                 self.ui.btn_open_mod_folder.setEnabled(False)
+            self._clear_error()
         except Exception as ex:
             logger.exception("")
             self._display_error(funcs.formatError(ex))
@@ -123,7 +124,12 @@ class MaginaiWidget(ShownEventWidget):
         CoAWLauncher().launch_with_dev_console(self.installer.game_dir)
 
     def _display_error(self, message):
+        self.ui.txt_error.setVisible(True)
         self.ui.txt_error.setText(message)
+
+    def _clear_error(self):
+        self.ui.txt_error.setVisible(False)
+        self.ui.txt_error.setText("")
 
     def shownEvent(self):
         pass
