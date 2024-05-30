@@ -17,6 +17,7 @@ from ..core.config_enum import Language
 from ..core.config_service import ConfigService
 from ..core.translation import set_translation
 import logging
+from .. import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +30,7 @@ class ProfileForm(QDialog):
 
         self.profile_service = profile_service
 
+        self.setWindowTitle(f"gmaginai-l v{__version__}")
         self.refresh_list()
 
         if self.ui.lstMain.count() > 0:
