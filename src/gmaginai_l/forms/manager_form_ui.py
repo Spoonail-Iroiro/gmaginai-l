@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDialog, QHBoxLayout,
-    QLabel, QListWidget, QListWidgetItem, QSizePolicy,
-    QStackedWidget, QVBoxLayout, QWidget)
+    QLabel, QLineEdit, QListWidget, QListWidgetItem,
+    QSizePolicy, QStackedWidget, QVBoxLayout, QWidget)
 
 class Ui_ManagerForm(object):
     def setupUi(self, ManagerForm):
@@ -50,16 +50,32 @@ class Ui_ManagerForm(object):
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.txt_name = QLabel(ManagerForm)
-        self.txt_name.setObjectName(u"txt_name")
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setSpacing(1)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.txt_header = QLabel(ManagerForm)
+        self.txt_header.setObjectName(u"txt_header")
 
-        self.verticalLayout_3.addWidget(self.txt_name)
+        self.verticalLayout_4.addWidget(self.txt_header)
 
-        self.txt_game_dir = QLabel(ManagerForm)
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label = QLabel(ManagerForm)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout_2.addWidget(self.label)
+
+        self.txt_game_dir = QLineEdit(ManagerForm)
         self.txt_game_dir.setObjectName(u"txt_game_dir")
-        self.txt_game_dir.setWordWrap(True)
+        self.txt_game_dir.setReadOnly(True)
 
-        self.verticalLayout_3.addWidget(self.txt_game_dir)
+        self.horizontalLayout_2.addWidget(self.txt_game_dir)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
+
+
+        self.verticalLayout_3.addLayout(self.verticalLayout_4)
 
         self.stwMain = QStackedWidget(ManagerForm)
         self.stwMain.setObjectName(u"stwMain")
@@ -88,7 +104,7 @@ class Ui_ManagerForm(object):
 
     def retranslateUi(self, ManagerForm):
         ManagerForm.setWindowTitle(QCoreApplication.translate("ManagerForm", u"Manager", None))
-        self.txt_name.setText(QCoreApplication.translate("ManagerForm", u"name", None))
-        self.txt_game_dir.setText(QCoreApplication.translate("ManagerForm", u"Game Directory", None))
+        self.txt_header.setText(QCoreApplication.translate("ManagerForm", u"name", None))
+        self.label.setText(QCoreApplication.translate("ManagerForm", u"Game directory:", None))
     # retranslateUi
 

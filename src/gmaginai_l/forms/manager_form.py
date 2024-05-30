@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Optional, List, Tuple, Dict
 import logging
 from PySide6.QtWidgets import QDialog, QWidget
+from PySide6.QtCore import QTimer
 from .manager_form_ui import Ui_ManagerForm
 from .widgets.mods_widget import ModsWidget
 from .widgets.maginai_widget import MaginaiWidget
@@ -30,6 +31,8 @@ class ManagerForm(QDialog):
 
         self.widgets: List[ShownEventWidget] = [self.maginai_widget, self.mods_widget]
 
+        # To invoke stwMain.currentRowChanged
+        self.ui.stwMain.setCurrentIndex(-1)
         self.ui.stwMain.addWidget(self.maginai_widget)
         self.ui.stwMain.addWidget(self.mods_widget)
         self.ui.stwMain.setCurrentIndex(0)
@@ -44,10 +47,11 @@ class ManagerForm(QDialog):
             self.ui.lstMain.sizeHintForColumn(0) + self.ui.lstMain.frameWidth() * 2
         )
 
-        self.ui.txt_game_dir.setText(
-            self.tr("Game directory: {0}").format(profile["game_dir"])
-        )
-        self.ui.txt_name.setText(profile["name"])
+        self.ui.txt_header.setText(profile["name"])
+
+        self.ui.txt_game_dir.setText(profile["game_dir"])
+
+        self.stwMain_currentChanged(0)
 
     def _get_installer(self):
         config = ConfigService().get_config()
@@ -58,5 +62,8 @@ class ManagerForm(QDialog):
         return installer
 
     def stwMain_currentChanged(self, index):
+        logger.info("Shown")
         if index >= 0:
             self.widgets[index].shownEvent()
+
+        QTimer.singleShot(0, lambda: self.adjustSize())
