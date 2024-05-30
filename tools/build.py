@@ -38,8 +38,6 @@ def overwritetree_no_gitkeep(src_dir, dst_dir):
 
 
 def place_assets():
-    shutil.copy(proj_dir / "config_default.toml", dist_dir / "config.toml")
-    shutil.copy(proj_dir / "assets" / "run.bat", dist_dir / "run.bat")
     overwritetree_no_gitkeep(proj_dir / "_internal", dist_dir / "_internal")
     os.remove(dist_dir / "_internal" / "content_translation" / ".gitkeep")
     (dist_dir / "data").mkdir()
