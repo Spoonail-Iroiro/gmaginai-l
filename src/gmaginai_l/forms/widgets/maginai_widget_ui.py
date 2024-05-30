@@ -54,6 +54,10 @@ class Ui_MaginaiWidget(object):
 
         self.verticalLayout.addWidget(self.txt_error)
 
+        self.verticalSpacer_4 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+
+        self.verticalLayout.addItem(self.verticalSpacer_4)
+
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.btn_start_game = QPushButton(MaginaiWidget)
