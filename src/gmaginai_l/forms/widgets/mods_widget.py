@@ -32,13 +32,13 @@ class ModsWidget(ShownEventWidget):
 
     def refresh_mod_list(self):
         try:
+            self.ui.lstMain.setCurrentRow(-1)
+            self.ui.lstMain.clear()
             mod_exists = self.mod_installer.maginai_installer.get_mod_dir().exists()
             if not mod_exists:
                 self._show_message("'maginai' is not installed.")
                 self._disable_all_buttons()
                 return
-            self.ui.lstMain.setCurrentRow(-1)
-            self.ui.lstMain.clear()
             enabled_mods = self.mod_installer.get_enabled_mods()
             disabled_mods = self.mod_installer.get_disabled_mods()
 
