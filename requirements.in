@@ -1,5 +1,7 @@
 PySide6
 tomli
-Send2Trash
 tinydb
 tinydb_serialization
+requests
+pyjsparser
+pyserde

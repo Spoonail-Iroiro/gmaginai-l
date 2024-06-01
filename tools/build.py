@@ -1,9 +1,13 @@
 import PyInstaller.__main__
 from pathlib import Path
-import send2trash
+import logging
+
+logging.basicConfig(level="INFO")
+
+logger = logging.getLogger(__name__)
 
 proj_dir = Path(__file__).parent.parent
-dist_dir = proj_dir / "dist" / "SaveBackup"
+dist_dir = proj_dir / "dist" / "gmaginai-l"
 
 
 def pyinstaller_build():
@@ -25,18 +29,28 @@ import shutil
 import os
 
 
+def overwritetree_no_gitkeep(src_dir, dst_dir):
+    for path in src_dir.glob("*"):
+        if path.is_dir():
+            shutil.copytree(path, dst_dir / path.name)
+        else:
+            shutil.copy(path, dst_dir / path.name)
+
+
 def place_assets():
-    shutil.copy(proj_dir / "config_default.toml", dist_dir / "config.toml")
-    shutil.copy(proj_dir / "assets" / "run.bat", dist_dir / "run.bat")
-    shutil.copytree(proj_dir / "data", dist_dir / "data")
-    shutil.copytree(proj_dir / "QSS", dist_dir / "QSS")
+    overwritetree_no_gitkeep(proj_dir / "asset", dist_dir)
+    overwritetree_no_gitkeep(proj_dir / "_internal", dist_dir / "_internal")
+    os.remove(dist_dir / "_internal" / "content_translation" / ".gitkeep")
+    (dist_dir / "data").mkdir()
+    shutil.copytree(proj_dir / "qss", dist_dir / "qss")
 
 
 if dist_dir.exists():
     print(f"Delete {dist_dir}?(y/n)")
     if input() != "y":
         raise ValueError(f"Cancelled Build")
-    send2trash.send2trash(dist_dir)
+    shutil.rmtree(dist_dir)
+    # send2trash.send2trash(dist_dir)
 dist_dir.mkdir(parents=True, exist_ok=True)
 
 pyinstaller_build()

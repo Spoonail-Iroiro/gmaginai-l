@@ -6,3 +6,4 @@ debugpy
 pytest
 pytest-cov
 pyinstaller
+pip-licenses
