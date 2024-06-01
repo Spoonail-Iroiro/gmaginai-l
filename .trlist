@@ -1,5 +1,6 @@
 src/gmaginai_l/__init__.py
 src/gmaginai_l/core/__init__.py
+src/gmaginai_l/core/app_setting_service.py
 src/gmaginai_l/core/backup_controllers.py
 src/gmaginai_l/core/coaw_launcher.py
 src/gmaginai_l/core/config_enum.py

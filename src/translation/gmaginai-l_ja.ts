@@ -177,22 +177,22 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="77"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="93"/>
         <source>Start game</source>
         <translation>ゲーム起動</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="101"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="117"/>
         <source>Start game with console</source>
         <translation>ゲーム起動(＋開発者コンソール)</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="141"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="157"/>
         <source>Install/Update maginai</source>
         <translation>maginaiをインストール/アップデート</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="168"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="184"/>
         <source>Open &apos;mod&apos; folder</source>
         <translation>&apos;mod&apos;フォルダーを開く</translation>
     </message>
@@ -201,12 +201,12 @@
         <translation type="vanished">maginaiをインストール/アップデート</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="208"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="224"/>
         <source>Uninstall (only tags)</source>
         <translation>アンインストール（タグのみ）</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="232"/>
+        <location filename="../gmaginai_l/forms/widgets/maginai_widget.ui" line="248"/>
         <source>Uninstall (all)</source>
         <translation>アンインストール（すべて）</translation>
     </message>
@@ -455,7 +455,7 @@ Note: If the mod contains user-editable files, such as setting file, you should 
         <translation>アンインストール</translation>
     </message>
     <message>
-        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="29"/>
+        <location filename="../gmaginai_l/forms/widgets/mods_widget.ui" line="51"/>
         <source>Install/Update</source>
         <translation>新規インストール/アップデート</translation>
     </message>
@@ -522,8 +522,12 @@ Note: If the mod contains user-editable files, such as setting file, you should 
     </message>
     <message>
         <location filename="../gmaginai_l/forms/profile_edit_form.py" line="49"/>
-        <source>Game.exe doesn&apos;t exists in {0}. You might have specified wrong directory. Proceed anyway?</source>
+        <source>Game.exe does not exist in {0}. You may have specified wrong directory. Proceed anyway?</source>
         <translation>フォルダ{0}にはGame.exeが存在しません。間違ったゲームフォルダが選択されている可能性があります。続行しますか？</translation>
+    </message>
+    <message>
+        <source>Game.exe doesn&apos;t exists in {0}. You might have specified wrong directory. Proceed anyway?</source>
+        <translation type="vanished">フォルダ{0}にはGame.exeが存在しません。間違ったゲームフォルダが選択されている可能性があります。続行しますか？</translation>
     </message>
 </context>
 <context>

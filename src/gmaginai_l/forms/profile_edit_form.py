@@ -10,10 +10,10 @@ logger = logging.getLogger(__name__)
 
 class ProfileEditForm(QDialog):
     def __init__(
-            self,
-            name: str = "",
-            game_dir: str | Path = "",
-            parent=None,
+        self,
+        name: str = "",
+        game_dir: str | Path = "",
+        parent=None,
     ):
         super().__init__(parent)
         self.ui = Ui_ProfileEditForm()
@@ -44,8 +44,8 @@ class ProfileEditForm(QDialog):
                 self,
                 self.tr("Confirm"),
                 self.tr(
-                    "Game.exe doesn't exists in {0}. "
-                    "You might have specified wrong directory. Proceed anyway?"
+                    "Game.exe does not exist in {0}. "
+                    "You may have specified wrong directory. Proceed anyway?"
                 ).format(game_dir),
             )
             if not isOk:
