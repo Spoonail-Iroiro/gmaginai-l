@@ -1,6 +1,6 @@
 [Japanese](README_ja.md)
 
-# gmaginai-l - Simple Mod Manager for CoAW 
+# gmaginai-l - Simple Mod Manager for Creator of Another World 
 
 ## Feature
 - Compatible with both the Steam version (Windows) and the DLSite version of CoAW
