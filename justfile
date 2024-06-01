@@ -15,6 +15,10 @@ build:
     just compile-translation
     python ./tools/build.py
 
+release:
+    just build
+    python ./tools/release.py
+
 # run built app
 run-dist:
     ./dist/gmaginai-l/gmaginai-l
