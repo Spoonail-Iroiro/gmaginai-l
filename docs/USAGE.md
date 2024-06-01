@@ -1,19 +1,17 @@
 ## Setup
-First, you should register your CoAW installation to `gmaginai-l`.  
+First, you should register your CoAW installation to `gmaginai-l` by creating a profile.  
 
-Click the 'New' button to open the profile dialog.
+Click the 'New' button to open the profile creation dialog.
 
 ![profile-new](image/profile-new2.png)
 
-If you have the Steam version of CoAW and the installation path is the default one, clicking 'Detect Steam version' immediately set the 'Name' field to 'steam' and 'Game directory' to its path.  
+If you have the Steam version of CoAW and the installation path is the default one, clicking 'Detect Steam version' immediately sets the 'Name' field to 'steam' and the 'Game directory' field to its path.  
 
 Now you can just click 'OK' to complete.
 
 ![profile-new2-steam](image/profile-new2-steam.png)
 
-Otherwise, the auto-detection does nothing.  
-Or, you might want to register the DLSite version of CoAW.  
-In these cases, you should register your CoAW installation manually by following these steps: 
+If auto-detection doesn't work, or if you want to register the DLSite version of CoAW, you'll need to register your installation manually using these steps:
 
 1. Enter a name of your choice in the 'Name' field.
 2. Click 'Select Game.exe'. 
@@ -22,20 +20,26 @@ In these cases, you should register your CoAW installation manually by following
 
 ![profile-new2-manual](image/profile-new2-manual.png)
 
+\* You can find the installation path of the Steam version from the Steam Library.  
+(Click 'Browse local files' as shown in the image below.)
+
+![profile-steam-local](image/profile-steam-local.png)
+
 Now the profile you registered is shown in the profile list.  
-Click the profile and click 'Go' to enter the mod manager for the installation.
+Select the profile and click 'Go' to enter the mod manager for the installation.
 
 ![profile-complete](image/profile-complete.png)
+
+You can create multiple profiles for different installations of CoAW using the same process.
 
 ## Install the Mod Loader `maginai`
 You should install the mod loader `maginai` to use mods in CoAW.
 
-When you open the mod manager, 'Mod Loader' page is selected in the left sidebar by default and shows the installation state of `maginai`.
+When you open the mod manager, 'Mod Loader' page is selected in the left sidebar by default, displaying the installation state of maginai.
 
 ![manager-first](image/manager-first.png)
 
-Click 'Install/Update maginai' and click 'OK's on the following dialogs.  
-It's quite easy :)  
+Click 'Install/Update maginai' and click 'OK' on the following dialogs.  
 
 ![manager-1](image/manager-1.png)
 
@@ -47,7 +51,7 @@ The installation state on the page will be updated upon completion.
 
 It's recommended to launch the game to see if `maginai` installed correctly.  
 Click 'Start game'.  
-If you see `Mod loader 'maginai' vX.Y.Z` in the left corner of the title screen, you have installed `maginai` successfully!
+If you see `Mod loader 'maginai' vX.Y.Z` in the bottom-left corner of the title screen, you have installed `maginai` successfully!
 
 ![title-maginai](image/title-maginai.png)
 
@@ -56,31 +60,32 @@ Make sure Steam is running! CoAW can't be launched without it.
 
 ## Update Mod Loader `maginai`
 Updating `maginai` is the same as installing.  
-`gmaginai-l` retrieves the version information of `maginai` automatically and the version selecter points the latest version by default, so you just need to click 'Install/Update maginai' to update `maginai` to the latest.
+`gmaginai-l` retrieves the version information of `maginai` automatically and the version selecter points the latest version by default.  
+Simply click 'Install/Update maginai' to update `maginai` to the latest.
 
-All mods you installed are migrated automatically, so you don't need to do anything else!
+All installed mods are migrated automatically, so there's no need for any additional actions on your part!
 
 ## Install Mods
 First, you should get a mod from [Discord (CoAW modding)](https://discord.gg/RgYrD3uPZM) or another source.  
 [README of maginai](https://discord.gg/RgYrD3uPZM) also has a mods list.
 
-Now, as an example, let's try installing a sample mod, which just logs a message "sample modがロードされました" when the game starts.  
+Now, as an example, let's try installing a sample mod that logs a message "Loaded 'sample' mod." when the game starts.  
 Download the distribution zip file from the following link.
 
 https://drive.google.com/file/d/1dYoioGayloWRBwKY3CJtLIMJibTxRKb7/view?usp=drive_link
 
-\* The download button is in the top-right corner.
+\* The download button is located in the top-right corner.
 
-We have a mod now, so select 'Mods' page from the left sidebar on `gmaginai-l`.
+Once you have downloaded the mod, navigate to the 'Mods' page in the left sidebar of `gmaginai-l`.
 
 ![mods-first](image/mods-first.png)
 
-Click 'Install/Update' to open the install dialog.
+Click 'Install/Update' to open the installation dialog.
 
 ![mods-1](image/mods-1.png)
 
-We have two ways to install: (A) from a distribution zip file and (B) from `init.js` in the mod's main folder.  
-The former is easier, but depending on the situation, it might be unavailable (e.g. The mod distributor packs their mod with a format other than zip).
+We have two ways to install: (A) from the distribution zip file and (B) from `init.js` in the mod's main folder.  
+The former is easier, but depending on the circumstances, it might be unavailable (e.g. The mod distributor packs their mod with a format other than zip).
 
 ### (A) From Distribution Zip File
 Click 'OK' button on the dialog and select the distribution zip file of the mod.  
@@ -138,13 +143,13 @@ Click 'Start game' on the 'Mod Loader' page to launch the game, and see the load
 
 ![mods-8](image/mods-8.png)
 
-For the sample mod, you will see a message from the mod after you select a save.  
+For the sample mod, it will display the message "Loaded 'sample' mod." in the game log when you start the game.  
 
-![mods-12](image/mods-12.png)
+![mods-sample](image/mods-sample.png)
 
 
 ## Update Mod
-Updating a mod is almost the same as installing, but you will see the following dialog when complete:
+Updating a mod is almost the same as installing, but you will see the following dialog upon completing:
 
 ![mods-9](image/mods-9.png)
 
@@ -152,12 +157,12 @@ Updating a mod is almost the same as installing, but you will see the following 
 
 ![mods-10](image/mods-10.png)
 
-\* `gmaginai-l` makes a backup of old installation as a `__{modname}` folder before update. The 'Open old folder' opens it.  
-\* The `__{modname}` backup will be deleted at the next update! If you want to keep it, copy it to another location manually.
+\* `gmaginai-l` makes a backup of old installation as a `__{modname}` folder before updating. The 'Open old folder' opens it.  
+\* The `__{modname}` backup will be deleted at the next update! If you want to retain it, copy it to another location manually.
 
 Follow the distributor's instruction on migration.  
-Just overwriting the current one with the old one might break the mod.  
-(e.g. When the new setting file has new items that the old one doesn't)
+Simply overwriting the current version with the old one might break the mod.  
+(e.g. When the new setting file contains new items not present in the old one)
 
 ## All Features
 

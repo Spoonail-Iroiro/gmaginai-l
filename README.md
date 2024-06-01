@@ -1,13 +1,13 @@
-# gmaginai-l - Simple GUI application for managing CoAW mods
+# gmaginai-l - Simple Mod Manager for CoAW 
 
 ## Feature
-- Available for both CoAW Steam version (Windows) and DLSite version
+- Compatible with both CoAW Steam version (Windows) and DLSite version
 - Install mod loader [maginai](https://github.com/Spoonail-Iroiro/maginai) from web
 - Install mods from distribution zip file or from mod's main folder
-- Launch CoAW (with dev console available)
-- Keep multiple installations of CoAW and their mods in profiles
+- Launch CoAW (with the devloper console available)
+- Manage multiple CoAW installations and their respective mods through profiles
 
-You can use `gmaginai-l` on existing manually-installed `maginai` and the mods without any issues as well.
+You can also use `gmaginai-l` on existing manually-installed `maginai` and the mods without any issues.
 
 ## Supported Environments
 OS: Windows
@@ -16,7 +16,7 @@ OS: Windows
 Download and unzip the latest `gmaginai-l-vX.Y.Z.zip` (`X.Y.Z` is the version) from [Release](https://github.com/Spoonail-Iroiro/gmaginai-l/releases), then launch `gmaginai-l.exe`.
 
 ### Update
-Install the latest version and copy the files in `data` folder from the old installation to new one.
+Install the latest version and copy the files in the `data` folder from the old installation to new one.
 
 ## Usage
 The instructions in the GUI are designed to be helpful, but you can also read this guide if necessary:
