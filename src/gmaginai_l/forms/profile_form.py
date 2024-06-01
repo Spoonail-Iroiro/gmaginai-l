@@ -18,6 +18,7 @@ from ..core.config_service import ConfigService
 from ..core.translation import set_translation
 import logging
 from .. import __version__
+from ..core.app_setting_service import AppSettingService
 
 logger = logging.getLogger(__name__)
 
@@ -31,10 +32,6 @@ class ProfileForm(QDialog):
         self.profile_service = profile_service
 
         self.setWindowTitle(f"gmaginai-l v{__version__}")
-        self.refresh_list()
-
-        if self.ui.lstMain.count() > 0:
-            self.ui.lstMain.setCurrentRow(0)
 
         self.ui.btnSelect.clicked.connect(self.btn_select_clicked)
         self.ui.btn_add.clicked.connect(self.btn_add_clicked)
@@ -56,12 +53,20 @@ class ProfileForm(QDialog):
             self.cmb_language_current_index_changed
         )
 
-        # for name in self.controller.get_profile_names():
-        #     self.ui.lstMain.addItem(name)
-        #
+        self.refresh_list()
+
+        # connect after refresh to avoid the previous setting overwritten during init
+        self.ui.lstMain.currentRowChanged.connect(self.lstMain_currentRowChanged)
+
+        setting = AppSettingService()
+        setting_current_row = setting.get(
+            self.__class__.__name__ + "_lstMain_currentRow", 0
+        )
+        self.ui.lstMain.setCurrentRow(setting_current_row)
 
     def refresh_list(self):
         selected_index = self.ui.lstMain.currentRow()
+        self.ui.lstMain.setCurrentRow(-1)
         self.ui.lstMain.clear()
         items = self.profile_service.get_all_profile()
 
@@ -89,13 +94,6 @@ class ProfileForm(QDialog):
             profile = items[0].data(Qt.ItemDataRole.UserRole)
             form = ManagerForm(profile, self)
             form.exec()
-
-            # self.controller.set_profile(profile_name)
-            # form = BackupForm(
-            #     self.controller,
-            #     parent=self,
-            # )
-            # form.exec_()
 
     def btn_add_clicked(self):
         form = ProfileEditForm(parent=self)
@@ -139,3 +137,7 @@ class ProfileForm(QDialog):
         set_translation(QApplication.instance(), language)
         self.ui.retranslateUi(self)
         # logger.info(language)
+
+    def lstMain_currentRowChanged(self, index):
+        setting = AppSettingService()
+        setting.set(self.__class__.__name__ + "_lstMain_currentRow", index)
