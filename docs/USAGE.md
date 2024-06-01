@@ -33,9 +33,9 @@ Select the profile and click 'Go' to enter the mod manager for the installation.
 You can create multiple profiles for different installations of CoAW using the same process.
 
 ## Install the Mod Loader `maginai`
-You should install the mod loader `maginai` to use mods in CoAW.
-
 When you open the mod manager, 'Mod Loader' page is selected in the left sidebar by default, displaying the installation state of maginai.
+
+You should install the mod loader `maginai` to use mods in CoAW.
 
 ![manager-first](image/manager-first.png)
 
@@ -58,6 +58,16 @@ If you see `Mod loader 'maginai' vX.Y.Z` in the bottom-left corner of the title 
 For the Steam version user:  
 Make sure Steam is running! CoAW can't be launched without it.
 
+### Network Error
+
+If an internet connection error occurs, you will not be able to install or update `maginai`.  
+An error message will be displayed on the page.
+
+![image/manager-network-error.png](image/manager-network-error.png)
+
+Even in this case, you can still use other features of `gmaginai-l` without any issues.  
+If you want to install or update `maginai`, please check your network connection.
+
 ## Update Mod Loader `maginai`
 Updating `maginai` is the same as installing.  
 `gmaginai-l` retrieves the version information of `maginai` automatically and the version selecter points the latest version by default.  
@@ -67,7 +77,7 @@ All installed mods are migrated automatically, so there's no need for any additi
 
 ## Install Mods
 First, you should get a mod from [Discord (CoAW modding)](https://discord.gg/RgYrD3uPZM) or another source.  
-[README of maginai](https://discord.gg/RgYrD3uPZM) also has a mods list.
+[README of maginai](https://github.com/Spoonail-Iroiro/maginai/blob/develop/README_en.md#mods-list) also has a mods list.
 
 Now, as an example, let's try installing a sample mod that logs a message "Loaded 'sample' mod." when the game starts.  
 Download the distribution zip file from the following link.
