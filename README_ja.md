@@ -4,6 +4,8 @@
 
 ![gmaginai-l_play_full_ja](docs/image/ja/gmaginai-l_play_full_ja.gif)
 
+(gif中で使用しているmodはめじ氏作の[`showabilities`](https://discord.com/channels/1234695202615197746/1234751996595015710/1245000749952532480)です🙌)
+
 ## 機能
 
 - Steam版（Windows）およびDLSite版の異世界の創造者に対応
@@ -40,6 +42,10 @@ OS: Windows
 GUI上の指示に従えば基本的に問題なく使えますが、必要に応じて以下のガイドを参照してください。
 
 [USAGE_ja.md](docs/USAGE_ja.md)
+
+## Modを見つける
+こちらの[Modリスト](https://github.com/Spoonail-Iroiro/maginai/blob/develop/README_en.md#%E4%BD%9C%E8%80%85mod%E3%83%AA%E3%82%B9%E3%83%889)にいくつかModが載っています。  
+また、[Discord](https://discord.gg/RgYrD3uPZM)の`jp-宣伝`チャンネルでのみ配布されているModもあります。  
 
 ## Modを開発したい場合
 
