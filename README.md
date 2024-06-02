@@ -4,6 +4,8 @@
 
 ![gmaginai-l_play_full_en.gif](docs/image/gmaginai-l_play_full_en.gif)
 
+(The mod in the gif is [`showabilities` by めじ](https://discord.com/channels/1234695202615197746/1234757740094820383/1245018530701906003) !)
+
 ## Features
 
 - Compatible with both the Steam version (Windows) and the DLSite version of CoAW
@@ -40,6 +42,11 @@ Install the latest version and overwrite the `data` folder with the old one.
 The instructions in the GUI are designed to be helpful, but you can also read this guide if necessary:
 
 [USAGE.md](docs/USAGE.md)
+
+## How to Find Mods
+Here's [a mod list](https://github.com/Spoonail-Iroiro/maginai/blob/develop/README_en.md#mods-list).  
+Some mods are distributed only on [our Discord server](https://discord.gg/RgYrD3uPZM).  
+See `en-share-your-content` channel in the server.
 
 ## If You Want to Develop Mods
 
