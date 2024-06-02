@@ -43,6 +43,7 @@ def place_assets():
     os.remove(dist_dir / "_internal" / "content_translation" / ".gitkeep")
     (dist_dir / "data").mkdir()
     shutil.copytree(proj_dir / "qss", dist_dir / "qss")
+    shutil.copytree(proj_dir / "image", dist_dir / "image")
 
 
 if dist_dir.exists():

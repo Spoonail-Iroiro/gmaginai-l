@@ -4,16 +4,17 @@ import logging
 from PySide6.QtWidgets import QDialog, QWidget, QFileDialog, QMessageBox
 from .profile_edit_form_ui import Ui_ProfileEditForm
 from .. import funcs
+from PySide6.QtCore import Qt
 
 logger = logging.getLogger(__name__)
 
 
 class ProfileEditForm(QDialog):
     def __init__(
-        self,
-        name: str = "",
-        game_dir: str | Path = "",
-        parent=None,
+            self,
+            name: str = "",
+            game_dir: str | Path = "",
+            parent=None,
     ):
         super().__init__(parent)
         self.ui = Ui_ProfileEditForm()
@@ -30,12 +31,18 @@ class ProfileEditForm(QDialog):
 
         self.ui.btn_detect_steam_version.clicked.connect(self.btn_detect_steam_version)
 
+        self.setWindowFlags(
+            Qt.WindowType.Dialog
+            | Qt.WindowType.CustomizeWindowHint
+            | Qt.WindowType.WindowTitleHint
+        )
+
     def btn_ok_clicked(self):
         game_dir = Path(self.ui.txt_game_dir.text())
 
         if self.ui.txt_name.text().strip() == "":
             funcs.showMessageOk(
-                self, "", self.tr("Name must not be empty"), QMessageBox.Icon.Warning
+                self, self.tr("Warning"), self.tr("Name must not be empty"), QMessageBox.Icon.Warning
             )
             return
 
