@@ -4,7 +4,7 @@
 
 ![gmaginai-l_play_full_en.gif](docs/image/gmaginai-l_play_full_en.gif)
 
-## Feature
+## Features
 
 - Compatible with both the Steam version (Windows) and the DLSite version of CoAW
 - Install the mod loader [maginai](https://github.com/Spoonail-Iroiro/maginai) from the web
