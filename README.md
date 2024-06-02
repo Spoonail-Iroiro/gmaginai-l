@@ -23,6 +23,12 @@ OS: Windows
 Download and unzip the latest `gmaginai-l-vX.Y.Z.zip` (`X.Y.Z` is the version)
 from [Release](https://github.com/Spoonail-Iroiro/gmaginai-l/releases), then launch `gmaginai-l.exe`.
 
+Note:  
+This application accesses the web to get updates for the mod loader.   
+Additionally, freeware like this tends to be blocked from running by security software (e.g., Windows SmartScreen).   
+If you are unable to run it, please Google how to unblock it.  
+If you need further assistance, you can also get support on [Discord](https://discord.gg/RgYrD3uPZM).
+
 ### Update
 
 Install the latest version and overwrite the `data` folder with the old one.
