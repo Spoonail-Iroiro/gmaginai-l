@@ -2,6 +2,7 @@ import logging
 import sys
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QTranslator, QLibraryInfo, QLocale
+from PySide6.QtGui import QIcon
 
 # from save_backup.forms.game_select_form import GameSelectForm
 from gmaginai_l.forms.profile_form import ProfileForm
@@ -13,13 +14,13 @@ from gmaginai_l.core.config_enum import Language, Theme
 from gmaginai_l.core.translation import set_translation
 from gmaginai_l.core.theme import set_theme
 from gmaginai_l.core.log import setup_log
+from gmaginai_l.core.icon import set_window_icon
 import sys
 import os
 
 import tomli
 
 logger = logging.getLogger(__name__)
-
 
 try:
     db_path = application_dir / "data" / "db.json"
@@ -42,6 +43,8 @@ try:
 
     profile_service = ProfileService(db)
     form = ProfileForm(profile_service)
+
+    set_window_icon(form)
 
     form.show()
     code = app.exec()
