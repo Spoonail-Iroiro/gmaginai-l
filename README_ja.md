@@ -54,7 +54,7 @@ GUI上の指示に従えば基本的に問題なく使えますが、必要に�
 
 ## 困ったときは
 
-本リポジトリにissueを立てるか以下の連絡先からSpoonailまでご連絡ください。
+本リポジトリにissueを立てるか以下の連絡先からSpoonailまでご連絡ください。  
 https://whiteblackspace.hatenablog.com/contact-coaw
 
 # 注意事項

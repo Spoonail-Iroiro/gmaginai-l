@@ -110,7 +110,7 @@ https://drive.google.com/file/d/1dYoioGayloWRBwKY3CJtLIMJibTxRKb7/view?usp=drive
 
 ![mods-6](image/ja/mods-6.png)
 
-[この「ヒント：…」って何？](#この「ヒント：…」って何？)
+[この「ヒント：…」って何？](#このヒントって何)
 
 ![mods-zip-5](image/ja/mods-zip-5.png)
 
