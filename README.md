@@ -1,10 +1,12 @@
-[Japanese](README_ja.md)
-
 # gmaginai-l - Simple Mod Manager for Creator of Another World
 
 ![gmaginai-l_play_full_en.gif](docs/image/gmaginai-l_play_full_en.gif)
 
 (The mod in the gif is [`showabilities` by めじ](https://discord.com/channels/1234695202615197746/1234757740094820383/1245018530701906003) !)
+
+[![Discord](https://img.shields.io/discord/1234695202615197746?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/Z7n5EPxQ)
+
+[English](README.md) | [日本語](README_ja.md)
 
 ## Features
 
@@ -27,7 +29,7 @@ from [Release](https://github.com/Spoonail-Iroiro/gmaginai-l/releases), then lau
 
 Note:  
 This application accesses the web to get updates for the mod loader.   
-Additionally, freeware like this tends to be blocked from running by security software (e.g., Windows SmartScreen).   
+Additionally, freeware like this tends to be blocked from running by security software (e.g. Windows SmartScreen).   
 If you are unable to run it, please Google how to unblock it.  
 If you need further assistance, you can also get support on [Discord](https://discord.gg/RgYrD3uPZM).
 

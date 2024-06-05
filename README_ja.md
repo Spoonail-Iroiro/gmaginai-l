@@ -1,11 +1,12 @@
-[English](README.md)
-
 # gmaginai-l - 異世界の創造者 Modマネージャー
 
 ![gmaginai-l_play_full_ja](docs/image/ja/gmaginai-l_play_full_ja.gif)
 
 (gif中で使用しているmodはめじ氏作の[`showabilities`](https://discord.com/channels/1234695202615197746/1234751996595015710/1245000749952532480)です🙌)
 
+[![Discord](https://img.shields.io/discord/1234695202615197746?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/Z7n5EPxQ)
+
+[English](README.md) | [日本語](README_ja.md)
 ## 機能
 
 - Steam版（Windows）およびDLSite版の異世界の創造者に対応
