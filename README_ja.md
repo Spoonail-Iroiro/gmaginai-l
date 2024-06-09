@@ -4,7 +4,7 @@
 
 (gif中で使用しているmodはめじ氏作の[`showabilities`](https://discord.com/channels/1234695202615197746/1234751996595015710/1245000749952532480)です🙌)
 
-[![Discord](https://img.shields.io/discord/1234695202615197746?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/Z7n5EPxQ)
+[![Discord](https://img.shields.io/discord/1234695202615197746?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/RgYrD3uPZM)
 
 [English](README.md) | [日本語](README_ja.md)
 ## 機能

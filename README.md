@@ -4,7 +4,7 @@
 
 (The mod in the gif is [`showabilities` by めじ](https://discord.com/channels/1234695202615197746/1234757740094820383/1245018530701906003) !)
 
-[![Discord](https://img.shields.io/discord/1234695202615197746?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/Z7n5EPxQ)
+[![Discord](https://img.shields.io/discord/1234695202615197746?style=for-the-badge&logo=discord&label=Discord)](https://discord.gg/RgYrD3uPZM)
 
 [English](README.md) | [日本語](README_ja.md)
 
