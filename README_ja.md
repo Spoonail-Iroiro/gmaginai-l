@@ -45,8 +45,8 @@ GUI上の指示に従えば基本的に問題なく使えますが、必要に�
 [USAGE_ja.md](docs/USAGE_ja.md)
 
 ## Modを見つける
-こちらの[Modリスト](https://github.com/Spoonail-Iroiro/maginai/blob/develop/README_en.md#%E4%BD%9C%E8%80%85mod%E3%83%AA%E3%82%B9%E3%83%889)にいくつかModが載っています。  
-また、[Discord](https://discord.gg/RgYrD3uPZM)の`jp-宣伝`チャンネルでのみ配布されているModもあります。  
+こちらの[Modリスト](https://github.com/Spoonail-Iroiro/maginai/blob/develop/README_en.md#%E4%BD%9C%E8%80%85mod%E3%83%AA%E3%82%B9%E3%83%889)にModが掲載されています。  
+また、[Discordの「jp-宣伝」チャンネル](https://discord.gg/5r3WHWf3)では新たに作成されたModが告知されることがあります。  
 
 ## Modを開発したい場合
 
