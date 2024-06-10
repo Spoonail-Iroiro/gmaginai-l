@@ -46,9 +46,7 @@ The instructions in the GUI are designed to be helpful, but you can also read th
 [USAGE.md](docs/USAGE.md)
 
 ## How to Find Mods
-Here's [a mod list](https://github.com/Spoonail-Iroiro/maginai/blob/develop/README_en.md#mods-list).  
-Some mods are distributed only on [our Discord server](https://discord.gg/RgYrD3uPZM).  
-See `en-share-your-content` channel in the server.
+See [mods list](https://github.com/Spoonail-Iroiro/maginai/blob/develop/README_en.md#mods-list) and ['en-share-your-content' channel in our Discord server](https://discord.gg/T9RYpuQJVE).
 
 ## If You Want to Develop Mods
 
