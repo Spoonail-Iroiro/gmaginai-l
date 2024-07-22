@@ -5,14 +5,14 @@ from .. import dirs
 template_launch = """
 @echo off
 chcp 65001
-cd "{}"
+cd /d "{}"
 start "" Game.exe
 """.strip()
 
 template_launch_with_dev_console = """
 @echo off
 chcp 65001
-cd "{}"
+cd /d "{}"
 set WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=--auto-open-devtools-for-tabs
 start "" Game.exe
 """.strip()
